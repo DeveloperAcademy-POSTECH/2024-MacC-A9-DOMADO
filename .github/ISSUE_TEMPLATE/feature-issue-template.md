@@ -1,6 +1,6 @@
 ---
-name: feature 템플릿입니다
-about: '새로운 기능을 추가합니다. '
+name: Feature Issue Template
+about: 새로운 기능을 추가하거나 구현할 때 사용하는 이슈입니다.
 title: "[feat] ~~ 기능 추가 "
 labels: "\U0001F423feature"
 assignees: ''
