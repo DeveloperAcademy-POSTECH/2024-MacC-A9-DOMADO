@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */; };
+		AF8F62262C90939C00D6E8E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62252C90939C00D6E8E2 /* ContentView.swift */; };
+		AF8F62282C90939E00D6E8E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8F62272C90939E00D6E8E2 /* Assets.xcassets */; };
+		AF8F62352C90939E00D6E8E2 /* DomadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62342C90939E00D6E8E2 /* DomadoTests.swift */; };
+		AF8F623F2C90939E00D6E8E2 /* DomadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */; };
+		AF8F62412C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF8F62312C90939E00D6E8E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8F62182C90939C00D6E8E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8F621F2C90939C00D6E8E2;
+			remoteInfo = Domado;
+		};
+		AF8F623B2C90939E00D6E8E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8F62182C90939C00D6E8E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8F621F2C90939C00D6E8E2;
+			remoteInfo = Domado;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoApp.swift; sourceTree = "<group>"; };
+		AF8F62252C90939C00D6E8E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AF8F62272C90939E00D6E8E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF8F62302C90939E00D6E8E2 /* DomadoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomadoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8F62342C90939E00D6E8E2 /* DomadoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoTests.swift; sourceTree = "<group>"; };
+		AF8F623A2C90939E00D6E8E2 /* DomadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITests.swift; sourceTree = "<group>"; };
+		AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF8F621D2C90939C00D6E8E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F622D2C90939E00D6E8E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F62372C90939E00D6E8E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF8F62172C90939C00D6E8E2 = {
+			isa = PBXGroup;
+			children = (
+				AF8F62222C90939C00D6E8E2 /* Domado */,
+				AF8F62332C90939E00D6E8E2 /* DomadoTests */,
+				AF8F623D2C90939E00D6E8E2 /* DomadoUITests */,
+				AF8F62212C90939C00D6E8E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF8F62212C90939C00D6E8E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF8F62202C90939C00D6E8E2 /* Domado.app */,
+				AF8F62302C90939E00D6E8E2 /* DomadoTests.xctest */,
+				AF8F623A2C90939E00D6E8E2 /* DomadoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF8F62222C90939C00D6E8E2 /* Domado */ = {
+			isa = PBXGroup;
+			children = (
+				AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */,
+				AF8F62252C90939C00D6E8E2 /* ContentView.swift */,
+				AF8F62272C90939E00D6E8E2 /* Assets.xcassets */,
+			);
+			path = Domado;
+			sourceTree = "<group>";
+		};
+		AF8F62332C90939E00D6E8E2 /* DomadoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF8F62342C90939E00D6E8E2 /* DomadoTests.swift */,
+			);
+			path = DomadoTests;
+			sourceTree = "<group>";
+		};
+		AF8F623D2C90939E00D6E8E2 /* DomadoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */,
+				AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */,
+			);
+			path = DomadoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF8F621F2C90939C00D6E8E2 /* Domado */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8F62442C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "Domado" */;
+			buildPhases = (
+				AF8F621C2C90939C00D6E8E2 /* Sources */,
+				AF8F621D2C90939C00D6E8E2 /* Frameworks */,
+				AF8F621E2C90939C00D6E8E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Domado;
+			productName = Domado;
+			productReference = AF8F62202C90939C00D6E8E2 /* Domado.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF8F622F2C90939E00D6E8E2 /* DomadoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8F62472C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "DomadoTests" */;
+			buildPhases = (
+				AF8F622C2C90939E00D6E8E2 /* Sources */,
+				AF8F622D2C90939E00D6E8E2 /* Frameworks */,
+				AF8F622E2C90939E00D6E8E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8F62322C90939E00D6E8E2 /* PBXTargetDependency */,
+			);
+			name = DomadoTests;
+			productName = DomadoTests;
+			productReference = AF8F62302C90939E00D6E8E2 /* DomadoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF8F62392C90939E00D6E8E2 /* DomadoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8F624A2C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "DomadoUITests" */;
+			buildPhases = (
+				AF8F62362C90939E00D6E8E2 /* Sources */,
+				AF8F62372C90939E00D6E8E2 /* Frameworks */,
+				AF8F62382C90939E00D6E8E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8F623C2C90939E00D6E8E2 /* PBXTargetDependency */,
+			);
+			name = DomadoUITests;
+			productName = DomadoUITests;
+			productReference = AF8F623A2C90939E00D6E8E2 /* DomadoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF8F62182C90939C00D6E8E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					AF8F621F2C90939C00D6E8E2 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					AF8F622F2C90939E00D6E8E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = AF8F621F2C90939C00D6E8E2;
+					};
+					AF8F62392C90939E00D6E8E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = AF8F621F2C90939C00D6E8E2;
+					};
+				};
+			};
+			buildConfigurationList = AF8F621B2C90939C00D6E8E2 /* Build configuration list for PBXProject "Domado" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF8F62172C90939C00D6E8E2;
+			productRefGroup = AF8F62212C90939C00D6E8E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF8F621F2C90939C00D6E8E2 /* Domado */,
+				AF8F622F2C90939E00D6E8E2 /* DomadoTests */,
+				AF8F62392C90939E00D6E8E2 /* DomadoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF8F621E2C90939C00D6E8E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8F62282C90939E00D6E8E2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F622E2C90939E00D6E8E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F62382C90939E00D6E8E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF8F621C2C90939C00D6E8E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8F62262C90939C00D6E8E2 /* ContentView.swift in Sources */,
+				AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F622C2C90939E00D6E8E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8F62352C90939E00D6E8E2 /* DomadoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8F62362C90939E00D6E8E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8F62412C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift in Sources */,
+				AF8F623F2C90939E00D6E8E2 /* DomadoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF8F62322C90939E00D6E8E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8F621F2C90939C00D6E8E2 /* Domado */;
+			targetProxy = AF8F62312C90939E00D6E8E2 /* PBXContainerItemProxy */;
+		};
+		AF8F623C2C90939E00D6E8E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8F621F2C90939C00D6E8E2 /* Domado */;
+			targetProxy = AF8F623B2C90939E00D6E8E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AF8F62422C90939E00D6E8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF8F62432C90939E00D6E8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF8F62452C90939E00D6E8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.Domado;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AF8F62462C90939E00D6E8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.Domado;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AF8F62482C90939E00D6E8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.DomadoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Domado.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Domado";
+			};
+			name = Debug;
+		};
+		AF8F62492C90939E00D6E8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.DomadoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Domado.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Domado";
+			};
+			name = Release;
+		};
+		AF8F624B2C90939E00D6E8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.DomadoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Domado;
+			};
+			name = Debug;
+		};
+		AF8F624C2C90939E00D6E8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZWTS2P7AH7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.DomadoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Domado;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF8F621B2C90939C00D6E8E2 /* Build configuration list for PBXProject "Domado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8F62422C90939E00D6E8E2 /* Debug */,
+				AF8F62432C90939E00D6E8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8F62442C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "Domado" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8F62452C90939E00D6E8E2 /* Debug */,
+				AF8F62462C90939E00D6E8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8F62472C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "DomadoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8F62482C90939E00D6E8E2 /* Debug */,
+				AF8F62492C90939E00D6E8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8F624A2C90939E00D6E8E2 /* Build configuration list for PBXNativeTarget "DomadoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8F624B2C90939E00D6E8E2 /* Debug */,
+				AF8F624C2C90939E00D6E8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF8F62182C90939C00D6E8E2 /* Project object */;
+}
