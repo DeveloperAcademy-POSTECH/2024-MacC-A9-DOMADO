@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; };
+		AF5E248D2C9FB44B00FA2DA5 /* Core in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */; };
 		AF8F62262C90939C00D6E8E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62252C90939C00D6E8E2 /* ContentView.swift */; };
 		AF8F62282C90939E00D6E8E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8F62272C90939E00D6E8E2 /* Assets.xcassets */; };
@@ -32,7 +34,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AF5E248E2C9FB44B00FA2DA5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AF5E248D2C9FB44B00FA2DA5 /* Core in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoApp.swift; sourceTree = "<group>"; };
 		AF8F62252C90939C00D6E8E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +87,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF5E248A2C9FB44B00FA2DA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF8F62172C90939C00D6E8E2 = {
 			isa = PBXGroup;
 			children = (
+				AF5E24892C9F1C5700FA2DA5 /* Core */,
 				AF8F62222C90939C00D6E8E2 /* Domado */,
 				AF8F62332C90939E00D6E8E2 /* DomadoTests */,
 				AF8F623D2C90939E00D6E8E2 /* DomadoUITests */,
+				AF5E248A2C9FB44B00FA2DA5 /* Frameworks */,
 				AF8F62212C90939C00D6E8E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +153,7 @@
 				AF8F621C2C90939C00D6E8E2 /* Sources */,
 				AF8F621D2C90939C00D6E8E2 /* Frameworks */,
 				AF8F621E2C90939C00D6E8E2 /* Resources */,
+				AF5E248E2C9FB44B00FA2DA5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -604,6 +632,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF5E248B2C9FB44B00FA2DA5 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF8F62182C90939C00D6E8E2 /* Project object */;
 }
