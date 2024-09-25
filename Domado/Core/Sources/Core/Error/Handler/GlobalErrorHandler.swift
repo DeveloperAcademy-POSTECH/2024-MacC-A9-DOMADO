@@ -15,25 +15,48 @@
 /// ```swift
 /// class AppGlobalErrorHandler: GlobalErrorHandler {
 ///     func handle(_ error: Error) -> AppError? {
-///         let appError = error as? AppError ?? AppError.unknown(error)
+///         let appError: AppError
+///         if let businessError = error as? BusinessError {
+///             appError = businessError
+///         } else if let knownError = error as? AppError {
+///             appError = knownError
+///         } else {
+///             appError = UnknownError(error)
+///         }
+///
 ///         handleGlobalError(appError)
-///         return nil
+///         return nil  // 에러가 완전히 처리되었음을 나타냅니다.
 ///     }
 ///
 ///     func handleGlobalError(_ error: AppError) {
 ///         // 에러 로깅
-///         print("글로벌 에러 발생: \(error.errorDescription)")
+///         logError(error)
 ///
 ///         // 사용자에게 알림
-///         // showAlert(message: error.errorDescription)
+///         if let businessError = error as? BusinessError {
+///             showAlertToUser(message: businessError.userMessage)
+///         } else {
+///             showAlertToUser(message: "An unexpected error occurred. Please try again later.")
+///         }
 ///
 ///         // 에러 리포팅 서비스에 전송
-///         // ErrorReportingService.send(error)
+///         sendErrorReport(error)
+///     }
+///
+///     private func logError(_ error: AppError) {
+///         print("Global error occurred: \(error.errorDescription) (Code: \(error.errorCode))")
+///     }
+///
+///     private func showAlertToUser(message: String) {
+///         // 실제 구현에서는 UI 프레임워크를 사용하여 알림을 표시합니다.
+///         print("Alert shown to user: \(message)")
+///     }
+///
+///     private func sendErrorReport(_ error: AppError) {
+///         // 실제 구현에서는 에러 리포팅 서비스를 사용합니다.
+///         print("Error report sent for: \(error.errorDescription)")
 ///     }
 /// }
-///
-/// let globalHandler = AppGlobalErrorHandler()
-/// globalHandler.handle(someError)
 /// ```
 protocol GlobalErrorHandler: ErrorHandler {
     /// 글로벌 수준에서 AppError를 처리합니다.
