@@ -58,7 +58,7 @@
 ///     }
 /// }
 /// ```
-protocol GlobalErrorHandler: ErrorHandler {
+public protocol GlobalErrorHandler: ErrorHandler {
     /// 글로벌 수준에서 AppError를 처리합니다.
     ///
     /// - Parameter error: 처리할 AppError 객체
