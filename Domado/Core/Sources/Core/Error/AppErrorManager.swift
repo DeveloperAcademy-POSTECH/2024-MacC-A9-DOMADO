@@ -93,7 +93,7 @@ import SwiftUI
 ///     }
 /// }
 ///
-class AppErrorManager: ObservableObject, GlobalErrorHandler {
+public class AppErrorManager: ObservableObject, GlobalErrorHandler {
     /// 현재 표시 중인 에러입니다. `nil`이면 에러가 없음을 의미합니다.
     @Published public var currentError: AppError?
     

@@ -52,7 +52,7 @@
 ///
 /// 이 예시에서 `NetworkError`는 `AppError` 프로토콜을 준수하며,
 /// 각 에러 케이스에 대해 사용자 친화적인 설명과 고유한 에러 코드를 제공합니다.
-protocol AppError: Error {
+public protocol AppError: Error {
     /// 에러에 대한 사용자 친화적인 설명입니다.
     ///
     /// 이 속성은 사용자에게 표시하거나 로깅에 사용할 수 있는

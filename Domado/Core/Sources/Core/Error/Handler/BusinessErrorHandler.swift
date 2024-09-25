@@ -109,7 +109,7 @@
 ///     }
 /// }
 /// ```
-protocol BusinessErrorHandler: ErrorHandler {
+public protocol BusinessErrorHandler: ErrorHandler {
     /// 비즈니스 에러를 처리합니다.
     ///
     /// - Parameter error: 처리할 BusinessError 객체

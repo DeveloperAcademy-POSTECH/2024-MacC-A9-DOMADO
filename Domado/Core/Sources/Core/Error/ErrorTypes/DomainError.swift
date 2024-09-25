@@ -65,7 +65,7 @@
 /// 이 예시에서 `NetworkError`는 `DomainError` 프로토콜을 준수하며,
 /// 네트워크 관련 에러를 표현합니다. `underlyingError` 속성을 통해
 /// 원본 시스템 에러에 접근할 수 있습니다.
-protocol DomainError: AppError {
+public protocol DomainError: AppError {
     /// 이 에러의 근본 원인이 되는 기저 에러입니다.
     ///
     /// 이 속성은 시스템 레벨이나 외부 라이브러리에서 발생한 원본 에러를

@@ -26,7 +26,7 @@
 ///     // appError 처리
 /// }
 /// ```
-protocol ErrorHandler {
+public protocol ErrorHandler {
     /// 주어진 에러를 처리합니다.
     ///
     /// - Parameter error: 처리할 Error 객체

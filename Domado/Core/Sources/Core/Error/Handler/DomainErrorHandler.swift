@@ -37,7 +37,7 @@
 ///     // businessError 처리
 /// }
 /// ```
-protocol DomainErrorHandler: ErrorHandler {
+public protocol DomainErrorHandler: ErrorHandler {
     /// 도메인 특화 에러를 처리하고 필요한 경우 비즈니스 에러로 변환합니다.
     ///
     /// - Parameter error: 처리할 DomainError 객체

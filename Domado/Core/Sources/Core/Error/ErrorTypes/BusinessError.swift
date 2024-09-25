@@ -64,7 +64,7 @@
 /// 이 예시에서 `UserError`는 `BusinessError` 프로토콜을 준수하며,
 /// 사용자 관련 비즈니스 로직 에러를 표현합니다. `isUserFacing` 속성을 통해
 /// 이 에러가 사용자에게 직접 표시될 수 있는지 여부를 나타냅니다.
-protocol BusinessError: AppError {
+public protocol BusinessError: AppError {
     /// 이 에러가 사용자에게 직접 표시될 수 있는지를 나타냅니다.
     ///
     /// `true`인 경우, 이 에러의 `errorDescription`은 사용자 인터페이스에
