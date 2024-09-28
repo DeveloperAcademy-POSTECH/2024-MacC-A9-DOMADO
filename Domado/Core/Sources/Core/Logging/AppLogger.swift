@@ -7,45 +7,69 @@
 
 /// 애플리케이션 전체에서 사용되는 로깅 시스템의 인터페이스를 정의합니다.
 ///
-/// 이 프로토콜은 애플리케이션의 다양한 부분에서 일관된 로깅 메커니즘을 제공하기 위해 사용됩니다.
-/// `AppLogger`를 구현하는 클래스는 메시지 로깅, 로그 레벨 설정, 그리고 로그 카테고리 지정 기능을 제공해야 합니다.
+/// 이 프로토콜은 다양한 로그 레벨과 카테고리를 지원하여 효과적인 로깅과 디버깅을 가능하게 합니다.
+/// `Logger`를 구현하는 클래스는 각 로그 레벨에 맞는 적절한 로깅 메커니즘을 제공해야 합니다.
+///
+/// - Note: `LogCategory`는 별도로 정의되어야 하는 타입으로, 로그의 출처나 관련 모듈을 나타냅니다.
 ///
 /// ## 예시:
 ///
 /// ```swift
-/// class DefaultLogger: AppLogger {
-///     func log(_ message: String, level: LogLevel, category: String) {
-///         print("[\(level.rawValue.uppercased())][\(category)] \(message)")
+/// class ConsoleLogger: Logger {
+///     func debug(_ message: String, category: LogCategory) {
+///         print("[DEBUG][\(category)] \(message)")
 ///     }
 ///
-///     func critical(_ message: String, category: String) {
+///     func info(_ message: String, category: LogCategory) {
+///         print("[INFO][\(category)] \(message)")
+///     }
+///
+///     func warning(_ message: String, category: LogCategory) {
+///         print("[WARNING][\(category)] \(message)")
+///     }
+///
+///     func error(_ message: String, category: LogCategory) {
+///         print("[ERROR][\(category)] \(message)")
+///     }
+///
+///     func critical(_ message: String, category: LogCategory) {
 ///         print("[CRITICAL][\(category)] \(message)")
-///         // 추가적인 처리 (예: 개발자에게 알림 전송)
+///         // 추가적인 알림 로직 구현 가능
 ///     }
 /// }
 ///
-/// let logger = DefaultLogger()
-/// logger.log("사용자 로그인 성공", level: .info, category: "Authentication")
-/// logger.critical("데이터베이스 연결 실패", category: "Database")
+/// let logger = ConsoleLogger()
+/// logger.info("사용자 로그인 성공", category: .authentication)
+/// logger.error("데이터베이스 쿼리 실패", category: .database)
 /// ```
-///
-/// 이 예시에서 `DefaultLogger`는 `AppLogger` 프로토콜을 구현하여 기본적인 콘솔 로깅을 제공합니다.
-public protocol AppLogger {
-    /// 지정된 레벨과 카테고리로 메시지를 로깅합니다.
-    ///
+public protocol Logger {
+    /// 디버그 정보를 로깅합니다. 주로 개발 중 상세한 정보를 기록하는 데 사용됩니다.
     /// - Parameters:
-    ///   - message: 로그에 기록할 메시지
-    ///   - level: 로그의 중요도 수준
-    ///   - category: 로그의 카테고리 (예: "Network", "Database", "UI" 등)
-    func log(_ message: String, level: LogLevel, category: String)
-    
-    /// 크리티컬한 오류 메시지를 로깅합니다.
-    ///
-    /// 이 메소드는 즉각적인 주의가 필요한 심각한 문제를 로깅하는 데 사용됩니다.
-    /// 일반적으로 추가적인 처리 (예: 개발자에게 알림 전송)를 포함할 수 있습니다.
-    ///
+    ///   - message: 로그 메시지
+    ///   - category: 로그의 카테고리
+    func debug(_ message: String, category: LogCategory)
+
+    /// 일반적인 정보를 로깅합니다. 애플리케이션의 정상적인 동작을 기록하는 데 사용됩니다.
     /// - Parameters:
-    ///   - message: 크리티컬한 오류 메시지
-    ///   - category: 오류가 발생한 카테고리
-    func critical(_ message: String, category: String)
+    ///   - message: 로그 메시지
+    ///   - category: 로그의 카테고리
+    func info(_ message: String, category: LogCategory)
+
+    /// 경고 메시지를 로깅합니다. 잠재적인 문제나 예상치 못한 상황을 기록하는 데 사용됩니다.
+    /// - Parameters:
+    ///   - message: 로그 메시지
+    ///   - category: 로그의 카테고리
+    func warning(_ message: String, category: LogCategory)
+
+    /// 오류 메시지를 로깅합니다. 실패한 작업이나 예외 상황을 기록하는 데 사용됩니다.
+    /// - Parameters:
+    ///   - message: 로그 메시지
+    ///   - category: 로그의 카테고리
+    func error(_ message: String, category: LogCategory)
+
+    /// 심각한 오류 메시지를 로깅합니다. 즉각적인 조치가 필요한 중대한 문제를 기록하는 데 사용됩니다.
+    /// - Parameters:
+    ///   - message: 로그 메시지
+    ///   - category: 로그의 카테고리
+    func critical(_ message: String, category: LogCategory)
 }
