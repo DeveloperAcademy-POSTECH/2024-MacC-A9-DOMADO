@@ -52,7 +52,7 @@ public class CoreLogger: Logger, @unchecked Sendable {
     // MARK: - Private Properties
     
     /// 등록된 로그 핸들러들을 저장하는 배열입니다.
-    private var handlers: [LoggerHandler] = []
+    private(set) var handlers: [LoggerHandler] = []
     
     /// 로그 작업을 직렬화할 디스패치 큐입니다.
     private let loggingQueue: DispatchQueue
@@ -161,6 +161,19 @@ public class CoreLogger: Logger, @unchecked Sendable {
             #if DEBUG
             print("[\(category.name.uppercased())] [\(type)] \(message)")
             #endif
+        }
+    }
+}
+
+
+extension CoreLogger {
+    
+    /// Test시 사용되며 추가된 모든 핸들러를 제거하는 메서드입니다.
+    ///
+    /// internal 수준의 접근자를 통해 테스트 모듈에서만 사용이 가능하도록 합니다. 
+    func removeHandler() {
+        loggingQueue.async { [weak self] in
+            self?.handlers.removeAll()
         }
     }
 }
