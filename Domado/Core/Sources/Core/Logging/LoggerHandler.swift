@@ -5,55 +5,84 @@
 //  Created by 이종선 on 9/28/24.
 //
 
-/// 로그 핸들러의 기본 인터페이스를 정의하는 프로토콜입니다.
+/// 로그 이벤트를 처리하는 핸들러의 인터페이스를 정의하는 프로토콜입니다.
 ///
-/// 이 프로토콜을 준수하는 타입은 로그 메시지를 처리하는 방법을 구현해야 합니다.
-/// 예를 들어, 파일에 쓰기, 콘솔에 출력, 네트워크로 전송 등의 동작을 수행할 수 있습니다.
+/// 이 프로토콜은 로그 이벤트를 다양한 방식으로 처리할 수 있도록 설계되었습니다.
+/// 예를 들어, 로그를 파일에 기록하거나 콘솔에 출력하는 등의 작업을 수행할 수 있습니다.
+///
+/// ## 장점:
+/// - 유연한 로그 처리: 다양한 핸들러를 구현하여 로그를 여러 방식으로 처리할 수 있습니다.
+/// - 확장성: 새로운 로그 처리 방식이 필요할 때마다 쉽게 핸들러를 추가할 수 있습니다.
+/// - 모듈화: 로깅 시스템의 책임을 핸들러에게 분리하여, 코드의 유지보수성을 높입니다.
 ///
 /// ## 사용 예시:
 ///
-/// ```swift
 /// public class FileLoggerHandler: LoggerHandler {
+///     /// 로그를 기록할 파일의 URL입니다.
 ///     private let fileURL: URL
 ///
+///     /// 파일 접근을 동기화하기 위한 락입니다.
+///     private let fileLock = NSLock()
+///
+///     /// FileLoggerHandler의 이니셜라이저입니다.
+///     ///
+///     /// - Parameter fileName: 로그를 기록할 파일의 이름 (기본값: "app.log")
 ///     public init(fileName: String = "app.log") {
 ///         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 ///         fileURL = paths[0].appendingPathComponent(fileName)
 ///     }
 ///
-///     public func handleLog(message: String, category: LogCategory) {
-///         let logEntry = "[\(category.name.uppercased())] \(message)\n"
-///         if let data = logEntry.data(using: .utf8) {
+///     /// 로그 이벤트를 파일에 기록합니다.
+///     ///
+///     /// - Parameter logEvent: 처리할 로그 이벤트
+///     public func handle(logEvent: LogEvent) {
+///         // 특정 OSLogType 이상만 기록 (예: info 이상)
+///         guard logEvent.type != .debug else { return }
+///
+///         let logEntry: String
+///         switch logEvent.type {
+///         case .debug:
+///             logEntry = "[DEBUG] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         case .info:
+///             logEntry = "[INFO] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         case .default:
+///             logEntry = "[WARNING] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         case .error:
+///             logEntry = "[ERROR] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         case .fault:
+///             logEntry = "[CRITICAL] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         @unknown default:
+///             logEntry = "[GENERAL] [\(logEvent.category.name.uppercased())] \(logEvent.message)\n"
+///         }
+///
+///         // 파일 쓰기 동기화
+///         fileLock.lock()
+///         defer { fileLock.unlock() }
+///
+///         do {
 ///             if FileManager.default.fileExists(atPath: fileURL.path) {
 ///                 if let fileHandle = try? FileHandle(forWritingTo: fileURL) {
 ///                     defer {
 ///                         fileHandle.closeFile()
 ///                     }
 ///                     fileHandle.seekToEndOfFile()
-///                     fileHandle.write(data)
+///                     if let data = logEntry.data(using: .utf8) {
+///                         fileHandle.write(data)
+///                     }
 ///                 }
 ///             } else {
-///                 try? data.write(to: fileURL, options: .atomic)
+///                 try logEntry.write(to: fileURL, atomically: true, encoding: .utf8)
 ///             }
+///         } catch {
+///             // 오류 처리 (예: 콘솔에 출력)
+///             print("Failed to write log: \(error)")
 ///         }
 ///     }
 /// }
-///
-/// let fileHandler = FileLoggerHandler(fileName: "myapp.log")
-/// fileHandler.handleLog(message: "애플리케이션 시작", category: .general)
-/// ```
-///
-/// 참고: 실제 구현 시 고려해야 할 사항
-/// 1. 파일 크기 관리: 로그 파일이 너무 커지지 않도록 로테이션 구현
-/// 2. 동시성 처리: 여러 스레드에서 동시에 로그를 쓸 때의 동기화 문제
-/// 3. 에러 처리: 파일 쓰기 실패 시의 대응 방안
-/// 4. 성능 최적화: 빈번한 파일 I/O를 줄이기 위한 버퍼링 전략
-/// 5. 보안: 민감한 정보의 암호화 또는 마스킹
-public protocol LoggerHandler {
-    /// 로그 메시지를 처리합니다.
+public protocol LoggerHandler: Sendable {
+    /// 로그 이벤트를 처리합니다.
     ///
-    /// - Parameters:
-    ///   - message: 로그 메시지 내용
-    ///   - category: 로그 카테고리 (예: network, database, ui)
-    func handleLog(message: String, category: LogCategory)
+    /// - Parameter logEvent: 처리할 로그 이벤트
+    func handle(logEvent: LogEvent)
 }
+
