@@ -8,11 +8,20 @@
 import Foundation
 import Combine
 
-/// `NetworkManager` 프로토콜을 채택하여 네트워크 요청을 처리하는 클래스입니다.
+// URLSession의 주요 메서드를 포함하는 프로토콜
+protocol URLSessionProtocol {
+    func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher
+    func dataTaskPublisher(for url: URL) -> URLSession.DataTaskPublisher
+}
+
+// URLSession을 URLSessionProtocol의 준수자로 만듭니다
+extension URLSession: URLSessionProtocol {}
+
+/// `NetworkManager` 프로토콜을 채택하여 네트워크 요청을 처리하는 클래Type스입니다.
 /// `NetworkError`를 사용하여 에러를 일관되게 처리합니다.
 final class CoreNetworkManager: NetworkManager {
     /// `URLSession` 인스턴스를 사용하여 네트워크 요청을 수행합니다.
-    private let session: URLSession
+    private let session: URLSessionProtocol
     
     /// 로깅을 담당하는 `CoreLogger` 인스턴스입니다.
     private let logger: CoreLogger
