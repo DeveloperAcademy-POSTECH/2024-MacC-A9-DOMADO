@@ -1,5 +1,13 @@
-# 2024-MacC-A9-DOMADO
-사과가 되지 말고 도마도가 되라
+![image](https://github.com/user-attachments/assets/6ea94f6e-4b24-4ada-a3fb-d60e694f9598)
+
+# 👋 HiBike 🚲
+**너와 내가 만난 순간 새로운 출발이 시작**
+
+## ⭐️ App Statement 
+**사용자가 스테이션에 직접 돌아가지 않고도 원하는 위치에 자전거를 반납할 수 있도록 도와주자!**
+
+### 💡 Solution 설명 
+자전거를 대여한 후, 다른 장소에서 일시 잠금을 진행할 때 사용자는 자전거 소유권을 다른 사람에게 넘길 수 있는 옵션을 선택할 수 있습니다. 이 옵션을 선택하면, 자전거를 대신 사용할 지원자를 모집하게 됩니다.만약 지원자가 나타나면, 처음 대여한 사용자는 자전거의 소유권을 새로운 사용자에게 양도하며, 이후 자전거를 반납할 필요가 없습니다. 대신, 자전거를 넘겨받은 사용자가 자전거를 자유롭게 사용한 후, 기존 사용자가 대여한 충전 스테이션에 반납해야 합니다. 만약 지원자가 나타나지 않는다면, 기존 사용자가 자전거를 직접 반납해야 하는 구조입니다.
 
 ## 🧩 Team 
 <table style="width: 100%; table-layout: fixed;">
@@ -34,6 +42,81 @@
 </table>
 
 
+## 🚰 App Flow
+![image](https://github.com/user-attachments/assets/c7079d82-de6d-4bbf-ad52-7469f2ecec50)
+
+
+## 📜 App Architecture
+```mermaid
+graph TD
+    subgraph App
+        BikeShareApp[BikeShareApp] --> RootView
+        RootView --> AppState[AppState Store]
+        RootView --> Router[Navigation Router]
+        
+        subgraph Core Module
+            CoreNetwork[Network Layer]
+            CoreError[Error Handling]
+            CoreLogging[Logging]
+            CoreExtensions[Extensions]
+        end
+
+        subgraph Auth Flow
+            AuthView[Authentication View]
+            AuthView --> AuthVM[Auth ViewModel]
+            AuthVM --> AuthRepo[Auth Repository]
+            AuthRepo --> AuthAPI[Auth API]
+            AuthRepo --> AuthLocal[Auth Local Storage]
+        end
+
+        subgraph Main Flow
+            MainTabView[Main Tab View]
+            MainTabView --> MapView
+            MainTabView --> RentalView
+            MainTabView --> ProfileView
+        end
+
+        subgraph Map Feature
+            MapView --> MapVM[Map ViewModel]
+            MapVM --> MapRepo[Map Repository]
+            MapRepo --> MapAPI[Map API]
+            MapRepo --> MapLocal[Map Local Cache]
+        end
+
+        subgraph Rental Feature
+            RentalView --> RentalVM[Rental ViewModel]
+            RentalVM --> RentalRepo[Rental Repository]
+            RentalRepo --> RentalAPI[Rental API]
+            RentalRepo --> RentalLocal[Rental Local Storage]
+        end
+
+        subgraph Payment Feature
+            PaymentView[Payment View]
+            PaymentView --> PaymentVM[Payment ViewModel]
+            PaymentVM --> PaymentRepo[Payment Repository]
+            PaymentRepo --> PaymentAPI[Payment API]
+            PaymentRepo --> PaymentLocal[Payment Local Storage]
+        end
+
+        %% Core Dependencies
+        CoreNetwork -.-> AuthAPI
+        CoreNetwork -.-> MapAPI
+        CoreNetwork -.-> RentalAPI
+        CoreNetwork -.-> PaymentAPI
+        
+        CoreError -.-> AuthVM
+        CoreError -.-> MapVM
+        CoreError -.-> RentalVM
+        CoreError -.-> PaymentVM
+    end
+
+    style App fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style Core Module fill:#e1f5fe,stroke:#333,stroke-width:1px
+    style Auth Flow fill:#f3e5f5,stroke:#333,stroke-width:1px
+    style Map Feature fill:#e8f5e9,stroke:#333,stroke-width:1px
+    style Rental Feature fill:#fff3e0,stroke:#333,stroke-width:1px
+    style Payment Feature fill:#fce4ec,stroke:#333,stroke-width:1px
+```
 
 ## 🐈‍⬛ Github Convention
 
