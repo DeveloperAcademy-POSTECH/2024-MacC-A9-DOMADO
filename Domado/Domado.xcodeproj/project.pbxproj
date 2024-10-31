@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
+		AF5DE75C2CD3D37E00708825 /* Auth in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; };
 		AF5E248D2C9FB44B00FA2DA5 /* Core in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */; };
@@ -41,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AF5DE75C2CD3D37E00708825 /* Auth in Embed Frameworks */,
 				AF5E248D2C9FB44B00FA2DA5 /* Core in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -49,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoApp.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */,
 				AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +102,7 @@
 		AF8F62172C90939C00D6E8E2 = {
 			isa = PBXGroup;
 			children = (
+				AF5DE7592CD3D0C400708825 /* Auth */,
 				AF5E24892C9F1C5700FA2DA5 /* Core */,
 				AF8F62222C90939C00D6E8E2 /* Domado */,
 				AF8F62332C90939E00D6E8E2 /* DomadoTests */,
@@ -634,6 +640,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AF5DE75A2CD3D37E00708825 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Auth;
+		};
 		AF5E248B2C9FB44B00FA2DA5 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
