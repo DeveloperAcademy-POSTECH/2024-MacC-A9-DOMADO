@@ -22,7 +22,9 @@ let package = Package(
     targets: [
 
         .target(
-            name: "Auth"),
+            name: "Auth",
+            dependencies: ["Core"]
+        ),
         .testTarget(
             name: "AuthTests",
             dependencies: ["Auth"]
