@@ -123,8 +123,8 @@
 		AF12AF2E2CD60653004B32EB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF12AFA92CD60C2C004B32EB /* TempView */,
 				AF8F62252C90939C00D6E8E2 /* RootView.swift */,
+				AF12AFA92CD60C2C004B32EB /* TempView */,
 			);
 			path = View;
 			sourceTree = "<group>";
