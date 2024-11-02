@@ -8,7 +8,12 @@
 import Foundation
 
 /// Sheet 형태로 화면상에 보여줄 화면 목록입니다. 
-enum SheetDestination: Hashable {
+enum SheetDestination: Identifiable, Hashable {
     case qrScanner
     
+    var id:String {
+        switch self {
+        case .qrScanner: return "qrScanner"
+    }
+    }
 }
