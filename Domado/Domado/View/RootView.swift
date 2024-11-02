@@ -28,10 +28,10 @@ struct RootView: View {
                 destinationView(for: destination)
             }
             .sheet(item: $router.activeSheet) { sheet in
-                
+                sheetView(for: sheet)
             }
             .fullScreenCover(item: $router.activeFullScreen) { fullScreen in
-                
+                fullScreenView(for: fullScreen)
             }
             
         }
