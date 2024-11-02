@@ -11,7 +11,7 @@ import SwiftUI
 struct DomadoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RootView: View {
+    
+    @StateObject private var router = AppRouter()
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +23,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    RootView()
 }
