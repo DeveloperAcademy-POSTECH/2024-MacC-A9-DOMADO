@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct DomadoApp: App {
+    @StateObject var appState: AppState = AppState()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(appState)
         }
     }
 }
