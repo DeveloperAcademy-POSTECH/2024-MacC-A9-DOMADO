@@ -21,6 +21,9 @@
 		AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */; };
 		AF12AFC52CD64B81004B32EB /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC42CD64B81004B32EB /* QRScannerView.swift */; };
 		AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */; };
+		AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */; };
+		AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */; };
+		AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */; };
 		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
 		AF5DE75C2CD3D37E00708825 /* Auth in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; };
@@ -80,6 +83,9 @@
 		AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnBikeView.swift; sourceTree = "<group>"; };
 		AF12AFC42CD64B81004B32EB /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalErrorState.swift; sourceTree = "<group>"; };
+		AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobalErrorHandler.swift; sourceTree = "<group>"; };
+		AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertModifier.swift; sourceTree = "<group>"; };
 		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +185,16 @@
 			path = TempView;
 			sourceTree = "<group>";
 		};
+		AF12AFC82CD71A1D004B32EB /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */,
+				AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */,
+				AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		AF5E248A2C9FB44B00FA2DA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */,
+				AF12AFC82CD71A1D004B32EB /* Error */,
 				AF12AF2F2CD606A9004B32EB /* AppState */,
 				AF12AF322CD60707004B32EB /* Router */,
 				AF12AF312CD606F4004B32EB /* StateStorage */,
@@ -372,6 +389,7 @@
 				AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */,
 				AF12AFAD2CD61029004B32EB /* SheetDestination.swift in Sources */,
 				AF8F62262C90939C00D6E8E2 /* RootView.swift in Sources */,
+				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
 				AF12AFC52CD64B81004B32EB /* QRScannerView.swift in Sources */,
 				AF12AFB32CD615FA004B32EB /* AppState.swift in Sources */,
@@ -379,11 +397,13 @@
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
 				AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */,
 				AF12AFAF2CD610F0004B32EB /* FullScreenDestination.swift in Sources */,
+				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
 				AF12AFAB2CD60C55004B32EB /* NavigationDestination.swift in Sources */,
 				AF12AFB92CD6482E004B32EB /* LoginView.swift in Sources */,
 				AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */,
 				AF12AFBD2CD64AAE004B32EB /* StationDetailView.swift in Sources */,
+				AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */,
 				AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

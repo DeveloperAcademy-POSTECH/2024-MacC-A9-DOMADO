@@ -12,6 +12,18 @@ struct RootView: View {
     @StateObject private var router = AppRouter()
     @EnvironmentObject private var appState : AppState
     
+    @StateObject private var globalErrorState: GlobalErrorState
+    @StateObject var globalErrorHandler: AppGlobalErrorHandler
+    
+    // MARK: DI 주입방식으로 교체 예정
+    init() {
+        let state = GlobalErrorState()
+        let handler = AppGlobalErrorHandler(errorState: state)
+        
+        _globalErrorState = StateObject(wrappedValue: state)
+        _globalErrorHandler = StateObject(wrappedValue: handler)
+    }
+    
     var body: some View {
         NavigationStack(path: $router.path) {
             Group {
@@ -24,6 +36,7 @@ struct RootView: View {
                     LoginView()
                 }
             }
+            .errorAlert(errorState: globalErrorState)
             .navigationDestination(for: NavigationDestination.self) { destination in
                 destinationView(for: destination)
             }
@@ -36,6 +49,7 @@ struct RootView: View {
             
         }
         .environmentObject(router)
+        .environmentObject(globalErrorHandler)
     }
     
     // MARK: - View Builders
