@@ -9,10 +9,18 @@ import SwiftUI
 
 @main
 struct DomadoApp: App {
-    @StateObject var appState: AppState = AppState()
+    private let dIContainer: AppContainer
+    @StateObject var appState: AppState
+    
+    init() {
+        let dIContainer = AppContainer()
+        self.dIContainer = dIContainer
+        _appState = StateObject(wrappedValue: dIContainer.makeAppState())
+    }
+    
     var body: some Scene {
         WindowGroup {
-            RootView()
+            RootView(container: dIContainer)
                 .environmentObject(appState)
         }
     }
