@@ -25,7 +25,6 @@
 		AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */; };
 		AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */; };
 		AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFD02CD74CD5004B32EB /* AppContainer.swift */; };
-		AF12AFD32CD7507F004B32EB /* RootDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFD22CD7507F004B32EB /* RootDependencies.swift */; };
 		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
 		AF5DE75C2CD3D37E00708825 /* Auth in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; };
@@ -89,7 +88,6 @@
 		AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobalErrorHandler.swift; sourceTree = "<group>"; };
 		AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertModifier.swift; sourceTree = "<group>"; };
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		AF12AFD22CD7507F004B32EB /* RootDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDependencies.swift; sourceTree = "<group>"; };
 		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				AF12AFD02CD74CD5004B32EB /* AppContainer.swift */,
-				AF12AFD22CD7507F004B32EB /* RootDependencies.swift */,
 			);
 			path = Dependency;
 			sourceTree = "<group>";
@@ -417,7 +414,6 @@
 				AF12AFB92CD6482E004B32EB /* LoginView.swift in Sources */,
 				AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */,
 				AF12AFBD2CD64AAE004B32EB /* StationDetailView.swift in Sources */,
-				AF12AFD32CD7507F004B32EB /* RootDependencies.swift in Sources */,
 				AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */,
 				AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */,
 				AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */,

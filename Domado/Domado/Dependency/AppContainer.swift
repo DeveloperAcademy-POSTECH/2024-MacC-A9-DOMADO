@@ -12,6 +12,12 @@ import Foundation
 
 class AppContainer {
     
+    struct RootDependencies {
+        let router: AppRouter
+        let globalErrorState: GlobalErrorState
+        let globalErrorHandler: AppGlobalErrorHandler
+    }
+    
     // MARK: 의존성 목록
     
     /// 앱 상태 관리
@@ -29,7 +35,7 @@ class AppContainer {
         GlobalErrorState()
     }()
     
-    private lazy var globalErrorHandler: GlobalErrorHandler = {
+    private lazy var globalErrorHandler: AppGlobalErrorHandler = {
         AppGlobalErrorHandler(errorState: globalErrorState)
     }()
     
