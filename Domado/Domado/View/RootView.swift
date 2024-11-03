@@ -17,7 +17,6 @@ struct RootView: View {
     
     private let container: AppContainer
     
-    // MARK: DI 주입방식으로 교체 예정
     init(container: AppContainer) {
         self.container = container
         let dependencies = container.makeRootDependencies()
