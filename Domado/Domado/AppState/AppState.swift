@@ -34,5 +34,110 @@ final class AppState: ObservableObject {
     @Published private(set) var rideState: RideState = .none
     @Published private(set) var hasSeenOnboarding: Bool = false
     
-
+    private let storage: StateStorage
+    
+    // MARK: - Initialization
+    init(storage: StateStorage) {
+        self.storage = storage
+        
+        // 저장된 상태 복원
+        restoreState()
+        
+    }
+    
+    // MARK: - State Restoration
+     private func restoreState() {
+         do {
+             // 인증 상태 복원
+             if storage.hasValue(for: .authToken) {
+                 let token: String = try storage.value(for: .authToken)
+                 authState = .authenticated
+             } else {
+                 authState = .unauthenticated
+             }
+             
+             // 온보딩 상태 복원
+             if storage.hasValue(for: .hasSeenOnboarding) {
+                 hasSeenOnboarding = try storage.value(for: .hasSeenOnboarding)
+             }
+             
+             // 주행 상태 복원
+             if storage.hasValue(for: .activeRide) {
+                 rideState = .active
+             }
+         } catch {
+             // 상태 복원 실패 시 기본값 사용
+             authState = .unknown
+             rideState = .none
+             hasSeenOnboarding = false
+         }
+     }
+     
+     // MARK: - State Persistence
+     private func persistState() {
+         do {
+             // 온보딩 상태 저장
+             try storage.setValue(hasSeenOnboarding, for: .hasSeenOnboarding)
+             
+             // 인증 관련 데이터는 이미 storage에서 관리되고 있음
+             // 주행 상태도 이미 storage에서 관리되고 있음
+         } catch {
+             // 상태 저장 실패 로깅
+             print("Failed to persist app state: \(error)")
+         }
+     }
+     
+     // MARK: - Public Methods
+     
+     /// 사용자 인증 상태를 업데이트합니다
+     func updateAuthState(_ newState: AuthState) {
+         authState = newState
+         
+         // 로그아웃 시 관련 데이터 삭제
+         if newState == .unauthenticated {
+             do {
+                 try storage.removeValue(for: .authToken)
+                 try storage.removeValue(for: .refreshToken)
+                 try storage.removeValue(for: .userData)
+             } catch {
+                 print("Failed to clear auth data: \(error)")
+             }
+         }
+     }
+     
+     /// 주행 상태를 업데이트합니다
+     func updateRideState(_ newState: RideState) {
+         rideState = newState
+         
+         // 주행 종료 시 관련 데이터 삭제
+         if newState == .completed || newState == .none {
+             do {
+                 try storage.removeValue(for: .activeRide)
+             } catch {
+                 print("Failed to clear ride data: \(error)")
+             }
+         }
+     }
+     
+     /// 온보딩 완료 상태를 업데이트합니다
+     func setOnboardingComplete() {
+         hasSeenOnboarding = true
+         do {
+             try storage.setValue(hasSeenOnboarding, for: .hasSeenOnboarding)
+         } catch {
+             print("Failed to save onboarding state: \(error)")
+         }
+     }
+     
+     /// 모든 상태와 저장된 데이터를 초기화합니다
+     func reset() {
+         do {
+             try storage.clearAll()
+             authState = .unauthenticated
+             rideState = .none
+             hasSeenOnboarding = false
+         } catch {
+             print("Failed to reset app state: \(error)")
+         }
+     }
 }
