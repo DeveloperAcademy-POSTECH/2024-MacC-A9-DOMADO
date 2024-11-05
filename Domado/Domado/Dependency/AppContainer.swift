@@ -18,12 +18,22 @@ class AppContainer {
         let globalErrorHandler: AppGlobalErrorHandler
     }
     
-    // MARK: 의존성 목록
+    // MARK: - 의존성 목록
     
     /// 앱 상태 관리
     private lazy var appState: AppState = {
-        AppState()
+        AppState(storage: stateStorage)
     }()
+    
+    /// 상태 저장소
+     private lazy var stateStorage: StateStorage = {
+         do {
+             return try StateStorage()
+         } catch {
+             //TODO: 에러 핸들링 적용
+             fatalError("Failed to initialize StateStorage: \(error)")
+         }
+     }()
     
     /// 화면 계층 관리
     private lazy var router: AppRouter = {
@@ -44,7 +54,7 @@ class AppContainer {
         CoreLogger.shared
     }()
     
-    // MARK: 의존성 주입을 위한 팩토리 메서드
+    // MARK: - 의존성 주입을 위한 팩토리 메서드
     
     /// 앱 상태 의존성 주입
     func makeAppState() -> AppState {
