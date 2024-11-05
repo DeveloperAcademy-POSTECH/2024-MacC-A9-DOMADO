@@ -90,10 +90,10 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         // Mock AppState with sample data
-        let appState = AppState()
+        
         let container = AppContainer()
         
         return RootView(container: container)
-            .environmentObject(appState)
+            .environmentObject(container.makeAppState())
     }
 }
