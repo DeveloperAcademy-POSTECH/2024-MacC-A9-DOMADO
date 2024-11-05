@@ -11,6 +11,7 @@ import SwiftUI
 struct DomadoApp: App {
     private let dIContainer: AppContainer
     @StateObject var appState: AppState
+    @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) private var appDelegate
     
     init() {
         let dIContainer = AppContainer()
