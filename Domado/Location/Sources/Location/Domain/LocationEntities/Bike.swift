@@ -1,29 +1,11 @@
 //
-//  LocationEntity.swift
+//  Bike.swift
 //  Location
 //
-//  Created by yoomin on 11/5/24.
+//  Created by yoomin on 11/8/24.
 //
 
-public struct Location {
-    let latitude: Double
-    let longitude: Double
-}
-
-public struct Hub {
-    public let hubID: String
-    public let hubName: String
-    public let hubLocation: Location
-    public let bikeCount: Int
-    public let stations: [Station]
-    
-}
-
-public struct Station {
-    public let id: String
-    public let name: String
-    public let bikes: [Bike]
-}
+import Foundation
 
 public struct Bike {
     public let id: String
@@ -46,5 +28,3 @@ public struct Bike {
         self.dockNumber = isHiBike ? nil : dockNumber
     }
 }
-
-
