@@ -11,7 +11,6 @@ struct RootView: View {
     
     @StateObject private var router: AppRouter
     @StateObject private var globalErrorState: GlobalErrorState
-    @StateObject var globalErrorHandler: AppGlobalErrorHandler
     
     @EnvironmentObject private var appState : AppState
     
@@ -22,7 +21,6 @@ struct RootView: View {
         let dependencies = container.makeRootDependencies()
         _router = StateObject(wrappedValue: dependencies.router)
         _globalErrorState = StateObject(wrappedValue: dependencies.globalErrorState)
-        _globalErrorHandler = StateObject(wrappedValue: dependencies.globalErrorHandler)
     }
     
     var body: some View {
@@ -50,7 +48,6 @@ struct RootView: View {
             
         }
         .environmentObject(router)
-        .environmentObject(globalErrorHandler)
     }
     
     // MARK: - View Builders
