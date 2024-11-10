@@ -68,4 +68,29 @@ final class AppContainer {
         router
     }
     
+    // MARK: - View 반환 메서드
+    func makeLoginView() -> LoginView {
+        LoginView(vm: self.makeLoginViewModel())
+    }
+    
+    func makeOnboardingView() -> OnboardingView {
+        OnboardingView(vm: self.makeOnboardingViewModel() )
+    }
+    
+    func makeQRScannerView() -> QRScannerView {
+        QRScannerView(vm: self.makeQRScannerViewModel())
+    }
+    
+    // MARK: - ViewModel 반환 메서드
+    private func makeLoginViewModel() -> LoginViewModel {
+        LoginViewModel(router: router)
+    }
+    
+    private func makeOnboardingViewModel() -> OnboardingViewModel {
+        OnboardingViewModel(router: router)
+    }
+    
+    private func makeQRScannerViewModel() -> QRScannerViewModel {
+        QRScannerViewModel(router: router)
+    }
 }

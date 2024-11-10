@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    
+    @StateObject var vm: OnboardingViewModel
+    
     var body: some View {
-        Text("온보딩뷰")
-    }
-}
+        VStack{
+            HStack{
+                
+                Spacer()
+                
+                Button {
+                    vm.dismissOnboarding()
+                } label: {
+                    Image(systemName: "xmark")
+                }
 
-#Preview {
-    OnboardingView()
+            }
+            .padding(.horizontal)
+            Spacer()
+            
+            Text("온보딩뷰")
+            
+            Spacer()
+            
+        }
+    }
 }

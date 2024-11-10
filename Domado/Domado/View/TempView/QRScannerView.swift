@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct QRScannerView: View {
+    
+    @StateObject var vm: QRScannerViewModel
+    
     var body: some View {
-        Text("QR 코드 스캐너")
-    }
-}
+        VStack{
+            HStack{
+                
+                Spacer()
+                
+                Button {
+                    vm.dismissQRScanner()
+                } label: {
+                    Image(systemName: "xmark")
+                }
 
-#Preview {
-    QRScannerView()
+            }
+            .padding()
+            Spacer()
+            
+            Text("QR 코드 스캐너")
+            
+            Spacer()
+            
+        }
+    }
 }

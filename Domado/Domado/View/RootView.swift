@@ -30,7 +30,7 @@ struct RootView: View {
                 case .authenticated:
                     HomeView()
                 case .unauthenticated:
-                    LoginView()
+                    container.makeLoginView()
                 }
             }
             .errorAlert(errorState: globalErrorState)
@@ -45,7 +45,6 @@ struct RootView: View {
             }
             
         }
-        .environmentObject(router)
     }
     
     // MARK: - View Builders
@@ -67,7 +66,7 @@ struct RootView: View {
     private func sheetView(for sheet: SheetDestination) -> some View {
         switch sheet {
             case .qrScanner:
-                QRScannerView()
+            container.makeQRScannerView()
         }
     }
     
@@ -75,9 +74,9 @@ struct RootView: View {
     private func fullScreenView(for fullScreen: FullScreenDestination) -> some View {
         switch fullScreen {
         case .login:
-            LoginView()
+            container.makeLoginView()
         case .onboarding:
-            OnboardingView()
+            container.makeOnboardingView()
         }
     }
 }
