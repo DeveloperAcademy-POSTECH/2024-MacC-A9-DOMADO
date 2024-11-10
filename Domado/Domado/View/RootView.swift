@@ -45,7 +45,6 @@ struct RootView: View {
             }
             
         }
-        .environmentObject(router)
     }
     
     // MARK: - View Builders
