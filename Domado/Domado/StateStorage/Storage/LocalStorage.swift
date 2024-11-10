@@ -11,10 +11,14 @@ final class LocalStorage: StorageProvider {
     private let fileManager: FileManager
     private let directory: URL
     
-    init(fileManager: FileManager = .default ) throws {
+    init(
+        fileManager: FileManager = .default,
+        baseDirectory: URL? = nil
+    ) throws {
         self.fileManager = fileManager
         
-        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // baseDirectory가 주입되지 않은 경우 기본 documents 디렉토리 사용
+        let documentsDirectory = baseDirectory ?? fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         self.directory = documentsDirectory.appendingPathComponent("LocalStorage", isDirectory: true)
         
         if !fileManager.fileExists(atPath: directory.path) {
