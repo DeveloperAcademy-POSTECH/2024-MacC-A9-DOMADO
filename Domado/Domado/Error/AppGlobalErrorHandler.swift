@@ -8,7 +8,7 @@
 import Core
 import Foundation
 
-final class AppGlobalErrorHandler: ObservableObject, GlobalErrorHandler {
+final class AppGlobalErrorHandler: GlobalErrorHandler {
     private let errorState: GlobalErrorState
     
     init(errorState: GlobalErrorState) {

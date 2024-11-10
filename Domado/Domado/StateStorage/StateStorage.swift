@@ -8,16 +8,36 @@
 import Foundation
 
 final class StateStorage {
-    private let localStorage: LocalStorage
+    private let localStorage: StorageProvider
     private let userDefaults: UserDefaultsStorage
     private let keychain: KeychainStorage
     private let errorHandler: StorageErrorHandler
     
-    init() throws {
-        self.errorHandler = StorageErrorHandler()
-        self.localStorage = try LocalStorage()
-        self.userDefaults = UserDefaultsStorage()
-        self.keychain = KeychainStorage()
+    init(
+        localStorage: StorageProvider,
+        userDefaults: UserDefaultsStorage,
+        keychain: KeychainStorage,
+        errorHandler: StorageErrorHandler
+    ) {
+        self.localStorage = localStorage
+        self.userDefaults = userDefaults
+        self.keychain = keychain
+        self.errorHandler = errorHandler
+    }
+    
+    convenience init() throws {
+        let errorHandler = StorageErrorHandler()
+        
+        do {
+            self.init(
+                localStorage: try LocalStorage(),
+                userDefaults: UserDefaultsStorage(),
+                keychain: KeychainStorage(),
+                errorHandler: errorHandler
+            )
+        } catch {
+            throw error
+        }
     }
     
     // MARK: - Generic Storage Methods
@@ -143,5 +163,44 @@ final class StateStorage {
             }
             throw error
         }
+    }
+}
+
+/// 상태저장소 초기화 에러시 상태 복구 로직
+extension StateStorage {
+    /// 메모리 기반의 fallback storage를 생성합니다.
+    static func createFallback() -> StateStorage {
+        do {
+            // 임시 디렉토리를 사용하는 LocalStorage 생성
+            let tempLocalStorage = try createTempLocalStorage()
+            
+            return StateStorage(
+                localStorage: tempLocalStorage,
+                userDefaults: UserDefaultsStorage(),
+                keychain: KeychainStorage(),
+                errorHandler: StorageErrorHandler()
+            )
+        } catch {
+            // 최후의 수단: 메모리 전용 스토리지
+            return createMemoryOnlyStorage()
+        }
+    }
+    
+    private static func createTempLocalStorage() throws -> LocalStorage {
+        let tempDirectory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("FallbackStorage", isDirectory: true)
+        
+        return try LocalStorage(fileManager: FileManager.default, baseDirectory: tempDirectory) 
+    }
+    
+    private static func createMemoryOnlyStorage() -> StateStorage {
+        let memoryLocalStorage = MemoryLocalStorage()
+        
+        return StateStorage(
+            localStorage: memoryLocalStorage,
+            userDefaults: UserDefaultsStorage(),
+            keychain: KeychainStorage(),
+            errorHandler: StorageErrorHandler()
+        )
     }
 }
