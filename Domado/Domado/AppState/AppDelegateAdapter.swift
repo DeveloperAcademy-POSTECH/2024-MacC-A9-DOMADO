@@ -8,12 +8,6 @@
 import UIKit
 
 final class AppDelegateAdapter: NSObject, UIApplicationDelegate {
-    private let appState: AppState
-    
-    init(appState: AppState) {
-        self.appState = appState
-        super.init()
-    }
     
     func application(
         _ application: UIApplication,
