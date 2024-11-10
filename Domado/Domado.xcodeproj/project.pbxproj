@@ -49,6 +49,9 @@
 		AF8F62352C90939E00D6E8E2 /* DomadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62342C90939E00D6E8E2 /* DomadoTests.swift */; };
 		AF8F623F2C90939E00D6E8E2 /* DomadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */; };
 		AF8F62412C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */; };
+		AFB744B32CE07D3700B2EE9D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */; };
+		AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */; };
+		AFB7452D2CE0858D00B2EE9D /* QRScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */; };
 		AFBCA4772CDF75D70030C7C6 /* AppErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA4762CDF75D70030C7C6 /* AppErrorHandler.swift */; };
 		AFBCA4792CE050350030C7C6 /* MemoryLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA4782CE050350030C7C6 /* MemoryLocalStorage.swift */; };
 		AFF572E02CDA5C6100FA5B40 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF572DF2CDA5C6100FA5B40 /* LocalStorage.swift */; };
@@ -132,6 +135,9 @@
 		AF8F623A2C90939E00D6E8E2 /* DomadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITests.swift; sourceTree = "<group>"; };
 		AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewModel.swift; sourceTree = "<group>"; };
 		AFBCA4762CDF75D70030C7C6 /* AppErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorHandler.swift; sourceTree = "<group>"; };
 		AFBCA4782CE050350030C7C6 /* MemoryLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLocalStorage.swift; sourceTree = "<group>"; };
 		AFF572DF2CDA5C6100FA5B40 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 		AF12AF2E2CD60653004B32EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AFB744B12CE07CDB00B2EE9D /* TempViewModel */,
 				AF8F62252C90939C00D6E8E2 /* RootView.swift */,
 				AF12AFA92CD60C2C004B32EB /* TempView */,
 			);
@@ -328,6 +335,16 @@
 			path = DomadoUITests;
 			sourceTree = "<group>";
 		};
+		AFB744B12CE07CDB00B2EE9D /* TempViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */,
+				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
+				AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */,
+			);
+			path = TempViewModel;
+			sourceTree = "<group>";
+		};
 		AFF572E12CDA5CC900FA5B40 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,11 +492,13 @@
 				AF12AFAD2CD61029004B32EB /* SheetDestination.swift in Sources */,
 				AFF572E32CDA5CE300FA5B40 /* StateStorage.swift in Sources */,
 				AF8F62262C90939C00D6E8E2 /* RootView.swift in Sources */,
+				AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */,
 				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
 				AF12AFC52CD64B81004B32EB /* QRScannerView.swift in Sources */,
 				AF12AFB32CD615FA004B32EB /* AppState.swift in Sources */,
 				AF12AFBF2CD64AF4004B32EB /* InUseBikeView.swift in Sources */,
+				AFB744B32CE07D3700B2EE9D /* LoginViewModel.swift in Sources */,
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
 				AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */,
 				AF15735C2CD9B7410086FE78 /* StorageBusinessError.swift in Sources */,
@@ -491,6 +510,7 @@
 				AFF572E02CDA5C6100FA5B40 /* LocalStorage.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
 				AF12AFAB2CD60C55004B32EB /* NavigationDestination.swift in Sources */,
+				AFB7452D2CE0858D00B2EE9D /* QRScannerViewModel.swift in Sources */,
 				AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */,
 				AFBCA4792CE050350030C7C6 /* MemoryLocalStorage.swift in Sources */,
 				AF12AFB92CD6482E004B32EB /* LoginView.swift in Sources */,
