@@ -10,17 +10,15 @@ import SwiftUI
 struct RootView: View {
     
     @StateObject private var router: AppRouter
-    @StateObject private var globalErrorState: GlobalErrorState
-    
+
     @EnvironmentObject private var appState : AppState
+    @EnvironmentObject private var globalErrorState: GlobalErrorState
     
     private let container: AppContainer
     
     init(container: AppContainer) {
         self.container = container
-        let dependencies = container.makeRootDependencies()
-        _router = StateObject(wrappedValue: dependencies.router)
-        _globalErrorState = StateObject(wrappedValue: dependencies.globalErrorState)
+        _router = StateObject(wrappedValue: container.makeAppRouter())
     }
     
     var body: some View {
@@ -92,5 +90,6 @@ struct RootView_Previews: PreviewProvider {
         
         return RootView(container: container)
             .environmentObject(container.makeAppState())
+            .environmentObject(container.makeGlobalErrorState())
     }
 }

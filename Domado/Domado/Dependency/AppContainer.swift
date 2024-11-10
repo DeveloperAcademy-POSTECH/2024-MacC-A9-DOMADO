@@ -10,12 +10,7 @@ import Foundation
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
-class AppContainer {
-    
-    struct RootDependencies {
-        let router: AppRouter
-        let globalErrorState: GlobalErrorState
-    }
+final class AppContainer {
     
     /// 생성자 내부에서 초기화 순서 명시적 정의
     init(){
@@ -62,10 +57,15 @@ class AppContainer {
     func makeAppState() -> AppState {
         appState
     }
+        
+    // 앱 전역 에러 상태 표시 주입
+    func makeGlobalErrorState() -> GlobalErrorState {
+        gloablErrorState
+    }
     
-    /// RootView 의존성 주입
-    func makeRootDependencies() -> RootDependencies {
-        RootDependencies(router: router, globalErrorState: gloablErrorState)
+    // 앱 화면 전환 방법 주입 
+    func makeAppRouter() -> AppRouter {
+        router
     }
     
 }
