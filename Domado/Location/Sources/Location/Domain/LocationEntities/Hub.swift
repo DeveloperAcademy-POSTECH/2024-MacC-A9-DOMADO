@@ -7,11 +7,12 @@
 
 import Foundation
 
-public struct Hub {
+public struct Hub: MapDisplayable {
+    var coordinate: (latitude: Double, longitude: Double)?
+    
     public let hubID: String
     public let hubName: String
-    public let hubLocation: Location
-    public let bikeCount: Int
+    public let availableBikes: Int
     public let stations: [Station]
     
 }
