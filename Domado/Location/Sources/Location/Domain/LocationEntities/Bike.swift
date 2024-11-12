@@ -7,18 +7,32 @@
 
 import Foundation
 
-public struct Bike: MapDisplayable {
-    var coordinate: (latitude: Double, longitude: Double)?
-    
+public struct Bike: MapDisplayable, Identifiable {
     public let id: String
     public let name: String
-    public var dockNumber: Int?
-    public var isAvailable: Bool
-    public var isHiBike: Bool
-    public var batteryLevel: Int
+    public let coordinate: (latitude: Double, longitude: Double)?
+    public let dockNumber: Int?
+    public let isAvailable: Bool
+    public let isHiBike: Bool
+    public let batteryLevel: Int
     public let hubName: String
     
-    public init(coordinate: (latitude: Double, longitude: Double)? = nil, id: String, name: String, dockNumber: Int? = nil, isAvailable: Bool, isHiBike: Bool, batteryLevel: Int, hubName: String) {
+    public var markerType: MarkerType {
+        .hiBike(batteryLevel: batteryLevel)
+    }
+    
+    public var title: String {
+        name
+    }
+    
+    public init(coordinate: (latitude: Double, longitude: Double)? = nil,
+               id: String,
+               name: String,
+               dockNumber: Int? = nil,
+               isAvailable: Bool,
+               isHiBike: Bool,
+               batteryLevel: Int,
+               hubName: String) {
         self.coordinate = isHiBike ? coordinate : nil
         self.id = id
         self.name = name
@@ -28,5 +42,4 @@ public struct Bike: MapDisplayable {
         self.batteryLevel = batteryLevel
         self.hubName = hubName
     }
-
 }

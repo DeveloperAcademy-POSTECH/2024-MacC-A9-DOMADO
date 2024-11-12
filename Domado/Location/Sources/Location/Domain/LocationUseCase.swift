@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Combine
 
-protocol LocationUseCase {
-    func fetchHubLocations() throws -> [MapDisplayable]
-    func fetchStations(for hubId: String) throws -> [Station]
-    func fetchBikeLocation(for bikeId: String) throws -> MapDisplayable
+public protocol LocationUseCase {
+    func fetchHubLocations() -> AnyPublisher<[MapDisplayable], Error>
+    func fetchStations(for hubId: String) -> AnyPublisher<[Station], Error>
+    func fetchBikeLocation(for bikeId: String) -> AnyPublisher<MapDisplayable, Error>
+    func fetchHiBikes() -> AnyPublisher<[MapDisplayable], Error>
 }
-
