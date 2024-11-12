@@ -9,7 +9,7 @@ import Foundation
 
 public struct Station: Identifiable {
     public let id: String
-    public let name: String
+    public let stationName: String
     public let coordinate: (latitude: Double, longitude: Double)
     public let bikes: [Bike]
     
@@ -18,11 +18,11 @@ public struct Station: Identifiable {
     }
     
     public init(id: String,
-                   name: String,
+                   stationName: String,
                    coordinate: (latitude: Double, longitude: Double),
                    bikes: [Bike]) {
             self.id = id
-            self.name = name
+            self.stationName = stationName
             self.coordinate = coordinate
             self.bikes = bikes
         }

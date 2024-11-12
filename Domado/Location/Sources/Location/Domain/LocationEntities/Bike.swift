@@ -9,7 +9,7 @@ import Foundation
 
 public struct Bike: MapDisplayable, Identifiable {
     public let id: String
-    public let name: String
+    public let bikeName: String
     public let coordinate: (latitude: Double, longitude: Double)?
     public let dockNumber: Int?
     public let isAvailable: Bool
@@ -22,12 +22,12 @@ public struct Bike: MapDisplayable, Identifiable {
     }
     
     public var title: String {
-        name
+        bikeName
     }
     
     public init(coordinate: (latitude: Double, longitude: Double)? = nil,
                id: String,
-               name: String,
+               bikeName: String,
                dockNumber: Int? = nil,
                isAvailable: Bool,
                isHiBike: Bool,
@@ -35,7 +35,7 @@ public struct Bike: MapDisplayable, Identifiable {
                hubName: String) {
         self.coordinate = isHiBike ? coordinate : nil
         self.id = id
-        self.name = name
+        self.bikeName = bikeName
         self.dockNumber = isHiBike ? nil : dockNumber
         self.isAvailable = isAvailable
         self.isHiBike = isHiBike
