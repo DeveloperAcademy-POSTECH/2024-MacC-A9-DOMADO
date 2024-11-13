@@ -18,10 +18,6 @@ public struct Hub: MapDisplayable, Identifiable {
         .hub(availableBikes: availableBikes)
     }
     
-    public var title: String {
-        hubName
-    }
-    
     public init(id: String,
                hubName: String,
                coordinate: (latitude: Double, longitude: Double)?,

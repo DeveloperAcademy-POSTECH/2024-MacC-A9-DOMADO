@@ -18,11 +18,7 @@ public struct Bike: MapDisplayable, Identifiable {
     public let hubName: String
     
     public var markerType: MarkerType {
-        .hiBike(batteryLevel: batteryLevel)
-    }
-    
-    public var title: String {
-        bikeName
+        .hiBike(hubName: hubName)
     }
     
     public init(coordinate: (latitude: Double, longitude: Double)? = nil,

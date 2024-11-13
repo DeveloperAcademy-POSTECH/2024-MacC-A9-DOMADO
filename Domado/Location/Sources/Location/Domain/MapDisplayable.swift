@@ -10,10 +10,9 @@ import Foundation
 public protocol MapDisplayable {
     var coordinate: (latitude: Double, longitude: Double)? { get }
     var markerType: MarkerType { get }
-    var title: String { get }
 }
 
 public enum MarkerType {
     case hub(availableBikes: Int)
-    case hiBike(batteryLevel: Int)
+    case hiBike(hubName: String)
 }
