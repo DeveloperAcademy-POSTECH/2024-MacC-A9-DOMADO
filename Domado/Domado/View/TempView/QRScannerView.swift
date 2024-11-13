@@ -6,31 +6,16 @@
 //
 
 import SwiftUI
+import Rent
 
 struct QRScannerView: View {
     
     @StateObject var vm: QRScannerViewModel
     
     var body: some View {
-        VStack{
-            HStack{
-                
-                Spacer()
-                
-                Button {
-                    vm.dismissQRScanner()
-                } label: {
-                    Image(systemName: "xmark")
-                }
-
-            }
-            .padding()
-            Spacer()
-            
-            Text("QR 코드 스캐너")
-            
-            Spacer()
-            
-        }
+        RentView(viewModel: RentViewModel(
+                 onComplete: vm.handleScanResult,
+                 onDismiss: vm.dismissQRScanner
+             ))
     }
 }
