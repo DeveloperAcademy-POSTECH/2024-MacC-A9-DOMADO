@@ -19,7 +19,10 @@ let package = Package(
     ],
     
     dependencies: [
-        .package(path: "../Core")
+        .package(path: "../Core"),
+        // CodeScanner 의존성 추가
+        .package(url: "https://github.com/twostraws/CodeScanner", from: "2.3.3")
+
     ],
     
     targets: [
@@ -27,7 +30,10 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "Rent",
-            dependencies: ["Core"]
+            dependencies: ["Core",
+                           // Rent 타겟에 CodeScanner 의존성 추가
+                           .product(name: "CodeScanner", package: "CodeScanner")
+                          ]
         ),
         .testTarget(
             name: "RentTests",
