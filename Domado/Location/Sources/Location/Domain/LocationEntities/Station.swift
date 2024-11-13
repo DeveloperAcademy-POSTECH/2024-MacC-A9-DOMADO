@@ -13,7 +13,7 @@ public struct Station: Identifiable {
     public let bikes: [Bike]
     
     public var availableBikes: Int {
-        bikes.filter { $0.isAvailable }.count
+        bikes.count
     }
     
     public init(id: String,

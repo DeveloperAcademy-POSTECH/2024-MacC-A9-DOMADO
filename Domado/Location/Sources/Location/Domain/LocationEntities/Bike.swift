@@ -12,7 +12,6 @@ public struct Bike: MapDisplayable, Identifiable {
     public let bikeName: String
     public let coordinate: (latitude: Double, longitude: Double)?
     public let dockNumber: Int?
-    public let isAvailable: Bool
     public let isHiBike: Bool
     public let batteryLevel: Int
     public let hubName: String
@@ -25,7 +24,6 @@ public struct Bike: MapDisplayable, Identifiable {
                id: String,
                bikeName: String,
                dockNumber: Int? = nil,
-               isAvailable: Bool,
                isHiBike: Bool,
                batteryLevel: Int,
                hubName: String) {
@@ -33,7 +31,6 @@ public struct Bike: MapDisplayable, Identifiable {
         self.id = id
         self.bikeName = bikeName
         self.dockNumber = isHiBike ? nil : dockNumber
-        self.isAvailable = isAvailable
         self.isHiBike = isHiBike
         self.batteryLevel = batteryLevel
         self.hubName = hubName
