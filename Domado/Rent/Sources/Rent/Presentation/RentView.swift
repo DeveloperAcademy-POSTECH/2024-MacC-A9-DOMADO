@@ -7,9 +7,11 @@
 
 import SwiftUI
 import CodeScanner
+import AVFoundation
 
 public struct RentView: View {
     @StateObject private var viewModel: RentViewModel
+    @State private var isTorchOn = false
     
     public init(viewModel: RentViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -19,7 +21,7 @@ public struct RentView: View {
         ZStack {
             CodeScannerView(
                 codeTypes: [.qr],
-                simulatedData: "BIKE-123", // 테스트용
+                simulatedData: "BIKE-123",
                 completion: viewModel.handleScan
             )
             .overlay(
@@ -29,9 +31,21 @@ public struct RentView: View {
             )
             
             VStack {
-                // 닫기 버튼
+                // 상단 버튼들
                 HStack {
+                    // 손전등 버튼
+                    Button {
+                        toggleTorch()
+                    } label: {
+                        Image(systemName: isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Circle().fill(Color.black.opacity(0.5)))
+                    }
+                    
                     Spacer()
+                    
+                    // 닫기 버튼
                     Button {
                         viewModel.dismiss()
                     } label: {
@@ -40,12 +54,11 @@ public struct RentView: View {
                             .padding()
                             .background(Circle().fill(Color.black.opacity(0.5)))
                     }
-                    .padding()
                 }
+                .padding()
                 
                 Spacer()
                 
-                // 안내 메시지
                 Text("자전거 QR 코드를 스캔해주세요")
                     .font(.title3)
                     .foregroundColor(.white)
@@ -61,6 +74,27 @@ public struct RentView: View {
             Button("확인") { viewModel.dismissAlert() }
         } message: {
             Text(viewModel.alertMessage)
+        }
+    }
+    
+    private func toggleTorch() {
+        guard let device = AVCaptureDevice.default(for: .video),
+              device.hasTorch else { return }
+        
+        do {
+            try device.lockForConfiguration()
+            
+            if device.torchMode == .off {
+                try device.setTorchModeOn(level: 1.0)
+                isTorchOn = true
+            } else {
+                device.torchMode = .off
+                isTorchOn = false
+            }
+            
+            device.unlockForConfiguration()
+        } catch {
+            print("손전등 토글 실패: \(error.localizedDescription)")
         }
     }
 }
