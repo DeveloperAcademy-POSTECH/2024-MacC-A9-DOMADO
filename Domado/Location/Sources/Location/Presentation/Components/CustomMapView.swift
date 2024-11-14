@@ -9,16 +9,8 @@ import MapKit
 
 struct CustomMapView: View {
     @Binding var selectedMarker: Location?
-    
-    let hubMarkers = [
-        Location(name: "Hub A", coordinate: CLLocationCoordinate2D(latitude: 36.0179, longitude: 129.3242), type: .hub),
-        Location(name: "Hub B", coordinate: CLLocationCoordinate2D(latitude: 36.0180, longitude: 129.3243), type: .hub)
-    ]
-    
-    let hiBikeMarkers = [
-        Location(name: "HiBike 1", coordinate: CLLocationCoordinate2D(latitude: 36.0181, longitude: 129.3244), type: .hiBike),
-        Location(name: "HiBike 2", coordinate: CLLocationCoordinate2D(latitude: 36.0182, longitude: 129.3245), type: .hiBike)
-    ]
+    let hubMarkers: [Location]
+    let hiBikeMarkers: [Location]
     
     var body: some View {
         Map {
@@ -39,5 +31,13 @@ struct CustomMapView: View {
 }
 
 #Preview {
-    CustomMapView(selectedMarker: .constant(nil))
+    CustomMapView(
+        selectedMarker: .constant(nil),
+        hubMarkers: [
+            Location(name: "Hub A", coordinate: CLLocationCoordinate2D(latitude: 36.0179, longitude: 129.3242), type: .hub)
+        ],
+        hiBikeMarkers: [
+            Location(name: "HiBike 1", coordinate: CLLocationCoordinate2D(latitude: 36.0181, longitude: 129.3244), type: .hiBike)
+        ]
+    )
 }

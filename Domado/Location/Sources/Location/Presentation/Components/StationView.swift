@@ -19,6 +19,10 @@ struct StationView: View {
                 Dock(number: 4, batteryLevel: 75)
             }
         }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 5)
     }
 }
 

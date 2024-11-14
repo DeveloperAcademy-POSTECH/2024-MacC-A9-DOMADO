@@ -12,7 +12,7 @@ struct HiBikeCard: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("자전거 이름: Bike 1")
             Text("반납 위치: Hub A")
-            Text("🔋 배터리: 80%")
+            Text("배터리: 80%")
         }
         .padding()
         .background(Color.white)

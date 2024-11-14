@@ -9,27 +9,23 @@ import Foundation
 import Combine
 
 /// 위치 정보를 관리하는 ViewModel 클래스
-/// MVVM 패턴에서 View와 Model 사이의 중재자 역할을 수행
 public final class LocationViewModel: ObservableObject {
-    // MARK: - Published Properties (외부에서 관찰 가능한 상태값들)
-    /// 지도에 표시될 아이템들 (Hub나 Bike 등)
+    // MARK: - 기본 상태 정의
     @Published private(set) var mapItems: [MapDisplayable] = []
-    /// 현재 선택된 지도 아이템
     @Published private(set) var selectedItem: MapDisplayable?
-    /// 특정 Hub에 속한 Station들의 목록
     @Published private(set) var stations: [Station] = []
-    /// 데이터 로딩 상태를 나타내는 플래그
+    
+    // MARK: - UI 상태 정의
+    // 데이터 로딩 상태
     @Published private(set) var isLoading: Bool = false
-    /// 발생한 에러 정보를 저장
+    // 발생한 에러 정보 저장
     @Published private(set) var error: Error?
     
-    // MARK: - Computed Properties (계산 속성들)
-    /// 현재 선택된 아이템이 Hub인 경우 반환
+    // MARK: - Computed Properties 정의: 특정 타입에 따라 다른 UI를 보여줘야 할 때, 타입 체크를 한 곳에서 처리하고 재사용
     var selectedHub: Hub? {
         selectedItem as? Hub
     }
     
-    /// 현재 선택된 아이템이 Bike인 경우 반환
     var selectedHiBike: Bike? {
         selectedItem as? Bike
     }
