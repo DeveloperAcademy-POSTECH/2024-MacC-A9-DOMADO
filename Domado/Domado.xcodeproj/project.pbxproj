@@ -446,6 +446,9 @@
 				Base,
 			);
 			mainGroup = AF8F62172C90939C00D6E8E2;
+			packageReferences = (
+				2EF58F3B2CE4DE0A00710529 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = AF8F62212C90939C00D6E8E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -876,6 +879,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2EF58F3B2CE4DE0A00710529 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		2ED6C4B72CDA09E700BCC054 /* Rent */ = {
