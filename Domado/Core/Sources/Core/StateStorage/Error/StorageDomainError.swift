@@ -5,10 +5,9 @@
 //  Created by 이종선 on 11/5/24.
 //
 
-import Core
 
 /// 상태 저장소 이용시 발생가능한 에러 목록입니다.
-enum StorageDomainError: DomainError {
+public enum StorageDomainError: DomainError {
     case dataNotFound(key: StorageKey)
     case encodingFailed(type: Any.Type)
     case decodingFailed(type: Any.Type)
@@ -16,7 +15,7 @@ enum StorageDomainError: DomainError {
     case deleteFailed(key: StorageKey)
     case directoryCreationFailed
 
-    var errorDescription: String {
+    public var errorDescription: String {
         switch self {
         case .dataNotFound(let key):
             return "데이터를 찾을 수 없습니다: \(key.rawValue)"
@@ -33,7 +32,7 @@ enum StorageDomainError: DomainError {
         }
     }
     
-    var errorCode: Int {
+    public var errorCode: Int {
         switch self {
         case .dataNotFound: return 1001
         case .encodingFailed: return 1002
@@ -44,6 +43,6 @@ enum StorageDomainError: DomainError {
         }
     }
     
-    var underlyingError: Error? { nil }
+    public var underlyingError: Error? { nil }
 
 }

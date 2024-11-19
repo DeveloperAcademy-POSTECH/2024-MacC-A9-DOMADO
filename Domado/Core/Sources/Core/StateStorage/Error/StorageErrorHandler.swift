@@ -5,11 +5,10 @@
 //  Created by 이종선 on 11/5/24.
 //
 
-import Core
 import Security
 
-final class StorageErrorHandler: DomainErrorHandler {
-    func handleDomainError(_ error: DomainError) -> BusinessError? {
+public final class StorageErrorHandler: DomainErrorHandler {
+    public func handleDomainError(_ error: DomainError) -> BusinessError? {
         switch error {
         case let keychainError as KeychainDomainError:
             return handleKeychainError(keychainError)
@@ -20,7 +19,7 @@ final class StorageErrorHandler: DomainErrorHandler {
         }
     }
     
-    func handle(_ error: Error) -> AppError? {
+    public func handle(_ error: Error) -> AppError? {
         if let domainError = error as? DomainError {
             return handleDomainError(domainError)
         }

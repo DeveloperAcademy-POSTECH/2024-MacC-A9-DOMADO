@@ -8,7 +8,7 @@
 import Foundation
 
 /// 사용자 상태 유지를 위해 각 저장소별로 관리해야하는 데이터 목록을 정의합니다.
-enum StorageKey: String {
+public enum StorageKey: String, Sendable {
     
     /// Local Storage Keys : 파일 시스템 기반
     /// 1. 크기가 큰 데이터

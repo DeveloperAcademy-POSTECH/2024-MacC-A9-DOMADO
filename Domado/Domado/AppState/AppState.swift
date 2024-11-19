@@ -5,6 +5,7 @@
 //  Created by 이종선 on 11/2/24.
 //
 
+import Core 
 import Foundation
 
 final class AppState: ObservableObject {

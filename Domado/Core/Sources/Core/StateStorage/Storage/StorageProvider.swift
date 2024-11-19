@@ -8,7 +8,7 @@
 import Foundation
 
 /// 상태 저장소 인터페이스 
-protocol StorageProvider {
+public protocol StorageProvider {
     func save(_ data: Data, for key: StorageKey) throws
     func read(for key: StorageKey) throws -> Data
     func delete(for key: StorageKey) throws

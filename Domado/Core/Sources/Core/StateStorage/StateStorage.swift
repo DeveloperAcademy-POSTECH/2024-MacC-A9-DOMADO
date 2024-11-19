@@ -7,25 +7,25 @@
 
 import Foundation
 
-final class StateStorage {
+public final class StateStorage {
     private let localStorage: StorageProvider
     private let userDefaults: UserDefaultsStorage
     private let keychain: KeychainStorage
     private let errorHandler: StorageErrorHandler
     
-    init(
+    public init(
         localStorage: StorageProvider,
-        userDefaults: UserDefaultsStorage,
-        keychain: KeychainStorage,
+        userDefaults: StorageProvider,
+        keychain: StorageProvider,
         errorHandler: StorageErrorHandler
     ) {
-        self.localStorage = localStorage
-        self.userDefaults = userDefaults
-        self.keychain = keychain
+        self.localStorage = localStorage as! LocalStorage
+        self.userDefaults = userDefaults as! UserDefaultsStorage
+        self.keychain = keychain as! KeychainStorage
         self.errorHandler = errorHandler
     }
     
-    convenience init() throws {
+    public convenience init() throws {
         let errorHandler = StorageErrorHandler()
         
         do {
@@ -46,7 +46,7 @@ final class StateStorage {
     /// - Parameters:
     ///   - value: 저장할 값
     ///   - key: 저장소 키
-    func setValue<T: Encodable>(_ value: T, for key: StorageKey) throws {
+    public func setValue<T: Encodable>(_ value: T, for key: StorageKey) throws {
         do {
             let data = try JSONEncoder().encode(value)
             
@@ -74,7 +74,7 @@ final class StateStorage {
     /// 저장소에서 제네릭 타입의 값을 읽어옵니다.
     /// - Parameter key: 저장소 키
     /// - Returns: 저장된 값
-    func value<T: Decodable>(for key: StorageKey) throws -> T {
+    public func value<T: Decodable>(for key: StorageKey) throws -> T {
         do {
             let data: Data = try {
                 switch key {
@@ -103,7 +103,7 @@ final class StateStorage {
     
     /// 저장소에서 특정 키의 값을 삭제합니다.
     /// - Parameter key: 저장소 키
-    func removeValue(for key: StorageKey) throws {
+    public func removeValue(for key: StorageKey) throws {
         do {
             switch key {
             case .authToken, .refreshToken, .userData:
@@ -127,7 +127,7 @@ final class StateStorage {
     /// 특정 키에 대한 값이 존재하는지 확인합니다.
     /// - Parameter key: 저장소 키
     /// - Returns: 값 존재 여부
-    func hasValue(for key: StorageKey) -> Bool {
+    public func hasValue(for key: StorageKey) -> Bool {
         switch key {
         case .authToken, .refreshToken, .userData:
             return keychain.exists(for: key)
@@ -142,7 +142,7 @@ final class StateStorage {
     }
     
     /// 모든 저장소의 데이터를 삭제합니다.
-    func clearAll() throws {
+    public func clearAll() throws {
         do {
             // Keychain 데이터 삭제
             try removeValue(for: .authToken)
@@ -167,7 +167,7 @@ final class StateStorage {
 }
 
 /// 상태저장소 초기화 에러시 상태 복구 로직
-extension StateStorage {
+public extension StateStorage {
     /// 메모리 기반의 fallback storage를 생성합니다.
     static func createFallback() -> StateStorage {
         do {

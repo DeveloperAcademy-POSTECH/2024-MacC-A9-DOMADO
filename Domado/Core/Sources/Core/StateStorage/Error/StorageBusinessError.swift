@@ -5,14 +5,12 @@
 //  Created by 이종선 on 11/5/24.
 //
 
-import Core
-
-enum StorageBusinessError: BusinessError {
+public enum StorageBusinessError: BusinessError {
     case invalidData(String)
     case securityError(String)
     case storageAccessError(String)
     
-    var errorDescription: String {
+    public var errorDescription: String {
         switch self {
         case .invalidData(let message):
             return "데이터 처리 오류: \(message)"
@@ -23,7 +21,7 @@ enum StorageBusinessError: BusinessError {
         }
     }
     
-    var errorCode: Int {
+    public var errorCode: Int {
         switch self {
         case .invalidData: return 2001
         case .securityError: return 2002
@@ -31,7 +29,7 @@ enum StorageBusinessError: BusinessError {
         }
     }
     
-    var isUserFacing: Bool {
+    public var isUserFacing: Bool {
         switch self {
         case .invalidData: return false
         case .securityError: return true
