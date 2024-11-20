@@ -39,7 +39,7 @@ public struct PrimaryButton: View {
                 .foregroundColor(backgroundColor)
                 .cornerRadius(62)
                 .overlay {
-                    HStack(spacing: 20) {
+                    HStack(spacing: 5) {
                         if let icon = icon {
                             Image(systemName: icon)
                                 .foregroundColor(iconColor)
@@ -48,6 +48,9 @@ public struct PrimaryButton: View {
                         Text(title)
                             .foregroundColor(fontColor)
                             .fontWeight(.semibold)
+                            .multilineTextAlignment(.leading)
+
+                            
                     }
                 }
         }
@@ -76,5 +79,7 @@ struct PrimaryButton_Previews: PreviewProvider {
             )
         }
         .padding()
+        .background(Color.gray.opacity(0.5))
+
     }
 }
