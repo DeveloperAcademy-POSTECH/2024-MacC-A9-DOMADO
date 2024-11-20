@@ -15,6 +15,8 @@ public enum AuthError: BusinessError {
     case emailAlreadyInUse
     case refreshTokenExpired
     case networkError(NetworkError)
+    case invalidResponse
+    case invalidToken
     case unknown
     
     public var isUserFacing: Bool { true }
@@ -33,6 +35,10 @@ public enum AuthError: BusinessError {
             return "로그인이 만료되었습니다. 다시 로그인해주세요."
         case .networkError(let error):
             return error.errorDescription
+        case .invalidResponse:
+            return "서버 응답이 올바르지 않습니다."
+        case .invalidToken:
+            return "인증 토큰이 유효하지 않습니다."
         case .unknown:
             return "알 수 없는 오류가 발생했습니다."
         }
@@ -46,6 +52,8 @@ public enum AuthError: BusinessError {
         case .emailAlreadyInUse: return 2004
         case .refreshTokenExpired: return 2005
         case .networkError(let error): return error.errorCode
+        case .invalidResponse: return 2006
+        case .invalidToken: return 2007
         case .unknown: return 2000
         }
     }
