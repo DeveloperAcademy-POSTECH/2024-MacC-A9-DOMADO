@@ -18,6 +18,9 @@ public struct Endpoint {
     /// URL 쿼리 파라미터를 나타냅니다.
     public let queryItems: [URLQueryItem]?
     
+    /// HTTP 요청 헤더를 나타냅니다.
+    public var headers: [String: String]?
+    
     /// HTTP 요청의 본문에 포함될 데이터를 나타냅니다.
     public let body: Data?
     
@@ -25,11 +28,13 @@ public struct Endpoint {
         path: String,
         method: HTTPMethod,
         queryItems: [URLQueryItem]? = nil,
+        headers: [String: String]? = nil,
         body: Data? = nil
     ) {
         self.path = path
         self.method = method
         self.queryItems = queryItems
+        self.headers = headers
         self.body = body
     }
 }
