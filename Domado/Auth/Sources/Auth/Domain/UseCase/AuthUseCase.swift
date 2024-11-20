@@ -7,9 +7,9 @@
 
 /// AuthUseCase : 인증 / 인가를 위한 UseCase 정의 
 public protocol AuthUseCase {
-    func signUp(email: String, password: String, name: String) async throws -> User
-    func signIn(email: String, password: String) async throws
+    func signUp(email: String, password: String, name: String, phone: String) async throws
+    func signIn(email: String, password: String) async throws -> User
     func signOut() async throws
-    func refreshTokenIfNeeded() async throws
-    func getCurrentUser() async throws -> User?
+    func getCurrentUser() async throws -> User
+    func isAuthenticated() -> Bool
 }
