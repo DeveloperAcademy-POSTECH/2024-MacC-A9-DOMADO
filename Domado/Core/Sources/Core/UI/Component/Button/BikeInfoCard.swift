@@ -16,7 +16,8 @@ struct BikeInfoCard: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 24)
-                .fill(isParked ? .white : Color.blue)
+                .fill(isParked ? .white : Color.deepBlue)
+                .frame(width: 358, height: 178)
             
             VStack(spacing: 24) {
                 HStack {
@@ -30,7 +31,7 @@ struct BikeInfoCard: View {
                                 .foregroundColor(isParked ? .black.opacity(0.6) : .white.opacity(0.6))
                             
                             Text(remainingTime)
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(isParked ? .black : .white)
                         }
                     }
@@ -62,14 +63,14 @@ struct BikeInfoCard: View {
                     PrimaryButton(
                         title: isParked ? "바이크 잠금해제" : "바이크 주차하기",
                         icon: isParked ? "bicycle" : "lock.fill",
-                        backgroundColor: isParked ? .blue : .white,
+                        backgroundColor: isParked ? .deepBlue : .white,
                         fontColor: isParked ? .white : .black,
                         iconColor: isParked ? .white : .gray,
                         action: action
                     )
                 }
             }
-            .padding(24)
+            .padding(30)
         }
     }
 }
@@ -94,5 +95,8 @@ struct BikeInfoCard: View {
         }
         .frame(height: 180)
     }
+    
     .padding()
+    .background(Color.gray.opacity(0.5))
+
 }
