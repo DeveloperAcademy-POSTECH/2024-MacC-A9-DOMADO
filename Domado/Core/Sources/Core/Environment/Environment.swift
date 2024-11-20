@@ -11,10 +11,10 @@ public enum Environment {
     public enum Values {
         public static var baseURL: String {
             // 메인 앱의 번들에서 환경변수 접근
-            guard let urlString = Bundle.main.infoDictionary?["API_BASE_URL"] as? String else {
-                fatalError("API_BASE_URL not found in Main App's Info.plist")
+            guard let apiBaseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] else {
+                fatalError("API_BASE_URL environment variable not found")
             }
-            return urlString
+            return apiBaseURL
         }
     }
 }
