@@ -37,14 +37,14 @@ struct HibikeToggle: View {
         } label: {
             Image(systemName: "questionmark.circle")
                 .fontWeight(.bold)
-                .foregroundColor(.deepBlue)
+                .foregroundColor(.interactivePrimary)
         }
     }
     
     private var toggleButton: some View {
         Toggle("", isOn: $isOn)
             .labelsHidden()
-            .tint(.deepBlue)
+            .tint(.interactivePrimary)
             .onChange(of: isOn) { oldValue, newValue in
                 action()
             }

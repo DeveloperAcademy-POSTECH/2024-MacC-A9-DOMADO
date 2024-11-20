@@ -31,7 +31,7 @@ struct HomeInfoCard: View {
                     PrimaryButton(
                         title: "QR찍고 \n 자전거 대여하기",
                         icon: "bicycle",
-                        backgroundColor: .deepBlue,
+                        backgroundColor: .interactivePrimary,
                         fontColor: .white,
                         iconColor: .white,
                         action: {}

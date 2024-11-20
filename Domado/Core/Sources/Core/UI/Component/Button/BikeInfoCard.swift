@@ -16,7 +16,7 @@ struct BikeInfoCard: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 24)
-                .fill(isParked ? .white : Color.deepBlue)
+                .fill(isParked ? .white : Color.interactivePrimary)
                 .frame(width: 358, height: 178)
             
             VStack(spacing: 24) {
@@ -63,7 +63,7 @@ struct BikeInfoCard: View {
                     PrimaryButton(
                         title: isParked ? "바이크 잠금해제" : "바이크 주차하기",
                         icon: isParked ? "bicycle" : "lock.fill",
-                        backgroundColor: isParked ? .deepBlue : .white,
+                        backgroundColor: isParked ? .interactivePrimary : .white,
                         fontColor: isParked ? .white : .black,
                         iconColor: isParked ? .white : .gray,
                         action: action

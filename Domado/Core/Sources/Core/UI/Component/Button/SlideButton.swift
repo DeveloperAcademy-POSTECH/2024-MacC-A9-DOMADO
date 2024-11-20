@@ -94,7 +94,7 @@ public struct SlideButton: View {
     
     private var backgroundLayer: some View {
         Capsule()
-            .fill(Color.lightBlue)
+            .fill(Color.pushButtonLight)
     }
     
     private var progressLayer: some View {
@@ -107,7 +107,7 @@ public struct SlideButton: View {
     private var titleAndLockIcon: some View {
         HStack {
             Text(title)
-                .foregroundColor(Color.darkBlue)
+                .foregroundColor(Color.pushButtonDark)
                 .font(.system(size: 16, weight: .bold))
                 .opacity(isDragging ? 0.1 : 1)
                 .animation(.easeInOut(duration: 0.2), value: unlocked)
@@ -116,13 +116,13 @@ public struct SlideButton: View {
             Spacer()
             
             Circle()
-                .fill(Color.darkBlue)
+                .fill(Color.pushButtonDark)
                 .frame(width: 70, height: 70)
                 .overlay(
                     Image(systemName: unlocked ? "checkmark" : lockIcon)
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(Color.lightBlue)
+                        .foregroundColor(Color.pushButtonLight)
                         .padding(20)
                 )
                 .padding(.trailing, 2)
@@ -131,7 +131,7 @@ public struct SlideButton: View {
     
     private var slideButton: some View {
         Circle()
-            .fill(isDragging ? Color.deepBlue.opacity(0.9) : Color.deepBlue)
+            .fill(isDragging ? Color.interactivePrimary.opacity(0.9) : Color.interactivePrimary)
             .frame(width: 70, height: 70)
             .shadow(radius: 3, x: 2, y: 2)
             .overlay(
