@@ -8,11 +8,11 @@
 import Foundation
 
 /// FullScreen 형태로 보여줄 화면 목록입니다. 
-enum FullScreenDestination: Identifiable, Hashable{
+public enum FullScreenDestination: Identifiable, Hashable{
     case login
     case onboarding
     
-    var id: String {
+    public var id: String {
         switch self {
         case .login: return "login"
         case .onboarding: return "onboarding"

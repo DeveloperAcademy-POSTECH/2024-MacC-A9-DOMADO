@@ -5,11 +5,13 @@
 //  Created by 이종선 on 11/3/24.
 //
 
+import Auth
 import Core
 import Foundation
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
+@MainActor
 final class AppContainer {
     
     /// 생성자 내부에서 초기화 순서 명시적 정의
@@ -51,6 +53,10 @@ final class AppContainer {
         CoreLogger.shared
     }()
     
+    private lazy var networkManager: NetworkManager = {
+        CoreNetworkManager(storage: stateStorage)
+    }()
+    
     // MARK: - 의존성 주입을 위한 팩토리 메서드
     
     /// 앱 상태 의존성 주입
@@ -69,10 +75,6 @@ final class AppContainer {
     }
     
     // MARK: - View 반환 메서드
-    func makeLoginView() -> LoginView {
-        LoginView(vm: self.makeLoginViewModel())
-    }
-    
     func makeOnboardingView() -> OnboardingView {
         OnboardingView(vm: self.makeOnboardingViewModel() )
     }
@@ -82,10 +84,6 @@ final class AppContainer {
     }
     
     // MARK: - ViewModel 반환 메서드
-    private func makeLoginViewModel() -> LoginViewModel {
-        LoginViewModel(router: router)
-    }
-    
     private func makeOnboardingViewModel() -> OnboardingViewModel {
         OnboardingViewModel(router: router)
     }
@@ -93,4 +91,24 @@ final class AppContainer {
     private func makeQRScannerViewModel() -> QRScannerViewModel {
         QRScannerViewModel(router: router)
     }
+    
+    // MARK: - Auth 모듈 의존성 관리
+    
+    private func makeAuthRepository() -> AuthRepository {
+        return DefaultAuthRepository(networkManager: networkManager as! CoreNetworkManager, logger: logService as! CoreLogger)
+    }
+    
+    private func makeAuthUseCase() -> AuthUseCase {
+        return DefaultAuthUseCase(authRepository: makeAuthRepository())
+    }
+    
+    private func makeLoginViewModel() -> LoginViewModel{
+        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState)
+    }
+    
+    func makeLoginView() -> LoginView {
+        LoginView(vm: makeLoginViewModel())
+    }
+    
+
 }

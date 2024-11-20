@@ -5,9 +5,11 @@
 //  Created by 이종선 on 11/2/24.
 //
 
+import Core
 import SwiftUI
 
-final class AppRouter: ObservableObject {
+final class AppRouter: ObservableObject, Routing {
+
     @Published var path = NavigationPath()
     @Published var activeSheet: SheetDestination?
     @Published var activeFullScreen: FullScreenDestination?

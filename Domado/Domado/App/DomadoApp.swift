@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Core 
 
 @main
 struct DomadoApp: App {
