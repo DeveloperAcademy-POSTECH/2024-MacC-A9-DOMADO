@@ -18,7 +18,9 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Core"),
+            name: "Core",resources: [
+                .process("Resources") // 리소스 폴더 추가
+            ]),
         .testTarget(
             name: "CoreTests",
             dependencies: ["Core"]
