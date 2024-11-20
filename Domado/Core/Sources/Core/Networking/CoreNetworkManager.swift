@@ -1,93 +1,207 @@
 //
-//  File.swift
+//  CoreNetworkManager.swift
 //  Core
 //
 //  Created by 이종선 on 10/1/24.
 //
 
 import Foundation
-import Combine
 
-/// `NetworkManager` 프로토콜을 채택하여 네트워크 요청을 처리하는 클래Type스입니다.
-/// `NetworkError`를 사용하여 에러를 일관되게 처리합니다.
-final class CoreNetworkManager: NetworkManager {
-    /// `URLSession` 인스턴스를 사용하여 네트워크 요청을 수행합니다.
+public final class CoreNetworkManager: NetworkManager {
     private let session: URLSession
-    
-    /// 로깅을 담당하는 `CoreLogger` 인스턴스입니다.
     private let logger: CoreLogger
+    private let storage: StateStorage
+    private let timeoutInterval: TimeInterval = 30.0
     
-    /// `CoreNetworkManager`의 초기화 메서드입니다.
-    ///
-    /// - Parameters:
-    ///   - session: 네트워크 요청을 수행할 `URLSession` 인스턴스. 기본값은 `.shared`입니다.
-    ///   - logger: 로깅을 담당할 `CoreLogger` 인스턴스. 기본값은 `.shared`입니다.
-    init(session: URLSession = .shared, logger: CoreLogger = .shared) {
+    public init(
+        session: URLSession = .shared,
+        logger: CoreLogger = .shared,
+        storage: StateStorage
+        
+    ) {
         self.session = session
         self.logger = logger
+        self.storage = storage
+        
     }
     
-    /// 주어진 엔드포인트로 네트워크 요청을 수행하고, 결과를 퍼블리셔로 반환합니다.
-    ///
-    /// - Parameter endpoint: 요청을 구성하는 엔드포인트 정보.
-    /// - Returns: 디코딩된 타입의 데이터를 퍼블리셔로 반환합니다.
-    public func request<T: Decodable>(_ endpoint: Endpoint) -> AnyPublisher<T, NetworkError> {
-        // URL 구성
+    // MARK: - Public Methods
+    
+    /// 일반 네트워크 요청을 수행합니다.
+    public func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+        let request = try buildRequest(from: endpoint)
+        return try await performRequest(request)
+    }
+    
+    /// 인증이 필요한 네트워크 요청을 수행합니다.
+    public func authenticatedRequest<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+        do {
+            return try await performAuthenticatedRequest(endpoint)
+        } catch let error as NetworkError {
+            if case .serverError(statusCode: 401, _) = error {
+                return try await handleTokenRefresh(endpoint: endpoint)
+            }
+            throw error
+        }
+    }
+    
+    // MARK: - Token Management
+    
+    /// 새로운 인증 토큰을 저장합니다.
+    public func setAuthTokens(_ token: AuthToken) {
+        do {
+            try storage.setValue(token.accessToken, for: .accessToken)
+            try storage.setValue(token.refreshToken, for: .refreshToken)
+            logger.debug("Successfully stored new auth tokens", category: .network)
+        } catch {
+            logger.error("Failed to store auth tokens: \(error)", category: .network)
+        }
+    }
+    
+    /// 저장된 모든 인증 토큰을 삭제합니다.
+    public func clearAuthTokens() {
+        do {
+            try storage.removeValue(for: .accessToken)
+            try storage.removeValue(for: .refreshToken)
+            logger.debug("Successfully cleared auth tokens", category: .network)
+        } catch {
+            logger.error("Failed to clear auth tokens: \(error)", category: .network)
+        }
+    }
+    
+    /// 현재 저장된 토큰이 있는지 확인합니다.
+    public func hasValidTokens() -> Bool {
+        storage.hasValue(for: .accessToken) && storage.hasValue(for: .refreshToken)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func buildRequest(from endpoint: Endpoint) throws -> URLRequest {
         guard let url = buildURL(from: endpoint) else {
-            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
+            logger.error("Failed to build URL from endpoint: \(endpoint.path)", category: .network)
+            throw NetworkError.invalidURL
         }
         
-        // URLRequest 구성
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, timeoutInterval: timeoutInterval)
         request.httpMethod = endpoint.method.rawValue
         request.httpBody = endpoint.body
         
-        // 요청 로깅
-        logger.debug("Requesting URL: \(url)", category: .network)
+        // 기본 헤더 설정
+        var headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
         
-        // 네트워크 요청 수행
-        return session.dataTaskPublisher(for: request)
-            .subscribe(on: DispatchQueue.global(qos: .background)) // 백그라운드 스레드에서 수행
-            .tryMap { [weak self] result -> Data in
-                // HTTP 응답 검증
-                guard let httpResponse = result.response as? HTTPURLResponse else {
-                    throw NetworkError.invalidResponse
-                }
-                
-                // 성공적인 HTTP 상태 코드 (200...299) 검증
-                if !(200...299).contains(httpResponse.statusCode) {
-                    let message = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
-                    throw NetworkError.serverError(statusCode: httpResponse.statusCode, message: message)
-                }
-                
-                // 응답 로깅
-                self?.logger.debug("Received response: \(httpResponse.statusCode)", category: .network)
-                
-                return result.data
-            }
-            .decode(type: T.self, decoder: JSONDecoder()) // 응답 데이터 디코딩
-            .mapError { error -> NetworkError in
-                // 발생한 에러를 `NetworkError`로 매핑
-                if let networkError = error as? NetworkError {
-                    return networkError
-                } else if let decodingError = error as? DecodingError {
-                    return NetworkError.decodingError(underlyingError: decodingError)
-                } else if (error as NSError).domain == NSURLErrorDomain {
-                    return NetworkError.requestFailed(underlyingError: error)
-                } else {
-                    return NetworkError.unknown(underlyingError: error)
-                }
-            }
-            .eraseToAnyPublisher()
+        // 엔드포인트의 커스텀 헤더 추가
+        if let customHeaders = endpoint.headers {
+            headers.merge(customHeaders) { _, new in new }
+        }
+        
+        // 모든 헤더를 요청에 추가
+        headers.forEach { key, value in
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        logger.debug("Built request for URL: \(url.absoluteString)", category: .network)
+        logger.debug("Headers: \(headers)", category: .network)
+        
+        return request
     }
     
-    /// `Endpoint`로부터 전체 URL을 구성합니다.
-    ///
-    /// - Parameter endpoint: URL을 구성할 엔드포인트 정보.
-    /// - Returns: 전체 URL. 구성에 실패하면 `nil`을 반환합니다.
+    private func performRequest<T: Decodable>(_ request: URLRequest) async throws -> T {
+        logger.debug("Starting request: \(request.url?.absoluteString ?? "")", category: .network)
+        
+        do {
+            let (data, response) = try await session.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                logger.error("Invalid response type received", category: .network)
+                throw NetworkError.invalidResponse
+            }
+            
+            logger.debug("Received response with status code: \(httpResponse.statusCode)", category: .network)
+            
+            try validateResponse(httpResponse, data: data)
+            
+            do {
+                return try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                logger.error("Decoding failed: \(error)", category: .network)
+                throw NetworkError.decodingError(underlyingError: error)
+            }
+        } catch let error as NetworkError {
+            throw error
+        } catch let error as URLError where error.code == .timedOut {
+            logger.error("Request timed out", category: .network)
+            throw NetworkError.timeout
+        } catch {
+            logger.error("Request failed: \(error)", category: .network)
+            throw NetworkError.requestFailed(underlyingError: error)
+        }
+    }
+    
+    private func performAuthenticatedRequest<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+        guard let accessToken: String = try? storage.value(for: .accessToken) else {
+            throw NetworkError.serverError(statusCode: 401, message: "Access token not found")
+        }
+        
+        var authenticatedEndpoint = endpoint
+        var headers = endpoint.headers ?? [:]
+        headers["Authorization"] = "Bearer \(accessToken)"
+        authenticatedEndpoint.headers = headers
+        
+        return try await request(authenticatedEndpoint)
+    }
+    
+    private func handleTokenRefresh<T: Decodable>(endpoint: Endpoint) async throws -> T {
+        guard let refreshToken: String = try? storage.value(for: .refreshToken) else {
+            clearAuthTokens()
+            throw NetworkError.serverError(statusCode: 401, message: "Refresh token not found")
+        }
+        
+        let refreshEndpoint = Endpoint(
+            path: "/auth/refresh",
+            method: .POST,
+            body: try? JSONSerialization.data(withJSONObject: ["refreshToken": refreshToken])
+        )
+        
+        do {
+            let response: BaseResponse<AuthToken> = try await request(refreshEndpoint)
+            guard let newToken = response.data else {
+                throw NetworkError.serverError(statusCode: 401, message: "Token refresh failed")
+            }
+            
+            setAuthTokens(newToken)
+            return try await performAuthenticatedRequest(endpoint)
+        } catch {
+            clearAuthTokens()
+            throw NetworkError.serverError(
+                statusCode: 401,
+                message: "Token refresh failed: \(error.localizedDescription)"
+            )
+        }
+    }
+    
+    private func validateResponse(_ response: HTTPURLResponse, data: Data) throws {
+        let statusCode = response.statusCode
+        
+        guard (200...299).contains(statusCode) else {
+            let message = try? decodeErrorMessage(from: data)
+            logger.error("Server error: Status \(statusCode), Message: \(message ?? "None")", category: .network)
+            throw NetworkError.serverError(statusCode: statusCode, message: message)
+        }
+    }
+    
+    private func decodeErrorMessage(from data: Data) throws -> String? {
+        struct ServerError: Decodable {
+            let error: String?
+        }
+        
+        return try? JSONDecoder().decode(ServerError.self, from: data).error
+    }
+    
     private func buildURL(from endpoint: Endpoint) -> URL? {
-        // MARK: 환경변수 주입고려
-        var components = URLComponents(string: "https://api.example.com")
+        var components = URLComponents(string: Environment.Values.baseURL)
         components?.path = endpoint.path
         components?.queryItems = endpoint.queryItems
         return components?.url

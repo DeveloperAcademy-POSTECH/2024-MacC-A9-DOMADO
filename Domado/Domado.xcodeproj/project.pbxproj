@@ -11,14 +11,9 @@
 		2ED6C4B92CDA09E700BCC054 /* Rent in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2ED6C4B72CDA09E700BCC054 /* Rent */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7D4E59FC2CDA09E600500B63 /* Location in Frameworks */ = {isa = PBXBuildFile; productRef = 7D4E59FB2CDA09E600500B63 /* Location */; };
 		7D4E59FD2CDA09E600500B63 /* Location in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7D4E59FB2CDA09E600500B63 /* Location */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		AF12AFAB2CD60C55004B32EB /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFAA2CD60C55004B32EB /* NavigationDestination.swift */; };
-		AF12AFAD2CD61029004B32EB /* SheetDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFAC2CD61029004B32EB /* SheetDestination.swift */; };
-		AF12AFAF2CD610F0004B32EB /* FullScreenDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFAE2CD610F0004B32EB /* FullScreenDestination.swift */; };
 		AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB02CD611C7004B32EB /* AppRouter.swift */; };
-		AF12AFB32CD615FA004B32EB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB22CD615FA004B32EB /* AppState.swift */; };
 		AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB42CD6481B004B32EB /* LoadingView.swift */; };
 		AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB62CD64825004B32EB /* HomeView.swift */; };
-		AF12AFB92CD6482E004B32EB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB82CD6482E004B32EB /* LoginView.swift */; };
 		AF12AFBD2CD64AAE004B32EB /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFBC2CD64AAE004B32EB /* StationDetailView.swift */; };
 		AF12AFBF2CD64AF4004B32EB /* InUseBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFBE2CD64AF4004B32EB /* InUseBikeView.swift */; };
 		AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC02CD64B01004B32EB /* TempLockView.swift */; };
@@ -29,14 +24,6 @@
 		AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */; };
 		AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */; };
 		AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFD02CD74CD5004B32EB /* AppContainer.swift */; };
-		AF1573532CD926C40086FE78 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1573522CD926C40086FE78 /* StorageKey.swift */; };
-		AF1573552CD9AE6B0086FE78 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1573542CD9AE6B0086FE78 /* StorageProvider.swift */; };
-		AF1573572CD9B0F10086FE78 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1573562CD9B0F10086FE78 /* UserDefaultsStorage.swift */; };
-		AF15735A2CD9B2A30086FE78 /* StorageDomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1573592CD9B2A30086FE78 /* StorageDomainError.swift */; };
-		AF15735C2CD9B7410086FE78 /* StorageBusinessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15735B2CD9B7410086FE78 /* StorageBusinessError.swift */; };
-		AF15735E2CD9B7670086FE78 /* StorageErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15735D2CD9B7670086FE78 /* StorageErrorHandler.swift */; };
-		AF1573602CD9BD340086FE78 /* KeychainDomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15735F2CD9BD340086FE78 /* KeychainDomainError.swift */; };
-		AF1573622CD9BE0F0086FE78 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1573612CD9BE0F0086FE78 /* KeychainStorage.swift */; };
 		AF2961402CDA557400DAF5BB /* Payment in Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; };
 		AF2961412CDA557400DAF5BB /* Payment in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
@@ -49,13 +36,9 @@
 		AF8F62352C90939E00D6E8E2 /* DomadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62342C90939E00D6E8E2 /* DomadoTests.swift */; };
 		AF8F623F2C90939E00D6E8E2 /* DomadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */; };
 		AF8F62412C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */; };
-		AFB744B32CE07D3700B2EE9D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */; };
 		AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */; };
 		AFB7452D2CE0858D00B2EE9D /* QRScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */; };
 		AFBCA4772CDF75D70030C7C6 /* AppErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA4762CDF75D70030C7C6 /* AppErrorHandler.swift */; };
-		AFBCA4792CE050350030C7C6 /* MemoryLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBCA4782CE050350030C7C6 /* MemoryLocalStorage.swift */; };
-		AFF572E02CDA5C6100FA5B40 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF572DF2CDA5C6100FA5B40 /* LocalStorage.swift */; };
-		AFF572E32CDA5CE300FA5B40 /* StateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF572E22CDA5CE300FA5B40 /* StateStorage.swift */; };
 		AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF572E42CDA652000FA5B40 /* AppDelegateAdapter.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,14 +81,9 @@
 		2ED6C4B62CDA068E00BCC054 /* Rent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Rent; sourceTree = "<group>"; };
 		7D4E59FA2CDA069100500B63 /* Location */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Location; sourceTree = "<group>"; };
 		AF00AD772CDA5487002448B3 /* Payment */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Payment; sourceTree = "<group>"; };
-		AF12AFAA2CD60C55004B32EB /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
-		AF12AFAC2CD61029004B32EB /* SheetDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDestination.swift; sourceTree = "<group>"; };
-		AF12AFAE2CD610F0004B32EB /* FullScreenDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenDestination.swift; sourceTree = "<group>"; };
 		AF12AFB02CD611C7004B32EB /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		AF12AFB22CD615FA004B32EB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AF12AFB42CD6481B004B32EB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AF12AFB62CD64825004B32EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AF12AFB82CD6482E004B32EB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AF12AFBC2CD64AAE004B32EB /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 		AF12AFBE2CD64AF4004B32EB /* InUseBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InUseBikeView.swift; sourceTree = "<group>"; };
 		AF12AFC02CD64B01004B32EB /* TempLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempLockView.swift; sourceTree = "<group>"; };
@@ -116,14 +94,7 @@
 		AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobalErrorHandler.swift; sourceTree = "<group>"; };
 		AF12AFCD2CD72800004B32EB /* ErrorAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertModifier.swift; sourceTree = "<group>"; };
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		AF1573522CD926C40086FE78 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
-		AF1573542CD9AE6B0086FE78 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		AF1573562CD9B0F10086FE78 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
-		AF1573592CD9B2A30086FE78 /* StorageDomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDomainError.swift; sourceTree = "<group>"; };
-		AF15735B2CD9B7410086FE78 /* StorageBusinessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBusinessError.swift; sourceTree = "<group>"; };
-		AF15735D2CD9B7670086FE78 /* StorageErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageErrorHandler.swift; sourceTree = "<group>"; };
-		AF15735F2CD9BD340086FE78 /* KeychainDomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDomainError.swift; sourceTree = "<group>"; };
-		AF1573612CD9BE0F0086FE78 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		AF3BCB3F2CEC2A55003DC745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,13 +106,9 @@
 		AF8F623A2C90939E00D6E8E2 /* DomadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF8F623E2C90939E00D6E8E2 /* DomadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITests.swift; sourceTree = "<group>"; };
 		AF8F62402C90939E00D6E8E2 /* DomadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewModel.swift; sourceTree = "<group>"; };
 		AFBCA4762CDF75D70030C7C6 /* AppErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorHandler.swift; sourceTree = "<group>"; };
-		AFBCA4782CE050350030C7C6 /* MemoryLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLocalStorage.swift; sourceTree = "<group>"; };
-		AFF572DF2CDA5C6100FA5B40 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		AFF572E22CDA5CE300FA5B40 /* StateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateStorage.swift; sourceTree = "<group>"; };
 		AFF572E42CDA652000FA5B40 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,51 +152,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AF12AF2F2CD606A9004B32EB /* AppState */ = {
-			isa = PBXGroup;
-			children = (
-				AF12AFB22CD615FA004B32EB /* AppState.swift */,
-				AFF572E42CDA652000FA5B40 /* AppDelegateAdapter.swift */,
-			);
-			path = AppState;
-			sourceTree = "<group>";
-		};
-		AF12AF302CD606B9004B32EB /* NavigationType */ = {
-			isa = PBXGroup;
-			children = (
-				AF12AFAA2CD60C55004B32EB /* NavigationDestination.swift */,
-				AF12AFAC2CD61029004B32EB /* SheetDestination.swift */,
-				AF12AFAE2CD610F0004B32EB /* FullScreenDestination.swift */,
-			);
-			path = NavigationType;
-			sourceTree = "<group>";
-		};
-		AF12AF312CD606F4004B32EB /* StateStorage */ = {
-			isa = PBXGroup;
-			children = (
-				AFF572E12CDA5CC900FA5B40 /* Storage */,
-				AF1573582CD9B2930086FE78 /* Error */,
-				AF1573522CD926C40086FE78 /* StorageKey.swift */,
-				AFF572E22CDA5CE300FA5B40 /* StateStorage.swift */,
-			);
-			path = StateStorage;
-			sourceTree = "<group>";
-		};
-		AF12AF322CD60707004B32EB /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				AF12AFB02CD611C7004B32EB /* AppRouter.swift */,
-				AF12AF302CD606B9004B32EB /* NavigationType */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		AF12AFA92CD60C2C004B32EB /* TempView */ = {
 			isa = PBXGroup;
 			children = (
 				AF12AFB42CD6481B004B32EB /* LoadingView.swift */,
 				AF12AFB62CD64825004B32EB /* HomeView.swift */,
-				AF12AFB82CD6482E004B32EB /* LoginView.swift */,
 				AF12AFBC2CD64AAE004B32EB /* StationDetailView.swift */,
 				AF12AFBE2CD64AF4004B32EB /* InUseBikeView.swift */,
 				AF12AFC02CD64B01004B32EB /* TempLockView.swift */,
@@ -251,23 +178,15 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		AF12AFCF2CD74C80004B32EB /* Dependency */ = {
+		AF3BCB422CEDC8F9003DC745 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */,
+				AFF572E42CDA652000FA5B40 /* AppDelegateAdapter.swift */,
+				AF12AFB02CD611C7004B32EB /* AppRouter.swift */,
 				AF12AFD02CD74CD5004B32EB /* AppContainer.swift */,
 			);
-			path = Dependency;
-			sourceTree = "<group>";
-		};
-		AF1573582CD9B2930086FE78 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				AF1573592CD9B2A30086FE78 /* StorageDomainError.swift */,
-				AF15735B2CD9B7410086FE78 /* StorageBusinessError.swift */,
-				AF15735D2CD9B7670086FE78 /* StorageErrorHandler.swift */,
-				AF15735F2CD9BD340086FE78 /* KeychainDomainError.swift */,
-			);
-			path = Error;
+			path = App;
 			sourceTree = "<group>";
 		};
 		AF5E248A2C9FB44B00FA2DA5 /* Frameworks */ = {
@@ -306,12 +225,9 @@
 		AF8F62222C90939C00D6E8E2 /* Domado */ = {
 			isa = PBXGroup;
 			children = (
-				AF8F62232C90939C00D6E8E2 /* DomadoApp.swift */,
-				AF12AFCF2CD74C80004B32EB /* Dependency */,
+				AF3BCB422CEDC8F9003DC745 /* App */,
+				AF3BCB3F2CEC2A55003DC745 /* Info.plist */,
 				AF12AFC82CD71A1D004B32EB /* Error */,
-				AF12AF2F2CD606A9004B32EB /* AppState */,
-				AF12AF322CD60707004B32EB /* Router */,
-				AF12AF312CD606F4004B32EB /* StateStorage */,
 				AF12AF2E2CD60653004B32EB /* View */,
 				AF8F62272C90939E00D6E8E2 /* Assets.xcassets */,
 			);
@@ -338,23 +254,10 @@
 		AFB744B12CE07CDB00B2EE9D /* TempViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AFB744B22CE07D3700B2EE9D /* LoginViewModel.swift */,
 				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
 				AFB7452C2CE0858D00B2EE9D /* QRScannerViewModel.swift */,
 			);
 			path = TempViewModel;
-			sourceTree = "<group>";
-		};
-		AFF572E12CDA5CC900FA5B40 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				AF1573542CD9AE6B0086FE78 /* StorageProvider.swift */,
-				AF1573562CD9B0F10086FE78 /* UserDefaultsStorage.swift */,
-				AF1573612CD9BE0F0086FE78 /* KeychainStorage.swift */,
-				AFF572DF2CDA5C6100FA5B40 /* LocalStorage.swift */,
-				AFBCA4782CE050350030C7C6 /* MemoryLocalStorage.swift */,
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,40 +393,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF1573602CD9BD340086FE78 /* KeychainDomainError.swift in Sources */,
 				AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */,
-				AF12AFAD2CD61029004B32EB /* SheetDestination.swift in Sources */,
-				AFF572E32CDA5CE300FA5B40 /* StateStorage.swift in Sources */,
 				AF8F62262C90939C00D6E8E2 /* RootView.swift in Sources */,
 				AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */,
 				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
 				AF12AFC52CD64B81004B32EB /* QRScannerView.swift in Sources */,
-				AF12AFB32CD615FA004B32EB /* AppState.swift in Sources */,
 				AF12AFBF2CD64AF4004B32EB /* InUseBikeView.swift in Sources */,
-				AFB744B32CE07D3700B2EE9D /* LoginViewModel.swift in Sources */,
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
 				AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */,
-				AF15735C2CD9B7410086FE78 /* StorageBusinessError.swift in Sources */,
-				AF1573572CD9B0F10086FE78 /* UserDefaultsStorage.swift in Sources */,
-				AF1573532CD926C40086FE78 /* StorageKey.swift in Sources */,
-				AF12AFAF2CD610F0004B32EB /* FullScreenDestination.swift in Sources */,
-				AF1573552CD9AE6B0086FE78 /* StorageProvider.swift in Sources */,
 				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
-				AFF572E02CDA5C6100FA5B40 /* LocalStorage.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
-				AF12AFAB2CD60C55004B32EB /* NavigationDestination.swift in Sources */,
 				AFB7452D2CE0858D00B2EE9D /* QRScannerViewModel.swift in Sources */,
 				AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */,
-				AFBCA4792CE050350030C7C6 /* MemoryLocalStorage.swift in Sources */,
-				AF12AFB92CD6482E004B32EB /* LoginView.swift in Sources */,
-				AF15735E2CD9B7670086FE78 /* StorageErrorHandler.swift in Sources */,
-				AF15735A2CD9B2A30086FE78 /* StorageDomainError.swift in Sources */,
 				AFBCA4772CDF75D70030C7C6 /* AppErrorHandler.swift in Sources */,
 				AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */,
 				AF12AFBD2CD64AAE004B32EB /* StationDetailView.swift in Sources */,
 				AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */,
-				AF1573622CD9BE0F0086FE78 /* KeychainStorage.swift in Sources */,
 				AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */,
 				AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */,
 			);
@@ -692,6 +578,7 @@
 				DEVELOPMENT_TEAM = ZWTS2P7AH7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Domado/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -727,6 +614,7 @@
 				DEVELOPMENT_TEAM = ZWTS2P7AH7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Domado/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

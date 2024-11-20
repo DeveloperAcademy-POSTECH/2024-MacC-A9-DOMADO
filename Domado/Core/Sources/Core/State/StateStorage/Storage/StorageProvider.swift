@@ -1,0 +1,16 @@
+//
+//  StorageProvider.swift
+//  Domado
+//
+//  Created by 이종선 on 11/5/24.
+//
+
+import Foundation
+
+/// 상태 저장소 인터페이스 
+public protocol StorageProvider {
+    func save(_ data: Data, for key: StorageKey) throws
+    func read(for key: StorageKey) throws -> Data
+    func delete(for key: StorageKey) throws
+    func exists(for key: StorageKey) -> Bool
+}
