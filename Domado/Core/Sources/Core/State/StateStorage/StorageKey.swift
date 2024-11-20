@@ -28,7 +28,7 @@ public enum StorageKey: String, Sendable {
     /// 1. 인증 토큰
     /// 2. 사용자 정보
     /// 3. 민감한 데이터
-    case authToken = "auth_token"
+    case accessToken = "access_token"
     case refreshToken = "refresh_token"
     case userData = "user_data"
     
