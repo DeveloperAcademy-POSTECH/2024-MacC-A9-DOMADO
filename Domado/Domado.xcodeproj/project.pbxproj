@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -112,6 +112,10 @@
 		AFF572E42CDA652000FA5B40 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AF3BCC1F2CEE3ADD003DC745 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		AF8F621D2C90939C00D6E8E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -199,6 +203,7 @@
 		AF8F62172C90939C00D6E8E2 = {
 			isa = PBXGroup;
 			children = (
+				AF3BCC1F2CEE3ADD003DC745 /* Fonts */,
 				AF00AD772CDA5487002448B3 /* Payment */,
 				2ED6C4B62CDA068E00BCC054 /* Rent */,
 				7D4E59FA2CDA069100500B63 /* Location */,
@@ -275,6 +280,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AF3BCC1F2CEE3ADD003DC745 /* Fonts */,
 			);
 			name = Domado;
 			productName = Domado;
