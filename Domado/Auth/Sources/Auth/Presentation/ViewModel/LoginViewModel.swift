@@ -42,6 +42,11 @@ public final class LoginViewModel: ObservableObject {
                     password: password
                 )
                 
+                //MARK: currentRental 존재시 BikeStatus에 따라 AppState 업데이트
+//                if signInUser.currentRentalId != nil {
+//                    self.appState.updateRideState(.active)
+//                }
+                
                 let currentUser = AppUser(id: signInUser.id, name: signInUser.name, hasRegisteredPayments: signInUser.hasRegisteredPayments, currentRentalId: signInUser.currentRentalId, stampCount: signInUser.stampCount, couponCount: signInUser.couponCount)
                 
                 self.appState.updateUserState(to: currentUser)

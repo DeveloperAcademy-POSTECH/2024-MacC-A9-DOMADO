@@ -13,7 +13,7 @@ public struct AppUser {
     let stampCount: Int
     let couponCount: Int
     
-    public init(id: Int, name: String, hasRegisteredPayments: Bool, currentRentalId: Int?, stampCount: Int, couponCount: Int) {
+    public init(id: Int, name: String, hasRegisteredPayments: Bool, currentRentalId: Int? = nil, stampCount: Int, couponCount: Int) {
         self.id = id
         self.name = name
         self.hasRegisteredPayments = hasRegisteredPayments

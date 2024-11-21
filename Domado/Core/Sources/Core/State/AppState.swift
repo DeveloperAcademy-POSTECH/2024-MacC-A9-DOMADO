@@ -50,7 +50,7 @@ public final class AppState: ObservableObject {
     public func updateUserState(to user: AppUser) {
         currentUser = user
         updateAuthState(.authenticated)
-        // user 상태 저장 로직
+        //TODO: user 상태 저장 로직
     }
     
     
@@ -59,7 +59,7 @@ public final class AppState: ObservableObject {
          do {
              // 인증 상태 복원
              if storage.hasValue(for: .accessToken) {
-                 let token: String = try storage.value(for: .accessToken)
+                 //let token: String = try storage.value(for: .accessToken)
                  authState = .authenticated
              } else {
                  authState = .unauthenticated
@@ -115,7 +115,7 @@ public final class AppState: ObservableObject {
      }
      
      /// 주행 상태를 업데이트합니다
-     func updateRideState(_ newState: RideState) {
+     public func updateRideState(_ newState: RideState) {
          rideState = newState
          
          // 주행 종료 시 관련 데이터 삭제
