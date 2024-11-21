@@ -103,12 +103,19 @@ final class AppContainer {
     }
     
     private func makeLoginViewModel() -> LoginViewModel{
-        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState)
+        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState, router: router)
     }
     
     func makeLoginView() -> LoginView {
         LoginView(vm: makeLoginViewModel())
     }
     
+    private func makeSignupViewModel() -> SignUpViewModel{
+        return SignUpViewModel(authUseCase: makeAuthUseCase(), router: router)
+    }
+    
+    func makeSignupView() -> SignUpView {
+        SignUpView(vm: makeSignupViewModel())
+    }
 
 }

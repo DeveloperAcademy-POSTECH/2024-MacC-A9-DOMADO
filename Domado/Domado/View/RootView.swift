@@ -60,6 +60,8 @@ struct RootView: View {
             TempLockView()
         case .returnComplete:
             ReturnBikeView()
+        case .singUp:
+            container.makeSignupView()
         }
     }
     
