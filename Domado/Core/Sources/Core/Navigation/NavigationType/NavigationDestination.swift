@@ -18,4 +18,8 @@ public enum NavigationDestination: Hashable {
     case tempLock
     /// 반납완료
     case returnComplete
+    
+    // MARK:  - Auth View list
+    /// 회원가입 
+    case singUp
 }
