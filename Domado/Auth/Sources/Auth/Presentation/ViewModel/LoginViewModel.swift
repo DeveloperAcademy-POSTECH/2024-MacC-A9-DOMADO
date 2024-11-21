@@ -18,12 +18,14 @@ public final class LoginViewModel: ObservableObject {
     
     private let authUseCase: AuthUseCase
     private let appState: AppState
+    private let router: Routing
     
     // MARK: - Init
     
-    public init(authUseCase: AuthUseCase, appState: AppState) {
+    public init(authUseCase: AuthUseCase, appState: AppState, router: Routing) {
         self.authUseCase = authUseCase
         self.appState = appState
+        self.router = router
     }
     
     // MARK: - Public Methods
@@ -60,6 +62,10 @@ public final class LoginViewModel: ObservableObject {
             
             handleLoading(false)
         }
+    }
+    
+    func navigateToSignUp() {
+        router.navigateTo(.singUp)
     }
     
     private func handleLoading(_ loading: Bool) {
