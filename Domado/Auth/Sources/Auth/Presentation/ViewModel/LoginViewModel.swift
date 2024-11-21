@@ -53,8 +53,6 @@ public final class LoginViewModel: ObservableObject {
         }
     }
     
-
-    @MainActor
     private func handleLoading(_ loading: Bool) {
         isLoading = loading
     }
