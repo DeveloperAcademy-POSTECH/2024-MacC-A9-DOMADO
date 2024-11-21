@@ -32,7 +32,8 @@ public final class AppState: ObservableObject {
     
     @Published private(set) public var authState: AuthState = .unauthenticated
     @Published private(set) public var rideState: RideState = .none
-    @Published private(set) public var hasSeenOnboarding: Bool = false
+    private(set) public var hasSeenOnboarding: Bool = false
+    private(set) public var currentUser: AppUser? = nil
     
     private let storage: StateStorage
     
@@ -45,8 +46,11 @@ public final class AppState: ObservableObject {
         
     }
     
-    public func updateAuthState(to state: AuthState) {
-        authState = state
+    /// currentUser State update
+    public func updateUserState(to user: AppUser) {
+        currentUser = user
+        updateAuthState(.authenticated)
+        // user 상태 저장 로직
     }
     
     
