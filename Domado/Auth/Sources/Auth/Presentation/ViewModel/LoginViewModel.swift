@@ -37,16 +37,20 @@ public final class LoginViewModel: ObservableObject {
             handleLoading(true)
             
             do {
-                let user = try await authUseCase.signIn(
+                let signInUser = try await authUseCase.signIn(
                     email: email,
                     password: password
                 )
                 
-                self.appState.updateAuthState(to: .authenticated)
+                let currentUser = AppUser(id: signInUser.id, name: signInUser.name, hasRegisteredPayments: signInUser.hasRegisteredPayments, currentRentalId: signInUser.currentRentalId, stampCount: signInUser.stampCount, couponCount: signInUser.couponCount)
+                
+                self.appState.updateUserState(to: currentUser)
                 
             } catch let error as AuthError {
-                
+                //TODO: UseCase에서 로그인 정보 검증 로직 추가 + 검증에 따른 error 처리
+                // TODO: 사용자에게 보여줘야하는 에러 처리
             } catch {
+                
             }
             
             handleLoading(false)
