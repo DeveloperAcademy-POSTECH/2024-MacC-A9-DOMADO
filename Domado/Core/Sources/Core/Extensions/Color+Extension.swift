@@ -24,7 +24,7 @@ public extension Color {
        static let hibikeYellowDefault = Color("hibikeYellowDefault", bundle: .module)
        
        // Location
-       static let locationMarker = Color("locationMarker", bundle: .module)
+       static let MylocationMarker = Color("MylocationMarker", bundle: .module)
        
        // Gray Scale
        static let grayScaleWhite = Color("grayScaleWhite", bundle: .module)
