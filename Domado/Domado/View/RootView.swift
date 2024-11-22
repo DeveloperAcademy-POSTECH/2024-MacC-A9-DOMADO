@@ -65,10 +65,7 @@ struct RootView: View {
     
     @ViewBuilder
     private func sheetView(for sheet: SheetDestination) -> some View {
-        switch sheet {
-            case .qrScanner:
-            container.makeQRScannerView()
-        }
+        // QR 스캐너 제거
     }
     
     @ViewBuilder
@@ -78,6 +75,8 @@ struct RootView: View {
             container.makeLoginView()
         case .onboarding:
             container.makeOnboardingView()
+        case .qrScanner:
+            container.makeQRScannerView()
         }
     }
 }

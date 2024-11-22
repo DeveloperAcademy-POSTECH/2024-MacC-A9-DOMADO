@@ -17,7 +17,7 @@ class QRScannerViewModel: ObservableObject {
     }
     
     func dismissQRScanner() {
-        router.dismissSheet()
+        router.dismissFullScreen()
     }
     
     func handleScanResult(_ result: QRScanResult) {
