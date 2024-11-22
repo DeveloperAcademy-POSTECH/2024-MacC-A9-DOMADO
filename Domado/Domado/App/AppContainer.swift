@@ -79,18 +79,12 @@ final class AppContainer {
         OnboardingView(vm: self.makeOnboardingViewModel() )
     }
     
-    func makeQRScannerView() -> QRScannerView {
-        QRScannerView(vm: self.makeQRScannerViewModel())
-    }
     
     // MARK: - ViewModel 반환 메서드
     private func makeOnboardingViewModel() -> OnboardingViewModel {
         OnboardingViewModel(router: router)
     }
     
-    private func makeQRScannerViewModel() -> QRScannerViewModel {
-        QRScannerViewModel(router: router)
-    }
     
     // MARK: - Auth 모듈 의존성 관리
     
@@ -103,12 +97,85 @@ final class AppContainer {
     }
     
     private func makeLoginViewModel() -> LoginViewModel{
-        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState)
+        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState, router: router)
     }
     
     func makeLoginView() -> LoginView {
         LoginView(vm: makeLoginViewModel())
     }
     
-
+    private func makeSignupViewModel() -> SignUpViewModel{
+        return SignUpViewModel(authUseCase: makeAuthUseCase(), router: router)
+    }
+    
+    func makeSignupView() -> SignUpView {
+        SignUpView(vm: makeSignupViewModel())
+    }
+    
+    // MARK: - MAP 의존성 관리
+    private func makeHomeViewModel() -> HomeViewModel {
+        return HomeViewModel(router: router)
+    }
+    
+    func makeHomeView() -> HomeView {
+        HomeView(vm: self.makeHomeViewModel())
+    }
+    
+    
+    // MARK: - Rent 의존성 관리
+    private func makeQRScannerViewModel() -> QRScannerViewModel {
+        return QRScannerViewModel(router: router)
+    }
+    
+    func makeQRScannerView() -> QRScannerView {
+        QRScannerView(vm: self.makeQRScannerViewModel())
+    }
+    
+    private func makeRentConfirmViewModel() -> RentConfirmViewModel {
+        return RentConfirmViewModel(router: router)
+    }
+    
+    func makeRentConfirmView() -> RentConfirmView {
+        RentConfirmView(vm: self.makeRentConfirmViewModel())
+    }
+    
+    private func makeInUserBikeViewModel() -> InUseBikeViewModel {
+        return InUseBikeViewModel(router: router)
+    }
+    
+    func makeInUserBikeView() -> InUseBikeView {
+        InUseBikeView(vm: self.makeInUserBikeViewModel())
+    }
+    
+    private func makeParkingConfirmViewModel() -> ParkingConfirmViewModel {
+        return ParkingConfirmViewModel(router: router)
+    }
+    
+    func makeParkingConfirmView() -> ParkingConfirmView {
+        ParkingConfirmView(vm: self.makeParkingConfirmViewModel())
+    }
+    
+    private func makeTempLockViewModel() -> TempLockViewModel {
+        return TempLockViewModel(router: router)
+    }
+    
+    func makeTempLockView() -> TempLockView {
+        TempLockView(vm: self.makeTempLockViewModel())
+    }
+    
+    private func makeHiBikeGuideViewModel() -> HiBikeGuideViewModel {
+        return HiBikeGuideViewModel(router: router)
+    }
+    
+    func makeHiBikeGuideView() -> HiBikeGuideView {
+        HiBikeGuideView(vm: self.makeHiBikeGuideViewModel())
+    }
+    
+    private func makeUnparkingConfirmViewModel() -> UnparkingConfirmViewModel {
+        return UnparkingConfirmViewModel(router: router)
+    }
+    
+    func makeUnparkingConfirmView() -> UnparkingConfirmView {
+        UnparkingConfirmView(vm: self.makeUnparkingConfirmViewModel())
+    }
 }

@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject var vm: HomeViewModel
+    
     var body: some View {
-        Text("메인 홈화면")
-    }
-}
+        VStack{
+            
+            Spacer()
+            
+            HStack{
+                
+                Button {
+                    
+                } label: {
+                    Text("내정보")
+                }
 
-#Preview {
-    HomeView()
+                
+                Button {
+                    vm.rentBikeWithQR()
+                } label: {
+                    Text("QR 찍고 자전거 대여하기")
+                }
+
+            }
+        }
+        
+    }
 }
