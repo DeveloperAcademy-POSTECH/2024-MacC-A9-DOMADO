@@ -1,5 +1,5 @@
 //
-//  RentConfirmView.swift
+//  UnparkingConfirmView.swift
 //  Domado
 //
 //  Created by 이종선 on 11/22/24.
@@ -7,31 +7,33 @@
 
 import SwiftUI
 
-struct RentConfirmView: View {
+struct UnparkingConfirmView: View {
     
-    @StateObject var vm: RentConfirmViewModel
+    @StateObject var vm: UnparkingConfirmViewModel
     
     var body: some View {
         VStack{
+            
             HStack{
                 Spacer()
+                
                 Button {
-                    vm.cancelRent()
+                    vm.dismissUnparkConfirmView()
                 } label: {
                     Image(systemName: "xmark")
                 }
-
+                
             }
             
             Spacer()
             
             Button {
-                vm.rentBike()
+                vm.unparkBike()
             } label: {
-                Text("자전거 대여하기")
+                Text("바이크 잠금해제")
             }
 
+            
         }
-        .padding()
     }
 }
