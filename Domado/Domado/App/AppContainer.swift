@@ -139,5 +139,43 @@ final class AppContainer {
         RentConfirmView(vm: self.makeRentConfirmViewModel())
     }
     
+    private func makeInUserBikeViewModel() -> InUseBikeViewModel {
+        return InUseBikeViewModel(router: router)
+    }
     
+    func makeInUserBikeView() -> InUseBikeView {
+        InUseBikeView(vm: self.makeInUserBikeViewModel())
+    }
+    
+    private func makeParkingConfirmViewModel() -> ParkingConfirmViewModel {
+        return ParkingConfirmViewModel(router: router)
+    }
+    
+    func makeParkingConfirmView() -> ParkingConfirmView {
+        ParkingConfirmView(vm: self.makeParkingConfirmViewModel())
+    }
+    
+    private func makeTempLockViewModel() -> TempLockViewModel {
+        return TempLockViewModel(router: router)
+    }
+    
+    func makeTempLockView() -> TempLockView {
+        TempLockView(vm: self.makeTempLockViewModel())
+    }
+    
+    private func makeHiBikeGuideViewModel() -> HiBikeGuideViewModel {
+        return HiBikeGuideViewModel(router: router)
+    }
+    
+    func makeHiBikeGuideView() -> HiBikeGuideView {
+        HiBikeGuideView(vm: self.makeHiBikeGuideViewModel())
+    }
+    
+    private func makeUnparkingConfirmViewModel() -> UnparkingConfirmViewModel {
+        return UnparkingConfirmViewModel(router: router)
+    }
+    
+    func makeUnparkingConfirmView() -> UnparkingConfirmView {
+        UnparkingConfirmView(vm: self.makeUnparkingConfirmViewModel())
+    }
 }
