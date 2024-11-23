@@ -47,6 +47,7 @@ public struct LogCategory: Hashable, Sendable {
     /// `static` 프로퍼티로 선언되어 타입 수준에서 접근 가능하며, 애플리케이션 전체에서 공유됩니다.
     /// 불변(immutable) 프로퍼티이므로 스레드 안전합니다.
     public static let network = LogCategory(name: "Network")
+    public static let websocket = LogCategory(name: "Socket")
     
     /// 데이터베이스 관련 로그를 위한 카테고리
     public static let database = LogCategory(name: "Database")
