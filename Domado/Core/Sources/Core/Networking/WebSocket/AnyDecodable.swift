@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct AnyDecodable: Decodable {
-    let value: Any
+public struct AnyDecodable: Decodable {
+    public let value: Any
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
         if container.decodeNil() {

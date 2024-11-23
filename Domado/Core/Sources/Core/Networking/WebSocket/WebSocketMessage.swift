@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct WebSocketMessage<T: Decodable>: Decodable{
-    let type: String
-    let payload: T?
-    let success: Bool
-    let error: WebSocketError?
-    let timestamp: String
+public struct WebSocketMessage<T: Decodable>: Decodable{
+    public let type: String
+    public let payload: T?
+    public let success: Bool
+    public let error: WebSocketError?
+    public let timestamp: String
+    
+    public init(type: String, payload: T?, success: Bool, error: WebSocketError?, timestamp: String){
+        self.type = type
+        self.payload = payload
+        self.success = success
+        self.error = error
+        self.timestamp = timestamp
+    }
 }

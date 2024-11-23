@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WebSocketError: Codable {
-    let code: String
-    let message: String
+public struct WebSocketError: Codable {
+    public let code: String
+    public let message: String
 }
 

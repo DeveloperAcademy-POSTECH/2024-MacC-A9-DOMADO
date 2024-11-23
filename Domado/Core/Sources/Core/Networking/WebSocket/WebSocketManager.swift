@@ -18,7 +18,7 @@ public class WebSocketManager: @unchecked Sendable {
     private var isConnected: Bool = false
     
     // MARK: - Intialization
-    init(session: URLSession = .shared,
+    public init(session: URLSession = .shared,
          logger: CoreLogger = .shared,
          storage: StateStorage
     ) {
@@ -29,7 +29,7 @@ public class WebSocketManager: @unchecked Sendable {
     
     
     // MARK: - Public Methods
-    func connect() async throws {
+    public func connect() async throws {
         guard !isConnected else { return }
         
         guard let token: String = try? storage.value(for: .accessToken) else {
@@ -44,7 +44,7 @@ public class WebSocketManager: @unchecked Sendable {
         logger.debug("WebSocket connected", category: .websocket)
     }
     
-    func disconnect() {
+    public func disconnect() {
         guard isConnected else { return }
         
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
@@ -56,7 +56,7 @@ public class WebSocketManager: @unchecked Sendable {
         logger.debug("WebSocket disconnected", category: .websocket)
     }
     
-    func observeMessages() -> AsyncStream<WebSocketMessage<AnyDecodable>> {
+    public func observeMessages() -> AsyncStream<WebSocketMessage<AnyDecodable>> {
         AsyncStream { continuation in
             self.messageContinuation = continuation
             
