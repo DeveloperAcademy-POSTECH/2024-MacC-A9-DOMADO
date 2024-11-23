@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct CouponBook: View {
+public struct CouponBook: View {
     var width: CGFloat = 330
     var height: CGFloat = 234
     var title: String = "하이바이크를 대여해서\n새로운 스티커가 추가되었어요!"
     var subtitle: String = "4개의 하이를 더 모아 하이파이브를 해보세요!\n자전거 이용권을 받을 수 있어요."
     
-    var body: some View {
+    public init(){}
+    
+    public var body: some View {
         Rectangle()
             .fill(Color.hibikeYellowBack)
             .overlay(

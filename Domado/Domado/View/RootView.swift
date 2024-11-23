@@ -31,7 +31,8 @@ struct RootView: View {
                 case .authenticated:
                     HomeView()
                 case .unauthenticated:
-                    container.makeLoginView()
+                    //container.makeLoginView()
+                    CouponBook()
                 }
             }
             .errorAlert(errorState: globalErrorState)
