@@ -13,6 +13,9 @@ struct StationView: View {
     var height: CGFloat = 86
     var stationName: String = "A 스테이션"
     
+    var goPrevious: Bool = true
+    var goNext: Bool = true
+    
     var body: some View {
         VStack(spacing: 0){
             Text("바이크 배터리 상태")
@@ -26,6 +29,7 @@ struct StationView: View {
                 } label: {
                     Image(systemName: "arrow.left")
                         .bold()
+                        .foregroundColor(goPrevious ? Color.interactivePrimary : Color.grayScaleLightHover)
                 }
                 
                 Text(stationName)
@@ -38,13 +42,14 @@ struct StationView: View {
                 } label: {
                     Image(systemName: "arrow.right")
                         .bold()
+                        .foregroundColor(goNext ? Color.interactivePrimary : Color.grayScaleLightHover)
                 }
                 
             }
             .padding(.bottom, 11)
             
             Rectangle()
-                .fill(Color.black)
+                .fill(Color.stationBatteryBack)
                 .overlay(
                     HStack {
                         //ForEach
@@ -78,7 +83,7 @@ struct Dock: View {
                     
                     GeometryReader { geometry in
                         Rectangle()
-                            .fill(Color.green)
+                            .fill(Color.stationBatteryGreen)
                             .frame(
                                 height: geometry.size.height * CGFloat(batteryLevel) / 100
                             )
