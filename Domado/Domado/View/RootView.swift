@@ -28,7 +28,9 @@ struct RootView: View {
                 switch appState.authState {
                 case .unknown:
                     LoadingView()
-                case .authenticated,.unauthenticated:
+                case .unauthenticated:
+                    container.makeLoginView()
+                case .authenticated:
                     container.makeHomeView()
                 }
             }
