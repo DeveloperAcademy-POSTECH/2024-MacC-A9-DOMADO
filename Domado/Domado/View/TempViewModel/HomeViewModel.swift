@@ -61,11 +61,16 @@ class HomeViewModel: ObservableObject {
     }
     
     private func handleWebSocketMessage(_ message: WebSocketMessage<AnyDecodable>) async {
+        
+        // 메시지에서 필요한 값 미리 복사
+        let messageType = message.type
+        let messagePayload = message.payload?.value
+        
         await MainActor.run {
             // 메시지 타입에 따른 처리
-            switch message.type {
+            switch messageType {
             case "NOTIFICATION":
-                self.lastMessage = "새로운 알림: \(message.payload?.value ?? "")"
+                self.lastMessage = "새로운 알림: \(messagePayload ?? "")"
                 self.showAlert = true
                 self.alertMessage = self.lastMessage ?? ""
                 
@@ -74,7 +79,7 @@ class HomeViewModel: ObservableObject {
             
                 
             default:
-                self.lastMessage = "알 수 없는 메시지: \(message.type)"
+                self.lastMessage = "알 수 없는 메시지: \(messageType)"
             }
         }
     }

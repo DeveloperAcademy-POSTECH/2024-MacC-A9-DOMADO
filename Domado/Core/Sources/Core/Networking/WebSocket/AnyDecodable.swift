@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AnyDecodable: Decodable {
+public struct AnyDecodable: Decodable, @unchecked Sendable {
     public let value: Any
 
     public init(from decoder: Decoder) throws {
