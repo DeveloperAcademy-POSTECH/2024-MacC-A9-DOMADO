@@ -57,6 +57,10 @@ final class AppContainer {
         CoreNetworkManager(storage: stateStorage)
     }()
     
+    private lazy var webSocketManager: WebSocketManager = {
+        WebSocketManager(storage: stateStorage)
+    }()
+    
     // MARK: - 의존성 주입을 위한 팩토리 메서드
     
     /// 앱 상태 의존성 주입
@@ -114,7 +118,7 @@ final class AppContainer {
     
     // MARK: - MAP 의존성 관리
     private func makeHomeViewModel() -> HomeViewModel {
-        return HomeViewModel(router: router)
+        return HomeViewModel(router: router, appState: makeAppState(), webSocketManager: webSocketManager)
     }
     
     func makeHomeView() -> HomeView {
