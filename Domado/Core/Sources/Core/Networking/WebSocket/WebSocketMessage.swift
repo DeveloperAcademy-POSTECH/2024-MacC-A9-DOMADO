@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WebSocketMessage<T: Codable>: Codable {
+struct WebSocketMessage<T: Decodable>: Decodable{
     let type: String
     let payload: T?
     let success: Bool
