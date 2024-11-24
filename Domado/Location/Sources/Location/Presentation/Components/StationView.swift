@@ -79,7 +79,6 @@ struct StationView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    Spacer(minLength: UIScreen.main.bounds.width / 2 - width / 2)
                     
                     ForEach(stations) { station in  // stations 배열을 순회
                         Rectangle()
@@ -94,10 +93,12 @@ struct StationView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .frame(width: width, height: height)
                     }
+                    .containerRelativeFrame(.horizontal, alignment: .center)
                     
-                    Spacer(minLength: UIScreen.main.bounds.width / 2 - width / 2)
                 }
+                .scrollTargetLayout() // 스크롤 뷰의 각 아이템을 스냅 대상으로 만듭니다
             }
+            .scrollTargetBehavior(.viewAligned) // 스크롤이 멈추면 가장 가까운 아이템에 자동으로 정렬됩니다
             .scrollIndicators(.hidden)
 
         }

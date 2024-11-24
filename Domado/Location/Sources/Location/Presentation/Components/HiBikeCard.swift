@@ -21,7 +21,7 @@ struct HiBikeCard: View {
             .fill(Color.grayScaleWhite)
             .overlay(
                 VStack(spacing: 0) {
-                    HStack(spacing: 8){
+                    HStack(spacing: 3){
                         Text("하이바이크 \(bikeName)")
                             .customFont(.body_md_bold)
                             .foregroundStyle(Color.grayScaleDarkHover)
