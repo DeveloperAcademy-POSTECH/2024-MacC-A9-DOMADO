@@ -67,10 +67,11 @@ struct HiBikeCard: View {
                                     }
                                 )
                             
-                            // 하이바이크 스티커를 붙이기..
+                            // 하이바이크 스티커로 변경
                             Rectangle()
-                                .frame(width:42, height:42)
-                                .offset(x: -50, y: -50)
+                                .fill(Color.hibikeOrange)
+                                .frame(width: 52.2, height: 42.01)
+                                .offset(x: -60, y: -54)
                         }
                         
                         VStack(spacing: 0){
