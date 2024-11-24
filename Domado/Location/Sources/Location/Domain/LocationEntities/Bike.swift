@@ -14,10 +14,10 @@ public struct Bike: MapDisplayable, Identifiable {
     public let dockNumber: Int?
     public let isHiBike: Bool
     public let batteryLevel: Int
-    public let hubName: String
+    public let homeHubName: String
     
     public var markerType: MarkerType {
-        .hiBike(hubName: hubName)
+        .hiBike(homeHubName: homeHubName)
     }
     
     public init(coordinate: (latitude: Double, longitude: Double)? = nil,
@@ -26,13 +26,13 @@ public struct Bike: MapDisplayable, Identifiable {
                dockNumber: Int? = nil,
                isHiBike: Bool,
                batteryLevel: Int,
-               hubName: String) {
+               homeHubName: String) {
         self.coordinate = isHiBike ? coordinate : nil
         self.id = id
         self.bikeName = bikeName
         self.dockNumber = isHiBike ? nil : dockNumber
         self.isHiBike = isHiBike
         self.batteryLevel = batteryLevel
-        self.hubName = hubName
+        self.homeHubName = homeHubName
     }
 }
