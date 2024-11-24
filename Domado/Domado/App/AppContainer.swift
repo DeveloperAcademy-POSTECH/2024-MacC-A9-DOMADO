@@ -61,6 +61,14 @@ final class AppContainer {
         WebSocketManager(storage: stateStorage)
     }()
     
+    private lazy var pushNotificationManager: PushNotificationManager = {
+        PushNotificationManager(
+            storage: stateStorage,
+            logger: logService as! CoreLogger,
+            networkManager: networkManager as! CoreNetworkManager
+        )
+    }()
+    
     // MARK: - 의존성 주입을 위한 팩토리 메서드
     
     /// 앱 상태 의존성 주입
@@ -76,6 +84,11 @@ final class AppContainer {
     // 앱 화면 전환 방법 주입 
     func makeAppRouter() -> AppRouter {
         router
+    }
+    
+    // PushNotification 방법 주입
+    func makePushNotificationManager() -> PushNotificationManager {
+        pushNotificationManager
     }
     
     // MARK: - View 반환 메서드
