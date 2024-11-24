@@ -16,6 +16,35 @@ struct StationView: View {
     var goPrevious: Bool = true
     var goNext: Bool = true
     
+    // 샘플 스테이션
+    struct Station: Identifiable {
+        let id = UUID()
+        let docks: [Dock]
+    }
+    
+    // 샘플 데이터
+    let stations = [
+        Station(docks: [
+            Dock(number: 1, batteryLevel: nil),
+            Dock(number: 2, batteryLevel: 56),
+            Dock(number: 3, batteryLevel: nil),
+            Dock(number: 4, batteryLevel: 78)
+        ]),
+        Station(docks: [
+            Dock(number: 1, batteryLevel: 90),
+            Dock(number: 2, batteryLevel: nil),
+            Dock(number: 3, batteryLevel: 45),
+            Dock(number: 4, batteryLevel: 23)
+        ]),
+        Station(docks: [
+            Dock(number: 1, batteryLevel: 67),
+            Dock(number: 2, batteryLevel: 88),
+            Dock(number: 3, batteryLevel: nil),
+            Dock(number: 4, batteryLevel: nil)
+        ])
+    ]
+
+    
     var body: some View {
         VStack(spacing: 0){
             Text("바이크 배터리 상태")
@@ -48,20 +77,29 @@ struct StationView: View {
             }
             .padding(.bottom, 11)
             
-            Rectangle()
-                .fill(Color.stationBatteryBack)
-                .overlay(
-                    HStack {
-                        //ForEach
-                        Dock(number: 1, batteryLevel: nil)
-                        Dock(number: 2, batteryLevel: 56)
-                        Dock(number: 3, batteryLevel: nil)
-                        Dock(number: 4, batteryLevel: 78)
+            ScrollView(.horizontal) {
+                HStack(spacing: 8) {
+                    Spacer(minLength: UIScreen.main.bounds.width / 2 - width / 2)
+                    
+                    ForEach(stations) { station in  // stations 배열을 순회
+                        Rectangle()
+                            .fill(Color.stationBatteryBack)
+                            .overlay(
+                                HStack {
+                                    ForEach(station.docks) { dock in
+                                        Dock(number: dock.number, batteryLevel: dock.batteryLevel)
+                                    }
+                                }
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .frame(width: width, height: height)
                     }
-                )
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .frame(width: width, height: height)
-            
+                    
+                    Spacer(minLength: UIScreen.main.bounds.width / 2 - width / 2)
+                }
+            }
+            .scrollIndicators(.hidden)
+
         }
     }
 }

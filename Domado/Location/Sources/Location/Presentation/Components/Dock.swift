@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct Dock: View {
+struct Dock: View, Identifiable {
+    let id = UUID()
     let number: Int
     let batteryLevel: Int?
     

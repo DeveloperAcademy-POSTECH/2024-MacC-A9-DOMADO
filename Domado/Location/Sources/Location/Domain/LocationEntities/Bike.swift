@@ -21,12 +21,12 @@ public struct Bike: MapDisplayable, Identifiable {
     }
     
     public init(coordinate: (latitude: Double, longitude: Double)? = nil,
-               id: String,
-               bikeName: String,
-               dockNumber: Int? = nil,
-               isHiBike: Bool,
-               batteryLevel: Int,
-               homeHubName: String) {
+                id: String,
+                bikeName: String,
+                dockNumber: Int? = nil,
+                isHiBike: Bool,
+                batteryLevel: Int,
+                homeHubName: String) {
         self.coordinate = isHiBike ? coordinate : nil
         self.id = id
         self.bikeName = bikeName

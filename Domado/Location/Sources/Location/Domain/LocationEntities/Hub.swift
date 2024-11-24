@@ -19,16 +19,16 @@ public struct Hub: MapDisplayable, Identifiable {
     }
     
     public init(id: String,
-               hubName: String,
-               coordinate: (latitude: Double, longitude: Double)?,
-               availableBikes: Int,
-               stations: [Station]) {
+                hubName: String,
+                coordinate: (latitude: Double, longitude: Double)?,
+                availableBikes: Int,
+                stations: [Station]) {
         self.id = id                
         self.hubName = hubName
         self.coordinate = coordinate
         self.availableBikes = availableBikes
         self.stations = stations
     }
-
+    
     
 }
