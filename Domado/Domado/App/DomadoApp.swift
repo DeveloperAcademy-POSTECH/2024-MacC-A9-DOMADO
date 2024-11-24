@@ -20,6 +20,9 @@ struct DomadoApp: App {
         self.dIContainer = dIContainer
         _appState = StateObject(wrappedValue: dIContainer.makeAppState())
         _globalErrorState = StateObject(wrappedValue: dIContainer.makeGlobalErrorState())
+        
+        // AppDelegate에 PushNotificationManager 설정
+        appDelegate.setPushNotificationManager(dIContainer.makePushNotificationManager())
     }
     
     var body: some Scene {
@@ -27,6 +30,11 @@ struct DomadoApp: App {
             RootView(container: dIContainer)
                 .environmentObject(appState)
                 .environmentObject(globalErrorState)
+                .task {
+                    // 앱 실행 시 권한 요청
+                    await dIContainer.makePushNotificationManager().requestAuthorization()
+                }
+            
         }
     }
 }
