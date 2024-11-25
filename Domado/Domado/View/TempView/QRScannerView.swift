@@ -13,9 +13,28 @@ struct QRScannerView: View {
     @StateObject var vm: QRScannerViewModel
     
     var body: some View {
-        RentView(viewModel: RentViewModel(
-                 onComplete: vm.handleScanResult,
-                 onDismiss: vm.dismissQRScanner
-             ))
+//        RentView(viewModel: RentViewModel(
+//                 onComplete: vm.handleScanResult,
+//                 onDismiss: vm.dismissQRScanner
+//             ))
+        
+        VStack{
+            HStack{
+                Spacer()
+                
+                Button {
+                    vm.dismissQRScanner()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+            }
+            Spacer()
+            Button {
+                vm.handleScanResult()
+            } label: {
+                Text("자전거 스캔")
+            }
+
+        }
     }
 }

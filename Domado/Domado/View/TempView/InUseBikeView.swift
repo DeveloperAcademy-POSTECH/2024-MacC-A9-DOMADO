@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct InUseBikeView: View {
+    
+    @StateObject var vm: InUseBikeViewModel
+    
     var body: some View {
-        Text("자전거 사용중 화면")
+        VStack{
+            Text("대충 지도")
+            
+            Spacer()
+            
+            Button {
+                vm.parkBike()
+            } label: {
+                Text("바이크 주차하기")
+            }
+        }
+        .padding()
     }
-}
-
-#Preview {
-    InUseBikeView()
 }
