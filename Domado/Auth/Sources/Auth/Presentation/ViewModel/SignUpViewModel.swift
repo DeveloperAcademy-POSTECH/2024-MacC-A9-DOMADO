@@ -18,7 +18,11 @@ public class SignUpViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var passwordConfirm: String = ""
     @Published var name: String = ""
-    @Published var phone: String = ""
+    @Published var phone: String = "" {
+        didSet {
+            formatPhoneNumber()
+        }
+    }
     
     // Validation states
     @Published var emailError: String?
@@ -33,7 +37,47 @@ public class SignUpViewModel: ObservableObject {
     
     public init(authUseCase: AuthUseCase, router: Routing) {
         self.authUseCase = authUseCase
-        self.router = router 
+        self.router = router
+    }
+    
+    // MARK: - Phone Number Formatting
+    private func formatPhoneNumber() {
+        // 숫자만 추출
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        
+        // 11자리를 초과하는 입력 방지
+        if numbers.count > 11 {
+            phone = String(numbers.prefix(11))
+            return
+        }
+        
+        // 하이픈 추가 포매팅
+        var formattedNumber = ""
+        
+        if numbers.count > 0 {
+            // 앞 3자리
+            formattedNumber = String(numbers.prefix(3))
+            
+            if numbers.count > 3 {
+                // 중간 3-4자리
+                let middleIndex = numbers.index(numbers.startIndex, offsetBy: 3)
+                let middleEndIndex = numbers.index(numbers.startIndex, offsetBy: min(7, numbers.count))
+                let middlePart = numbers[middleIndex..<middleEndIndex]
+                formattedNumber += "-" + middlePart
+                
+                if numbers.count > 7 {
+                    // 마지막 4자리
+                    let lastIndex = numbers.index(numbers.startIndex, offsetBy: 7)
+                    let lastPart = numbers[lastIndex..<numbers.endIndex]
+                    formattedNumber += "-" + lastPart
+                }
+            }
+        }
+        
+        // 포매팅된 번호가 현재와 다른 경우에만 업데이트
+        if formattedNumber != phone {
+            phone = formattedNumber
+        }
     }
     
     // MARK: - Validation Methods
@@ -80,7 +124,8 @@ public class SignUpViewModel: ObservableObject {
     }
     
     private func validatePhone() -> Bool {
-        let phoneRegex = "^01([0-9])-?([0-9]{3,4})-?([0-9]{4})$"
+        // 하이픈이 포함된 전화번호 검증
+        let phoneRegex = "^010-([0-9]{3,4})-([0-9]{4})$"
         let phonePred = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         let isValid = phonePred.evaluate(with: phone)
         
@@ -150,5 +195,4 @@ public class SignUpViewModel: ObservableObject {
     func backToLogin() {
         router.navigateBack()
     }
-    
 }
