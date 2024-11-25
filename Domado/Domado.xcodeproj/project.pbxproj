@@ -115,6 +115,7 @@
 		AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnparkingConfirmViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideView.swift; sourceTree = "<group>"; };
 		AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideViewModel.swift; sourceTree = "<group>"; };
+		AF3BCC7C2CF301D8003DC745 /* Domado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Domado.entitlements; sourceTree = "<group>"; };
 		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		AF8F62202C90939C00D6E8E2 /* Domado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Domado.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +254,7 @@
 		AF8F62222C90939C00D6E8E2 /* Domado */ = {
 			isa = PBXGroup;
 			children = (
+				AF3BCC7C2CF301D8003DC745 /* Domado.entitlements */,
 				AF3BCB422CEDC8F9003DC745 /* App */,
 				AF3BCB3F2CEC2A55003DC745 /* Info.plist */,
 				AF12AFC82CD71A1D004B32EB /* Error */,
@@ -620,6 +622,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Domado/Domado.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -642,6 +646,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.Domado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -657,6 +662,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Domado/Domado.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -679,6 +686,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onemorethink.Domado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

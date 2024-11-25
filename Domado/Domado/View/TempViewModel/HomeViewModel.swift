@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     private let router: AppRouter
     private let appState: AppState
     private let webSocketManager: WebSocketManager
+    private let pushNotificationManager: PushNotificationManager
     
     @Published var isWebSocketConnected: Bool = false
     @Published var lastMessage: String?
@@ -21,12 +22,18 @@ class HomeViewModel: ObservableObject {
        
     private var messageTask: Task<Void, Never>?
     
-    init(router: AppRouter, appState: AppState, webSocketManager: WebSocketManager) {
+    init(router: AppRouter, appState: AppState, webSocketManager: WebSocketManager, pushNotificationManager: PushNotificationManager ) {
         self.router = router
         self.appState = appState
         self.webSocketManager = webSocketManager
+        self.pushNotificationManager = pushNotificationManager
         
         setupWebSocket()
+        setupPushNotification()
+    }
+    
+    private func setupPushNotification() {
+        pushNotificationManager.onLoginSuccess()
     }
     
     func rentBikeWithQR() {

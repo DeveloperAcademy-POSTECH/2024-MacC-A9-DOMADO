@@ -49,6 +49,9 @@ public struct LogCategory: Hashable, Sendable {
     public static let network = LogCategory(name: "Network")
     public static let websocket = LogCategory(name: "Socket")
     
+    /// 사용자 알림 관련 로그를 위한 카테고리
+    public static let notification = LogCategory(name: "Notification")
+    
     /// 데이터베이스 관련 로그를 위한 카테고리
     public static let database = LogCategory(name: "Database")
     

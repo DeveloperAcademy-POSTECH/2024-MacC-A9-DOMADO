@@ -37,7 +37,6 @@ struct RootView: View {
             .errorAlert(errorState: globalErrorState)
             .navigationDestination(for: NavigationDestination.self) { destination in
                 destinationView(for: destination)
-                    .navigationBarBackButtonHidden()
             }
             // QR 스캐너 풀스크린일 때만 그 위에 시트를 보여줌
             .fullScreenCover(item: $router.activeFullScreen) { fullScreen in
@@ -67,10 +66,13 @@ struct RootView: View {
         switch destination {
         case .inUse:
             container.makeInUserBikeView()
+                .navigationBarBackButtonHidden()
         case .tempLock:
             container.makeTempLockView()
+                .navigationBarBackButtonHidden()
         case .returnComplete:
             ReturnBikeView()
+                .navigationBarBackButtonHidden()
         case .singUp:
             container.makeSignupView()
         }
@@ -112,7 +114,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         // Mock AppState with sample data
         
-        let container = AppContainer()
+        let container = AppContainer.shared
         
         return RootView(container: container)
             .environmentObject(container.makeAppState())

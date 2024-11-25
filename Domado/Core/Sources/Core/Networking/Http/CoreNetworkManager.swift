@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class CoreNetworkManager: NetworkManager {
+public final class CoreNetworkManager: NetworkManager, @unchecked Sendable {
     private let session: URLSession
     private let logger: CoreLogger
     private let storage: StateStorage
