@@ -19,10 +19,7 @@ struct HubCard: View {
             .overlay(
                 VStack(spacing: 0) {
                     HStack(spacing: 8){
-                        Image(systemName: "mappin.circle.fill") // 이미지 변경
-                            .resizable()
-                            .frame(width: 22, height: 22)
-                            .foregroundStyle(Color.stationDefault)
+                        Image("mappin", bundle: .module)
                         Text(hubName)
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)
@@ -35,10 +32,7 @@ struct HubCard: View {
                         .padding(.bottom, 5)
                     
                     HStack(spacing: 6){
-                        Image(systemName: "bicycle") // 이미지 변경
-                            .resizable()
-                            .frame(width: 22, height: 22)
-                            .foregroundStyle(Color.grayScaleLightActive)
+                        Image("bike", bundle: .module)
                         Text("5대")
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)

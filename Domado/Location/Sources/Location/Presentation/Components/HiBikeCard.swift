@@ -33,10 +33,7 @@ struct HiBikeCard: View {
                     .padding(.bottom, 9)
                     
                     HStack(spacing: 8){
-                        Image(systemName: "house.fill") // 이미지 변경
-                            .resizable()
-                            .frame(width: 22, height: 22)
-                            .foregroundStyle(Color.stationDefault)
+                        Image("homepin", bundle: .module)
                         Text(homeHubName)
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)
@@ -68,9 +65,7 @@ struct HiBikeCard: View {
                                 )
                             
                             // 하이바이크 스티커로 변경
-                            Rectangle()
-                                .fill(Color.hibikeOrange)
-                                .frame(width: 52.2, height: 42.01)
+                            Image("hiBike", bundle: .module)
                                 .offset(x: -60, y: -54)
                         }
                         
