@@ -16,7 +16,7 @@ struct DomadoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegateAdapter.self) private var appDelegate
     
     init() {
-        let dIContainer = AppContainer()
+        let dIContainer = AppContainer.shared
         self.dIContainer = dIContainer
         _appState = StateObject(wrappedValue: dIContainer.makeAppState())
         _globalErrorState = StateObject(wrappedValue: dIContainer.makeGlobalErrorState())
@@ -32,7 +32,7 @@ struct DomadoApp: App {
                 .environmentObject(globalErrorState)
                 .task {
                     // 앱 실행 시 권한 요청
-                    await dIContainer.makePushNotificationManager().requestAuthorization()
+                    await AppContainer.shared.makePushNotificationManager().requestAuthorization()
                 }
             
         }

@@ -114,7 +114,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         // Mock AppState with sample data
         
-        let container = AppContainer()
+        let container = AppContainer.shared
         
         return RootView(container: container)
             .environmentObject(container.makeAppState())
