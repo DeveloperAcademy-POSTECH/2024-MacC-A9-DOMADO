@@ -9,9 +9,9 @@ import SwiftUI
 import Core
 
 struct HubCard: View {
+    let hub: Hub
     var width: CGFloat = 356
     var height: CGFloat = 288
-    var hubName: String = "박태준 학술 정보관"
     
     var body: some View {
         Rectangle()
@@ -20,7 +20,7 @@ struct HubCard: View {
                 VStack(spacing: 0) {
                     HStack(spacing: 8){
                         Image("mappin", bundle: .module)
-                        Text(hubName)
+                        Text(hub.hubName)
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)
                     }
@@ -33,7 +33,7 @@ struct HubCard: View {
                     
                     HStack(spacing: 6){
                         Image("bike", bundle: .module)
-                        Text("5대")
+                        Text("\(hub.availableBikes)대")
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)
                     }
@@ -53,5 +53,5 @@ struct HubCard: View {
 }
 
 #Preview {
-    HubCard()
+    HubCard(hub: Hub(id: "301", hubName: "박태준학술정보관", coordinate: (36.012516, 129.326191), availableBikes: 6, stations: []))
 }

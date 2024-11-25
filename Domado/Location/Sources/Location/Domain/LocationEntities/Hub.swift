@@ -32,3 +32,13 @@ public struct Hub: MapDisplayable, Identifiable {
     
     
 }
+
+//extension Hub: Hashable {
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//    
+//    public static func == (lhs: Hub, rhs: Hub) -> Bool {
+//        lhs.id == rhs.id
+//    }
+//}
