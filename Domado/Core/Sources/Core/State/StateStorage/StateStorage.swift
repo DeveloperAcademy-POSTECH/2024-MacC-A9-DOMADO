@@ -51,7 +51,7 @@ public final class StateStorage {
             let data = try JSONEncoder().encode(value)
             
             switch key {
-            case .accessToken, .refreshToken, .userData:
+            case .accessToken, .refreshToken, .userData, .deviceToken:
                 try keychain.save(data, for: key)
                 
             case .hasSeenOnboarding, .preferredLanguage,
@@ -78,7 +78,7 @@ public final class StateStorage {
         do {
             let data: Data = try {
                 switch key {
-                case .accessToken, .refreshToken, .userData:
+                case .accessToken, .refreshToken, .userData, .deviceToken:
                     return try keychain.read(for: key)
                     
                 case .hasSeenOnboarding, .preferredLanguage,
@@ -106,7 +106,7 @@ public final class StateStorage {
     public func removeValue(for key: StorageKey) throws {
         do {
             switch key {
-            case .accessToken, .refreshToken, .userData:
+            case .accessToken, .refreshToken, .userData, .deviceToken:
                 try keychain.delete(for: key)
                 
             case .hasSeenOnboarding, .preferredLanguage,
@@ -129,7 +129,7 @@ public final class StateStorage {
     /// - Returns: 값 존재 여부
     public func hasValue(for key: StorageKey) -> Bool {
         switch key {
-        case .accessToken, .refreshToken, .userData:
+        case .accessToken, .refreshToken, .userData, .deviceToken:
             return keychain.exists(for: key)
             
         case .hasSeenOnboarding, .preferredLanguage,
