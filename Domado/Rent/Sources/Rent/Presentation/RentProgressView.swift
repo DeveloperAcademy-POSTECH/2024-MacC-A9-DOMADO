@@ -52,7 +52,7 @@ public struct RentProgressView: View {
                         .customFont(.body_md_regular)
                         .opacity(0.5)
                     
-                    Text("스테이션으로 돌아가야 반납이 가능해요")
+                    Text("반납 구역으로 돌아가야 반납이 가능해요")
                         .customFont(.body_md_bold)
                 }
                 
@@ -89,7 +89,7 @@ public struct RentProgressView: View {
 #Preview {
     RentProgressView(viewModel: RentProgressViewModel(
         bikeId: "73RY-SI33P1",
-        stationName: "무은재 기념관 스테이션",
+        stationName: "무은재 기념관",
         onComplete: {},
         onDismiss: {}
     ))
