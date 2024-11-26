@@ -25,8 +25,6 @@
 		AF2961402CDA557400DAF5BB /* Payment in Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; };
 		AF2961412CDA557400DAF5BB /* Payment in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */; };
-		AF3BCC372CEF97FE003DC745 /* RentConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC362CEF97FE003DC745 /* RentConfirmView.swift */; };
-		AF3BCC392CEF9829003DC745 /* RentConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC382CEF9829003DC745 /* RentConfirmViewModel.swift */; };
 		AF3BCC3B2CF018E2003DC745 /* ParkingConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC3A2CF018E2003DC745 /* ParkingConfirmView.swift */; };
 		AF3BCC3D2CF0192E003DC745 /* ParkingConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC3C2CF0192E003DC745 /* ParkingConfirmViewModel.swift */; };
 		AF3BCC3F2CF01ADF003DC745 /* InUseBikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC3E2CF01ADF003DC745 /* InUseBikeViewModel.swift */; };
@@ -102,8 +100,6 @@
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		AF3BCB3F2CEC2A55003DC745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AF3BCC362CEF97FE003DC745 /* RentConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentConfirmView.swift; sourceTree = "<group>"; };
-		AF3BCC382CEF9829003DC745 /* RentConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentConfirmViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC3A2CF018E2003DC745 /* ParkingConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingConfirmView.swift; sourceTree = "<group>"; };
 		AF3BCC3C2CF0192E003DC745 /* ParkingConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingConfirmViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC3E2CF01ADF003DC745 /* InUseBikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InUseBikeViewModel.swift; sourceTree = "<group>"; };
@@ -182,7 +178,6 @@
 				AF12AFC02CD64B01004B32EB /* TempLockView.swift */,
 				AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */,
 				AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */,
-				AF3BCC362CEF97FE003DC745 /* RentConfirmView.swift */,
 				AF3BCC3A2CF018E2003DC745 /* ParkingConfirmView.swift */,
 				AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */,
 				AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */,
@@ -281,7 +276,6 @@
 			children = (
 				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
 				AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */,
-				AF3BCC382CEF9829003DC745 /* RentConfirmViewModel.swift */,
 				AF3BCC3C2CF0192E003DC745 /* ParkingConfirmViewModel.swift */,
 				AF3BCC3E2CF01ADF003DC745 /* InUseBikeViewModel.swift */,
 				AF3BCC402CF01C2F003DC745 /* TempLockViewModel.swift */,
@@ -442,7 +436,6 @@
 				AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */,
 				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
-				AF3BCC372CEF97FE003DC745 /* RentConfirmView.swift in Sources */,
 				AF3BCC3D2CF0192E003DC745 /* ParkingConfirmViewModel.swift in Sources */,
 				AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */,
 				AF3BCC3B2CF018E2003DC745 /* ParkingConfirmView.swift in Sources */,
@@ -450,7 +443,6 @@
 				AF3BCC472CF01FCC003DC745 /* HiBikeGuideView.swift in Sources */,
 				AF3BCC3F2CF01ADF003DC745 /* InUseBikeViewModel.swift in Sources */,
 				AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */,
-				AF3BCC392CEF9829003DC745 /* RentConfirmViewModel.swift in Sources */,
 				AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */,
 				AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */,
 				AF8F62242C90939C00D6E8E2 /* DomadoApp.swift in Sources */,

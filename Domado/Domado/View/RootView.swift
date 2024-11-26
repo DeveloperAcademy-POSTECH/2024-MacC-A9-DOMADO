@@ -80,8 +80,7 @@ struct RootView: View {
     private func sheetView(for sheet: SheetDestination) -> some View {
         switch sheet {
         case .confirmRent:
-            container.makeRentConfirmView()
-                .presentationDetents([.medium])
+            container.makeRentProgressView()
         case .confirmParking:
             container.makeParkingConfirmView()
                 .presentationDetents([.medium])
