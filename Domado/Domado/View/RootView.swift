@@ -28,22 +28,33 @@ struct RootView: View {
                 switch appState.authState {
                 case .unknown:
                     LoadingView()
-                case .authenticated:
-                    HomeView()
                 case .unauthenticated:
-                    //container.makeLoginView()
-                    CouponBook()
+                    container.makeLoginView()
+                case .authenticated:
+                    container.makeHomeView()
                 }
             }
             .errorAlert(errorState: globalErrorState)
             .navigationDestination(for: NavigationDestination.self) { destination in
                 destinationView(for: destination)
             }
-            .sheet(item: $router.activeSheet) { sheet in
-                sheetView(for: sheet)
-            }
+            // QR 스캐너 풀스크린일 때만 그 위에 시트를 보여줌
             .fullScreenCover(item: $router.activeFullScreen) { fullScreen in
-                fullScreenView(for: fullScreen)
+                switch fullScreen {
+                case .qrScanner:
+                    fullScreenView(for: fullScreen)
+                        .sheet(item: $router.activeSheet) { sheet in
+                            sheetView(for: sheet)
+                        }
+                default:
+                    fullScreenView(for: fullScreen)
+                }
+            }
+            // QR 스캐너가 아닐 때는 여기서 시트를 보여줌
+            .sheet(item: $router.activeSheet) { sheet in
+                if router.activeFullScreen != .qrScanner {
+                    sheetView(for: sheet)
+                }
             }
             
         }
@@ -53,22 +64,36 @@ struct RootView: View {
     @ViewBuilder
     private func destinationView(for destination: NavigationDestination) -> some View {
         switch destination {
-        case .stationDetail:
-            StationDetailView()
         case .inUse:
-            InUseBikeView()
+            container.makeInUserBikeView()
+                .navigationBarBackButtonHidden()
         case .tempLock:
-            TempLockView()
+            container.makeTempLockView()
+                .navigationBarBackButtonHidden()
         case .returnComplete:
             ReturnBikeView()
+                .navigationBarBackButtonHidden()
+        case .singUp:
+            container.makeSignupView()
         }
     }
     
     @ViewBuilder
     private func sheetView(for sheet: SheetDestination) -> some View {
         switch sheet {
-            case .qrScanner:
-            container.makeQRScannerView()
+        case .confirmRent:
+            container.makeRentConfirmView()
+                .presentationDetents([.medium])
+        case .confirmParking:
+            container.makeParkingConfirmView()
+                .presentationDetents([.medium])
+        case .showHiBikeGuide:
+            container.makeHiBikeGuideView()
+                .presentationDetents([.medium])
+        case .confirmUnParking:
+            container.makeUnparkingConfirmView()
+                .presentationDetents([.medium])
+            
         }
     }
     
@@ -79,6 +104,8 @@ struct RootView: View {
             container.makeLoginView()
         case .onboarding:
             container.makeOnboardingView()
+        case .qrScanner:
+            container.makeQRScannerView()
         }
     }
 }
@@ -87,7 +114,7 @@ struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         // Mock AppState with sample data
         
-        let container = AppContainer()
+        let container = AppContainer.shared
         
         return RootView(container: container)
             .environmentObject(container.makeAppState())

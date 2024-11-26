@@ -9,11 +9,18 @@ import Foundation
 
 /// Sheet 형태로 화면상에 보여줄 화면 목록입니다. 
 public enum SheetDestination: Identifiable, Hashable {
-    case qrScanner
+    case confirmRent
+    case confirmParking
+    case showHiBikeGuide
+    case confirmUnParking
     
     public var id:String {
         switch self {
-        case .qrScanner: return "qrScanner"
-    }
+        case .confirmRent: return "confirmRent"
+        case .confirmParking: return "confirmParking"
+        case .showHiBikeGuide: return "showHiBikeGuide"
+        case .confirmUnParking: return "confirmUnParking"
+            
+        }
     }
 }

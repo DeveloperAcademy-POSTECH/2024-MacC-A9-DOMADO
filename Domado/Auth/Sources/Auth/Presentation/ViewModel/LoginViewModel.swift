@@ -18,12 +18,14 @@ public final class LoginViewModel: ObservableObject {
     
     private let authUseCase: AuthUseCase
     private let appState: AppState
+    private let router: Routing
     
     // MARK: - Init
     
-    public init(authUseCase: AuthUseCase, appState: AppState) {
+    public init(authUseCase: AuthUseCase, appState: AppState, router: Routing) {
         self.authUseCase = authUseCase
         self.appState = appState
+        self.router = router
     }
     
     // MARK: - Public Methods
@@ -37,24 +39,35 @@ public final class LoginViewModel: ObservableObject {
             handleLoading(true)
             
             do {
-                let user = try await authUseCase.signIn(
+                let signInUser = try await authUseCase.signIn(
                     email: email,
                     password: password
                 )
                 
-                self.appState.updateAuthState(to: .authenticated)
+                //MARK: currentRental 존재시 BikeStatus에 따라 AppState 업데이트
+//                if signInUser.currentRentalId != nil {
+//                    self.appState.updateRideState(.active)
+//                }
+                
+                let currentUser = AppUser(id: signInUser.id, name: signInUser.name, hasRegisteredPayments: signInUser.hasRegisteredPayments, currentRentalId: signInUser.currentRentalId, stampCount: signInUser.stampCount, couponCount: signInUser.couponCount)
+                
+                self.appState.updateUserState(to: currentUser)
                 
             } catch let error as AuthError {
-                
+                //TODO: UseCase에서 로그인 정보 검증 로직 추가 + 검증에 따른 error 처리
+                // TODO: 사용자에게 보여줘야하는 에러 처리
             } catch {
+                
             }
             
             handleLoading(false)
         }
     }
     
-
-    @MainActor
+    func navigateToSignUp() {
+        router.navigateTo(.singUp)
+    }
+    
     private func handleLoading(_ loading: Bool) {
         isLoading = loading
     }

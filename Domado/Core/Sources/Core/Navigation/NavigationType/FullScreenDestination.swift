@@ -11,11 +11,13 @@ import Foundation
 public enum FullScreenDestination: Identifiable, Hashable{
     case login
     case onboarding
+    case qrScanner
     
     public var id: String {
         switch self {
         case .login: return "login"
         case .onboarding: return "onboarding"
+        case .qrScanner: return "qrScanner"
         }
     }
 }

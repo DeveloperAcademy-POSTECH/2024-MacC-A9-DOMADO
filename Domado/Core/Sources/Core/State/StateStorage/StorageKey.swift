@@ -31,5 +31,6 @@ public enum StorageKey: String, Sendable {
     case accessToken = "access_token"
     case refreshToken = "refresh_token"
     case userData = "user_data"
+    case deviceToken = "device_token"
     
 }

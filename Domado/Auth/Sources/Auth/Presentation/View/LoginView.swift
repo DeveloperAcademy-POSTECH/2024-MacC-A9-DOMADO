@@ -66,7 +66,7 @@ public struct LoginView: View {
             
             // Sign Up Button
             Button {
-                // Handle sign up navigation
+                vm.navigateToSignUp()
             } label: {
                 Text("계정이 없으신가요? 회원가입")
                     .foregroundColor(.blue)
