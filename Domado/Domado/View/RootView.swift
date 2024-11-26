@@ -28,9 +28,7 @@ struct RootView: View {
                 switch appState.authState {
                 case .unknown:
                     LoadingView()
-                case .unauthenticated:
-                    container.makeLoginView()
-                case .authenticated:
+                case .unauthenticated, .authenticated:
                     container.makeHomeView()
                 }
             }
@@ -105,7 +103,7 @@ struct RootView: View {
         case .onboarding:
             container.makeOnboardingView()
         case .qrScanner:
-            container.makeQRScannerView()
+            container.makeRentView()
         }
     }
 }

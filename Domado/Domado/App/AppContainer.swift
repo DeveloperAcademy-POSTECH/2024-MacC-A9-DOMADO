@@ -8,6 +8,7 @@
 import Auth
 import Core
 import Foundation
+import Rent 
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
@@ -114,12 +115,12 @@ final class AppContainer {
     
     
     // MARK: - Rent 의존성 관리
-    private func makeQRScannerViewModel() -> QRScannerViewModel {
-        return QRScannerViewModel(router: router)
+    private func makeRentViewModel() -> RentViewModel {
+        return RentViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
-    func makeQRScannerView() -> QRScannerView {
-        QRScannerView(vm: self.makeQRScannerViewModel())
+    func makeRentView() -> RentView {
+        RentView(viewModel: makeRentViewModel())
     }
     
     private func makeRentConfirmViewModel() -> RentConfirmViewModel {
