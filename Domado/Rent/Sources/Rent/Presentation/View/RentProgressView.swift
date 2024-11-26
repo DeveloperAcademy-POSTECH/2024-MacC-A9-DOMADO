@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Core
+import MapKit
 
 public struct RentProgressView: View {
     @StateObject private var viewModel: RentProgressViewModel
@@ -41,9 +42,10 @@ public struct RentProgressView: View {
                         .customFont(.station_lg_bold)
                 }
                 
-                // 맵 뷰
-                RoundedRectangle(cornerRadius: 20)
+                // 돌아갈 스테이션 표시 
+                Map()
                     .frame(width: 276, height: 186)
+                    .cornerRadius(20)
                     .foregroundStyle(Color.gray.opacity(0.2))
                 
                 // 정보 섹션
@@ -65,7 +67,7 @@ public struct RentProgressView: View {
                         .customFont(.body_sm_regular)
                         .foregroundColor(.gray)
                     
-                    Toggle("", isOn: $viewModel.isRental)
+                    Toggle("", isOn: $viewModel.isApplyCoupon)
                         .tint(.interactivePrimary)
                 }
                 .padding()
@@ -80,17 +82,9 @@ public struct RentProgressView: View {
                         viewModel.startRental()
                     }
                 }
+                .padding(.horizontal, 32)
             }
         }
-        .padding(.horizontal, 50)
     }
 }
 
-#Preview {
-    RentProgressView(viewModel: RentProgressViewModel(
-        bikeId: "73RY-SI33P1",
-        stationName: "무은재 기념관",
-        onComplete: {},
-        onDismiss: {}
-    ))
-}

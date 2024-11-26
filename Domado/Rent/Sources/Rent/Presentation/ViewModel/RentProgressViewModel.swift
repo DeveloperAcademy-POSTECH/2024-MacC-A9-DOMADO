@@ -9,33 +9,30 @@ import Foundation
 import Core
 
 public class RentProgressViewModel: ObservableObject {
-    @Published var isRental: Bool = false
-    @Published var bikeId: String = ""
-    @Published var stationName: String = ""
+    @Published var isApplyCoupon: Bool = false
+    /// AppState를 통해 주입
+    var bikeId: String = ""
+    var stationName: String = ""
     
-    private let onComplete: () -> Void
-    private let onDismiss: () -> Void
+    private let router: Routing
     
-    public init(
-        bikeId: String = "",
-        stationName: String = "",
-        onComplete: @escaping () -> Void,
-        onDismiss: @escaping () -> Void
-    ) {
-        self.bikeId = bikeId
-        self.stationName = stationName
-        self.onComplete = onComplete
-        self.onDismiss = onDismiss
+    public init(router: Routing) {
+        self.router = router
     }
     
     func startRental() {
         // 여기에 실제 대여 로직 구현
         print("자전거 대여 시작")
-        onComplete()
+        
+        // 화면 이동 로직
+        router.dismissSheet()
+        router.dismissFullScreen()
+        router.navigateTo(.inUse)
+       
     }
     
     func dismiss() {
-        onDismiss()
+        router.dismissSheet()
     }
 }
 
