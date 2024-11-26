@@ -10,8 +10,8 @@ import CodeScanner
 import AVFoundation
 
 public struct RentView: View {
-   @StateObject private var viewModel: RentViewModel
-   @State private var isTorchOn = false
+    @StateObject private var viewModel: RentViewModel
+    @State private var isTorchOn = false
    
    public init(viewModel: RentViewModel) {
        _viewModel = StateObject(wrappedValue: viewModel)
