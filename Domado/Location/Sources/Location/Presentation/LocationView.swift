@@ -10,10 +10,11 @@ import MapKit
 
 struct LocationView: View {
     /// 지도의 초기 카메라 위치 설정
-    @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
-        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
-    ))
+//    @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
+//        center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
+//        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
+//    ))
+    @State private var camera: MapCameraPosition = .automatic
     
     @State private var selectedHub: Hub?
     
@@ -48,21 +49,19 @@ struct LocationView: View {
                     ) {
                         VStack(spacing: 0) {
                             ZStack {
-                                Circle()
-                                    .fill(Color.white)
-                                    .frame(width: 44, height: 44)
-                                    .shadow(radius: 2)
-                                
+                                Image("hubpin", bundle: .module)
+
                                 // MarkerType에 따른 표시
                                 if case let .hub(availableBikes) = hub.markerType {
                                     Text("\(availableBikes)")
-                                        .font(.caption2)
-                                        .bold()
-                                        .foregroundColor(.blue)
+                                        .customFont(.button_md_semibold)
+                                        .foregroundColor(Color.grayScaleDarker)
+                                        .offset(y: -6)
                                 }
                             }
                         }
                     }
+                    .annotationTitles(.hidden)
                 }
             }
         }
