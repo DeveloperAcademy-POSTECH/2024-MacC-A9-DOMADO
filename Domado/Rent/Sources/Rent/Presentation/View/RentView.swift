@@ -133,11 +133,11 @@ public struct RentView: View {
                // QR 스캔 안내 텍스트
                VStack(alignment: .leading, spacing: 8) {
                    Text("QR코드 찍어주세요")
-                       .font(.title.bold())
+                       .customFont(.headline_lg)
                        .foregroundColor(.white)
                    
                    Text("QR을 찍고 하이파이브!\n이제 멋진 라이딩을 시작할 시간이에요")
-                       .font(.subheadline)
+                       .customFont(.body_md_regular)
                        .foregroundColor(.white.opacity(0.9))
                        .multilineTextAlignment(.leading)
                }
@@ -163,7 +163,7 @@ public struct RentView: View {
                                        .foregroundColor(.white)
                                )
                            Text("코드 번호\n직접 입력하기")
-                               .font(.caption)
+                               .customFont(.body_sm_regular)
                                .multilineTextAlignment(.center)
                                .foregroundColor(.white)
                        }
@@ -183,7 +183,7 @@ public struct RentView: View {
                                        .foregroundColor(.white)
                                )
                            Text("손전등")
-                               .font(.caption)
+                               .customFont(.body_sm_regular)
                                .foregroundColor(.white)
                        }
                    }

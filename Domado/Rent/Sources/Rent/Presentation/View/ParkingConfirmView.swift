@@ -21,8 +21,7 @@ public struct ParkingConfirmView: View {
             // Header with close button
             HStack {
                 Text("바이크를 주차할까요?")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .customFont(.headline_sm)
                 
                 Spacer()
                 
@@ -38,7 +37,7 @@ public struct ParkingConfirmView: View {
             // Description text
             VStack(alignment: .leading, spacing: 16) {
                 Text("자전거를 주차하시면 잠금장치가 걸려 안전하게\n보관됩니다. 하지만 주차 상태에서도 요금이 계속\n부과됩니다.")
-                    .foregroundColor(.secondary)
+                    .customFont(.body_sm_regular)
                     .lineSpacing(4)
                 
                 Text("안전 주차 안내")
@@ -46,7 +45,7 @@ public struct ParkingConfirmView: View {
                     .fontWeight(.bold)
                 
                 Text("장애인 주차 구역 및 점자블록은 주차하지 말아 주세요.\n이 구역에 주차 시, 자전거가 견인될 수 있습니다.")
-                    .foregroundColor(.secondary)
+                    .customFont(.body_sm_regular)
                     .lineSpacing(4)
             }
             
