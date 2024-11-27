@@ -7,13 +7,20 @@
 
 import SwiftUI
 
-struct BikeInfoCard: View {
+public struct BikeInfoCard: View {
     let remainingTime: String
     let batteryLevel: String
     let isParked: Bool
     let action: () -> Void
     
-    var body: some View {
+    public init(remainingTime: String, batteryLevel: String, isParked: Bool, action: @escaping () -> Void){
+        self.remainingTime = remainingTime
+        self.batteryLevel = batteryLevel
+        self.isParked = isParked
+        self.action = action
+    }
+    
+    public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 24)
                 .fill(isParked ? .white : Color.interactivePrimary)
@@ -95,7 +102,6 @@ struct BikeInfoCard: View {
         }
         .frame(height: 180)
     }
-    
     .padding()
     .background(Color.gray.opacity(0.5))
 
