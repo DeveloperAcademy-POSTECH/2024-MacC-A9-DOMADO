@@ -29,10 +29,9 @@ struct RootView: View {
                 case .unknown:
                     LoadingView()
                 case .unauthenticated, .authenticated:
-                    container.makeHomeView()
+                    container.makeHomeView().navigationBarHidden(true)
                 }
             }
-            .navigationBarHidden(true)
             .errorAlert(errorState: globalErrorState)
             .navigationDestination(for: NavigationDestination.self) { destination in
                 destinationView(for: destination)
@@ -57,6 +56,7 @@ struct RootView: View {
             }
             
         }
+        .navigationBarHidden(true)
     }
     
     // MARK: - View Builders
@@ -64,7 +64,8 @@ struct RootView: View {
     private func destinationView(for destination: NavigationDestination) -> some View {
         switch destination {
         case .inUse:
-            container.makeInUserBikeView()
+            container.makeActiveRentalView()
+                .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .tempLock:
             container.makeTempLockView()

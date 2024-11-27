@@ -136,12 +136,12 @@ final class AppContainer {
         RentProgressView(viewModel: makeRentProgressViewModel())
     }
     
-    private func makeInUserBikeViewModel() -> InUseBikeViewModel {
-        return InUseBikeViewModel(router: router)
+    private func makeActiveRentalViewModel() -> ActiveRentViewModel {
+        return ActiveRentViewModel(router: router)
     }
     
-    func makeInUserBikeView() -> InUseBikeView {
-        InUseBikeView(vm: self.makeInUserBikeViewModel())
+    func makeActiveRentalView() -> ActiveRentalView {
+        ActiveRentalView(vm: self.makeActiveRentalViewModel())
     }
     
     private func makeParkingConfirmViewModel() -> ParkingConfirmViewModel {
