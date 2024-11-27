@@ -81,6 +81,8 @@ struct RootView: View {
         switch sheet {
         case .confirmRent:
             container.makeRentProgressView()
+                .presentationDetents([.height(580)])
+                .presentationDragIndicator(.visible)
         case .confirmParking:
             container.makeParkingConfirmView()
                 .presentationDetents([.medium])
