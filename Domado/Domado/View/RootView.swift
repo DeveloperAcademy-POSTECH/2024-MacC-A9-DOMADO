@@ -32,6 +32,7 @@ struct RootView: View {
                     container.makeHomeView()
                 }
             }
+            .navigationBarHidden(true)
             .errorAlert(errorState: globalErrorState)
             .navigationDestination(for: NavigationDestination.self) { destination in
                 destinationView(for: destination)
