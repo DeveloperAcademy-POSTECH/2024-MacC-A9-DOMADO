@@ -69,6 +69,7 @@ struct RootView: View {
                 .navigationBarBackButtonHidden()
         case .tempLock:
             container.makeTempLockView()
+                .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .returnComplete:
             ReturnBikeView()
