@@ -1,17 +1,18 @@
 //
 //  File.swift
-//  Domado
+//  Rent
 //
-//  Created by 이종선 on 11/22/24.
+//  Created by 이종선 on 11/27/24.
 //
 
+import Core
 import Foundation
 
-class ParkingConfirmViewModel: ObservableObject {
+public class ParkingConfirmViewModel: ObservableObject {
     
-    private let router: AppRouter
+    private let router: Routing
     
-    init(router: AppRouter) {
+    public init(router: Routing) {
         self.router = router
     }
     
