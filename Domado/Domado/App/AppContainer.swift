@@ -8,7 +8,8 @@
 import Auth
 import Core
 import Foundation
-import Rent 
+import Rent
+import Location
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
@@ -44,6 +45,8 @@ final class AppContainer {
             logger: logService as! CoreLogger,
             networkManager: networkManager as! CoreNetworkManager
         )
+        
+        self.locationManager = LocationManager()
     }
     
     
@@ -55,6 +58,7 @@ final class AppContainer {
     private let networkManager: NetworkManager
     private let webSocketManager: WebSocketManager
     private let pushNotificationManager: PushNotificationManager
+    private let locationManager: LocationManager
     
     private lazy var appState: AppState = { AppState(storage: stateStorage) }()
     private lazy var router: AppRouter = { AppRouter() }()
@@ -64,6 +68,7 @@ final class AppContainer {
     func makeGlobalErrorState() -> GlobalErrorState { gloablErrorState }
     func makeAppRouter() -> AppRouter { router }
     func makePushNotificationManager() -> PushNotificationManager { pushNotificationManager }
+    func makeLocationManager() -> LocationManager { locationManager }
     
     
     // MARK: - View 반환 메서드
