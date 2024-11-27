@@ -36,3 +36,9 @@ public struct Bike: MapDisplayable, Identifiable {
         self.homeHubName = homeHubName
     }
 }
+
+extension Bike: Equatable {
+    public static func == (lhs: Bike, rhs: Bike) -> Bool {
+        lhs.id == rhs.id
+    }
+}
