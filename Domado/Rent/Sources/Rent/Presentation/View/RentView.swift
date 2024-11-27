@@ -10,8 +10,7 @@ import CodeScanner
 import AVFoundation
 
 public struct RentView: View {
-   @StateObject private var viewModel: RentViewModel
-   @State private var isTorchOn = false
+    @StateObject private var viewModel: RentViewModel
    
    public init(viewModel: RentViewModel) {
        _viewModel = StateObject(wrappedValue: viewModel)
@@ -23,6 +22,7 @@ public struct RentView: View {
            CodeScannerView(
                codeTypes: [.qr],
                simulatedData: "BIKE-123",
+               isTorchOn: viewModel.isTorchOn,
                completion: viewModel.handleScan
            )
            
@@ -120,12 +120,12 @@ public struct RentView: View {
                        viewModel.dismiss()
                    } label: {
                        Image(systemName: "xmark")
-                           
                            .font(.system(size: 21))
                            .foregroundColor(.blue)
                            .padding(8)
                    }
                    .padding(.trailing, 15)
+                   .padding(.top, 15)
                }
                
                Spacer()
@@ -133,11 +133,11 @@ public struct RentView: View {
                // QR 스캔 안내 텍스트
                VStack(alignment: .leading, spacing: 8) {
                    Text("QR코드 찍어주세요")
-                       .font(.title.bold())
+                       .customFont(.headline_lg)
                        .foregroundColor(.white)
                    
                    Text("QR을 찍고 하이파이브!\n이제 멋진 라이딩을 시작할 시간이에요")
-                       .font(.subheadline)
+                       .customFont(.body_md_regular)
                        .foregroundColor(.white.opacity(0.9))
                        .multilineTextAlignment(.leading)
                }
@@ -163,14 +163,14 @@ public struct RentView: View {
                                        .foregroundColor(.white)
                                )
                            Text("코드 번호\n직접 입력하기")
-                               .font(.caption)
+                               .customFont(.body_sm_regular)
                                .multilineTextAlignment(.center)
                                .foregroundColor(.white)
                        }
                    }
                    
                    Button {
-                       toggleTorch()
+                       viewModel.isTorchOn.toggle()
                    } label: {
                        VStack(spacing: 10) {
                            Circle()
@@ -178,12 +178,12 @@ public struct RentView: View {
                                .frame(width: 56, height: 56)
                                
                                .overlay(
-                                   Image(systemName: isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
+                                Image(systemName: viewModel.isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
                                        .font(.system(size: 24))
                                        .foregroundColor(.white)
                                )
                            Text("손전등")
-                               .font(.caption)
+                               .customFont(.body_sm_regular)
                                .foregroundColor(.white)
                        }
                    }
@@ -192,6 +192,7 @@ public struct RentView: View {
            }
            .padding(.top, 20)
        }
+       .ignoresSafeArea()
        .alert("스캔 결과", isPresented: $viewModel.showAlert) {
            Button("확인") { viewModel.dismissAlert() }
        } message: {
@@ -199,25 +200,5 @@ public struct RentView: View {
        }
    }
    
-   private func toggleTorch() {
-       guard let device = AVCaptureDevice.default(for: .video),
-             device.hasTorch else { return }
-       
-       do {
-           try device.lockForConfiguration()
-           
-           if device.torchMode == .off {
-               try device.setTorchModeOn(level: 1.0)
-               isTorchOn = true
-           } else {
-               device.torchMode = .off
-               isTorchOn = false
-           }
-           
-           device.unlockForConfiguration()
-       } catch {
-           print("손전등 토글 실패: \(error.localizedDescription)")
-       }
-   }
 }
 

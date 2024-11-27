@@ -33,6 +33,7 @@ struct DomadoApp: App {
                 .task {
                     // 앱 실행 시 권한 요청
                     await AppContainer.shared.makePushNotificationManager().requestAuthorization()
+                    AppContainer.shared.makeLocationManager().requestAuthorization()
                 }
             
         }

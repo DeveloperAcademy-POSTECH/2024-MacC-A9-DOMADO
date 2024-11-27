@@ -28,10 +28,8 @@ struct RootView: View {
                 switch appState.authState {
                 case .unknown:
                     LoadingView()
-                case .unauthenticated:
-                    container.makeLoginView()
-                case .authenticated:
-                    container.makeHomeView()
+                case .unauthenticated, .authenticated:
+                    container.makeHomeView().navigationBarHidden(true)
                 }
             }
             .errorAlert(errorState: globalErrorState)
@@ -58,6 +56,7 @@ struct RootView: View {
             }
             
         }
+        .navigationBarHidden(true)
     }
     
     // MARK: - View Builders
@@ -65,10 +64,12 @@ struct RootView: View {
     private func destinationView(for destination: NavigationDestination) -> some View {
         switch destination {
         case .inUse:
-            container.makeInUserBikeView()
+            container.makeActiveRentalView()
+                .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .tempLock:
             container.makeTempLockView()
+                .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .returnComplete:
             ReturnBikeView()
@@ -82,8 +83,9 @@ struct RootView: View {
     private func sheetView(for sheet: SheetDestination) -> some View {
         switch sheet {
         case .confirmRent:
-            container.makeRentConfirmView()
-                .presentationDetents([.medium])
+            container.makeRentProgressView()
+                .presentationDetents([.height(580)])
+                .presentationDragIndicator(.visible)
         case .confirmParking:
             container.makeParkingConfirmView()
                 .presentationDetents([.medium])
@@ -105,7 +107,7 @@ struct RootView: View {
         case .onboarding:
             container.makeOnboardingView()
         case .qrScanner:
-            container.makeQRScannerView()
+            container.makeRentView()
         }
     }
 }

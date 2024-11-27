@@ -7,6 +7,7 @@
 
 import Core
 import Foundation
+import _MapKit_SwiftUI
 
 class HomeViewModel: ObservableObject {
     
@@ -19,6 +20,7 @@ class HomeViewModel: ObservableObject {
     @Published var lastMessage: String?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
        
     private var messageTask: Task<Void, Never>?
     

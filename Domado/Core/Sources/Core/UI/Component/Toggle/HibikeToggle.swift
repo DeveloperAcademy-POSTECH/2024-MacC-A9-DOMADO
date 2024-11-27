@@ -7,11 +7,18 @@
 
 import SwiftUI
 
-struct HibikeToggle: View {
+public struct HibikeToggle: View {
     @Binding var isOn: Bool
-    let action: () -> Void
+    let hiBikeAction: () -> Void
+    let helpAction: () -> Void
     
-    var body: some View {
+    public init(isOn: Binding<Bool>, hibikeAction: @escaping () -> Void, helpAction: @escaping () -> Void){
+        self._isOn = isOn
+        self.hiBikeAction = hibikeAction
+        self.helpAction = helpAction
+    }
+    
+    public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
                 .fill(isOn ? .yellow : .white)
@@ -33,7 +40,7 @@ struct HibikeToggle: View {
     
     private var helpButton: some View {
         Button {
-            // Sheet navigation logic here
+            helpAction()
         } label: {
             Image(systemName: "questionmark.circle")
                 .fontWeight(.bold)
@@ -46,22 +53,7 @@ struct HibikeToggle: View {
             .labelsHidden()
             .tint(.interactivePrimary)
             .onChange(of: isOn) { oldValue, newValue in
-                action()
+                hiBikeAction()
             }
     }
-}
-
-#Preview {
-    VStack {
-        HibikeToggle(isOn: .constant(false)) {
-            print("토글 상태가 변경되었습니다")
-        }
-        .padding()
-        
-        HibikeToggle(isOn: .constant(true)) {
-            print("토글 상태가 변경되었습니다")
-        }
-        .padding()
-    }
-    .background(Color.gray.opacity(0.5))
 }
