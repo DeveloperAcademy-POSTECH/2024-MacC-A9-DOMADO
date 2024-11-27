@@ -7,11 +7,16 @@
 
 import SwiftUI
 
-struct HibikeToggle: View {
+public struct HibikeToggle: View {
     @Binding var isOn: Bool
     let action: () -> Void
     
-    var body: some View {
+    public init(isOn: Binding<Bool>, action: @escaping () -> Void){
+        self._isOn = isOn
+        self.action = action
+    }
+    
+    public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
                 .fill(isOn ? .yellow : .white)
