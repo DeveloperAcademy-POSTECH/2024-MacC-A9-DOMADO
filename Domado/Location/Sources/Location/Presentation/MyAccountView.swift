@@ -137,15 +137,12 @@ struct MyAccountView: View {
                                 RideHistoryCell()
                                 RideHistoryCell()
                                 RideHistoryCell()
-                                
-                                
                             }
                             .padding(.horizontal, 42)
                         }
-                        
                     }
-                    
                 }
+                .scrollIndicators(.hidden)
             }
         }
     }
