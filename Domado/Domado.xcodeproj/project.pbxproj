@@ -14,7 +14,6 @@
 		AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB02CD611C7004B32EB /* AppRouter.swift */; };
 		AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB42CD6481B004B32EB /* LoadingView.swift */; };
 		AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB62CD64825004B32EB /* HomeView.swift */; };
-		AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC02CD64B01004B32EB /* TempLockView.swift */; };
 		AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */; };
 		AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */; };
 		AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */; };
@@ -24,7 +23,6 @@
 		AF2961402CDA557400DAF5BB /* Payment in Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; };
 		AF2961412CDA557400DAF5BB /* Payment in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */; };
-		AF3BCC412CF01C2F003DC745 /* TempLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC402CF01C2F003DC745 /* TempLockViewModel.swift */; };
 		AF3BCC432CF01E40003DC745 /* UnparkingConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */; };
 		AF3BCC452CF01EC3003DC745 /* UnparkingConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */; };
 		AF3BCC472CF01FCC003DC745 /* HiBikeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */; };
@@ -86,7 +84,6 @@
 		AF12AFB02CD611C7004B32EB /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		AF12AFB42CD6481B004B32EB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AF12AFB62CD64825004B32EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AF12AFC02CD64B01004B32EB /* TempLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempLockView.swift; sourceTree = "<group>"; };
 		AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnBikeView.swift; sourceTree = "<group>"; };
 		AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalErrorState.swift; sourceTree = "<group>"; };
@@ -95,7 +92,6 @@
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		AF3BCB3F2CEC2A55003DC745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AF3BCC402CF01C2F003DC745 /* TempLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempLockViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnparkingConfirmView.swift; sourceTree = "<group>"; };
 		AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnparkingConfirmViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideView.swift; sourceTree = "<group>"; };
@@ -166,7 +162,6 @@
 			children = (
 				AF12AFB42CD6481B004B32EB /* LoadingView.swift */,
 				AF12AFB62CD64825004B32EB /* HomeView.swift */,
-				AF12AFC02CD64B01004B32EB /* TempLockView.swift */,
 				AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */,
 				AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */,
 				AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */,
@@ -266,7 +261,6 @@
 			children = (
 				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
 				AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */,
-				AF3BCC402CF01C2F003DC745 /* TempLockViewModel.swift */,
 				AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */,
 				AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */,
 			);
@@ -410,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */,
-				AF3BCC412CF01C2F003DC745 /* TempLockViewModel.swift in Sources */,
 				AF8F62262C90939C00D6E8E2 /* RootView.swift in Sources */,
 				AF3BCC452CF01EC3003DC745 /* UnparkingConfirmViewModel.swift in Sources */,
 				AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */,
@@ -420,7 +413,6 @@
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
 				AF3BCC492CF020A1003DC745 /* HiBikeGuideViewModel.swift in Sources */,
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
-				AF12AFC12CD64B01004B32EB /* TempLockView.swift in Sources */,
 				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
 				AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */,
