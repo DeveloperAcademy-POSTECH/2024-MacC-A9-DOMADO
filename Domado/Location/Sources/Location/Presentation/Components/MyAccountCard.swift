@@ -14,6 +14,8 @@ struct MyAccountCard: View {
     var userName: String = "김경림"
     var userId: String = "thou8and"
     
+    @State private var showMyAccountView = false  // 상태 변수 추가
+    
     
     var body: some View {
         Rectangle()
@@ -32,7 +34,7 @@ struct MyAccountCard: View {
                         }
                         Spacer()
                         Button(action: {
-                            // 내 정보 보기로 넘어가~
+                            showMyAccountView = true
                         }, label: {
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(Color.grayScaleLightHover)
@@ -59,6 +61,9 @@ struct MyAccountCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .frame(width: width, height: height)
             .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 0)
+            .fullScreenCover(isPresented: $showMyAccountView) {
+                            MyAccountView()  // MyAccountView 모달로 표시
+                        }
         
     }
 }

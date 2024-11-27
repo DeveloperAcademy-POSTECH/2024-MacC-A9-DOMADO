@@ -40,7 +40,7 @@ public struct CouponBook: View {
                                         .foregroundStyle(Color.brownLightActive)
                                         .customFont(.body_md_regular)
                                 )
-                                .offset(x: CGFloat(index * 60), y: index % 2 == 0 ? 33 : 0)
+                                .offset(x: CGFloat(index * 60), y: index % 2 == 0 ? 36 : 0)
                         }
                         
                     }
