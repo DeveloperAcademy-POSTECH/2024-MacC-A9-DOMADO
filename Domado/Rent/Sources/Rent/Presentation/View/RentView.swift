@@ -23,6 +23,7 @@ public struct RentView: View {
            CodeScannerView(
                codeTypes: [.qr],
                simulatedData: "BIKE-123",
+               isTorchOn: isTorchOn,
                completion: viewModel.handleScan
            )
            
@@ -170,7 +171,7 @@ public struct RentView: View {
                    }
                    
                    Button {
-                       toggleTorch()
+                       isTorchOn.toggle()
                    } label: {
                        VStack(spacing: 10) {
                            Circle()
@@ -200,25 +201,5 @@ public struct RentView: View {
        }
    }
    
-   private func toggleTorch() {
-       guard let device = AVCaptureDevice.default(for: .video),
-             device.hasTorch else { return }
-       
-       do {
-           try device.lockForConfiguration()
-           
-           if device.torchMode == .off {
-               try device.setTorchModeOn(level: 1.0)
-               isTorchOn = true
-           } else {
-               device.torchMode = .off
-               isTorchOn = false
-           }
-           
-           device.unlockForConfiguration()
-       } catch {
-           print("손전등 토글 실패: \(error.localizedDescription)")
-       }
-   }
 }
 
