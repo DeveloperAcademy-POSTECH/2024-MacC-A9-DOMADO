@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct LocationView: View {
+    @StateObject private var locationManager = LocationManager()
+    
     /// 지도의 초기 카메라 위치 설정
     @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
@@ -62,6 +64,22 @@ struct LocationView: View {
     var body: some View {
         ZStack(alignment: .top) {
             Map(position: $camera) {
+                // 사용자 위치 표시
+                if let userLocation = locationManager.userLocation {
+                    Annotation("현재 위치", coordinate: userLocation) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.MylocationMarker)
+                                .frame(width: 19, height: 19)
+                            Circle()
+                                .fill(Color.grayScaleWhite)
+                                .frame(width: 27, height: 27)
+                                .shadow(color: Color.MylocationMarker, radius: 15.7, x: 0, y: 0)
+                        }
+                    }
+                }
+                
+                
                 // Hubs 표시
                 ForEach(hubs) { hub in
                     if let coordinate = hub.coordinate {
@@ -130,6 +148,16 @@ struct LocationView: View {
                 // 지도를 탭하면 선택 해제
                 selectedHub = nil
                 selectedBike = nil
+            }
+            // 사용자 위치가 업데이트될 때마다 카메라 위치 업데이트
+            // locationManager가 publish하는 값이 바뀔 때마다 실행
+            .onReceive(locationManager.$userLocation) { newLocation in
+                if let location = newLocation {
+                    camera = .region(MKCoordinateRegion(
+                        center: location,
+                        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
+                    ))
+                }
             }
             
             
