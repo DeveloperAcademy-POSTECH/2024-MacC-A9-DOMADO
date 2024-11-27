@@ -37,9 +37,9 @@ struct MyAccountView: View {
                             .fontWeight(.semibold)
                     }
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 12)
-                .padding(.bottom, 20)
+                .padding(.horizontal, 23)
+                .padding(.top, 11)
+                .padding(.bottom, 8)
                 
                 ScrollView(.vertical) {
                     VStack(spacing: 0) { // 제일 바깥 -> 스크롤뷰 28
@@ -58,11 +58,11 @@ struct MyAccountView: View {
                                                     .customFont(.batterynumber)
                                                     .foregroundStyle(Color.grayScaleDarker)
                                                     .padding(.bottom, 10)
-                                                // 이미지 삽입
                                                 ZStack{
                                                     Image("coupon", bundle: .module)
                                                     Image("char1", bundle: .module)
                                                         .offset(x: 20, y: 40)
+                                                        .modifier(BouncingAnimation(isReversed: false, delay: 2))
                                                 }
                                             }
                                         )
@@ -82,11 +82,11 @@ struct MyAccountView: View {
                                                     .customFont(.batterynumber)
                                                     .foregroundStyle(Color.grayScaleDarker)
                                                     .padding(.bottom, 10)
-                                                // 이미지 삽입
                                                 ZStack{
                                                     Image("cash", bundle: .module)
                                                     Image("char2", bundle: .module)
                                                         .offset(y: 10)
+                                                        .modifier(BouncingAnimation(isReversed: false, delay: 1.5))
                                                 }
                                             }
                                         )
@@ -141,12 +141,39 @@ struct MyAccountView: View {
                             .padding(.horizontal, 42)
                         }
                     }
+                    .padding(.top, 14)
                 }
                 .scrollIndicators(.hidden)
             }
         }
     }
     
+}
+
+// 애니메이션 적용
+struct BouncingAnimation: ViewModifier {
+    let isReversed: Bool
+    let delay: Double
+    @State private var isAnimating = false
+    
+    init(isReversed: Bool = false, delay: Double = 0) {
+        self.isReversed = isReversed
+        self.delay = delay
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .offset(y: isAnimating ? (isReversed ? 9 : -8) : 0)
+            .animation(
+                Animation.easeInOut(duration: 1.3)
+                    .repeatForever()
+                    .delay(delay),
+                value: isAnimating
+            )
+            .onAppear {
+                isAnimating = true
+            }
+    }
 }
 
 #Preview {
