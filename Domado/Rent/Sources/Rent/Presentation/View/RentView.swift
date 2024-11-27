@@ -120,12 +120,12 @@ public struct RentView: View {
                        viewModel.dismiss()
                    } label: {
                        Image(systemName: "xmark")
-                           
                            .font(.system(size: 21))
                            .foregroundColor(.blue)
                            .padding(8)
                    }
                    .padding(.trailing, 15)
+                   .padding(.top, 15)
                }
                
                Spacer()
@@ -192,6 +192,7 @@ public struct RentView: View {
            }
            .padding(.top, 20)
        }
+       .ignoresSafeArea()
        .alert("스캔 결과", isPresented: $viewModel.showAlert) {
            Button("확인") { viewModel.dismissAlert() }
        } message: {
