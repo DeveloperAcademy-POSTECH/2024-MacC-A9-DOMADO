@@ -11,7 +11,6 @@ import AVFoundation
 
 public struct RentView: View {
     @StateObject private var viewModel: RentViewModel
-    @State private var isTorchOn = false
    
    public init(viewModel: RentViewModel) {
        _viewModel = StateObject(wrappedValue: viewModel)
@@ -23,7 +22,7 @@ public struct RentView: View {
            CodeScannerView(
                codeTypes: [.qr],
                simulatedData: "BIKE-123",
-               isTorchOn: isTorchOn,
+               isTorchOn: viewModel.isTorchOn,
                completion: viewModel.handleScan
            )
            
@@ -171,7 +170,7 @@ public struct RentView: View {
                    }
                    
                    Button {
-                       isTorchOn.toggle()
+                       viewModel.isTorchOn.toggle()
                    } label: {
                        VStack(spacing: 10) {
                            Circle()
@@ -179,7 +178,7 @@ public struct RentView: View {
                                .frame(width: 56, height: 56)
                                
                                .overlay(
-                                   Image(systemName: isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
+                                Image(systemName: viewModel.isTorchOn ? "flashlight.on.fill" : "flashlight.off.fill")
                                        .font(.system(size: 24))
                                        .foregroundColor(.white)
                                )

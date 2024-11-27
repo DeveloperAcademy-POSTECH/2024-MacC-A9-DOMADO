@@ -11,6 +11,7 @@ import CodeScanner
 
 public class RentViewModel: ObservableObject {
     @Published var showAlert = false
+    @Published var isTorchOn = false 
     var alertMessage = ""
     
     //private let rentUseCase: RentUseCase
