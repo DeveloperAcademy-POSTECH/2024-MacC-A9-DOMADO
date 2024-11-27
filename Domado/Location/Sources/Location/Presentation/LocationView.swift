@@ -10,11 +10,11 @@ import MapKit
 
 struct LocationView: View {
     /// 지도의 초기 카메라 위치 설정
-//    @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
-//        center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
-//        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
-//    ))
-    @State private var camera: MapCameraPosition = .automatic
+    @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
+        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
+    ))
+    
     
     @State private var selectedHub: Hub?
     
@@ -34,34 +34,78 @@ struct LocationView: View {
         Hub(id: "403", hubName: "가속기IBS", coordinate: (36.023726, 129.312361), availableBikes: 3, stations: [])
     ]
     
+    // HiBike Data
+    let hiBikes: [Bike] = [
+        // 교사 지역 (5대)
+        Bike(coordinate: (36.012300, 129.321500), id: "BIKE046", bikeName: "BIKE046", isHiBike: true, batteryLevel: 87, homeHubName: "무은재기념관"),
+        //        Bike(coordinate: (36.012100, 129.321200), id: "BIKE047", bikeName: "BIKE047", isHiBike: true, batteryLevel: 84, homeHubName: "학생회관"),
+        //        Bike(coordinate: (36.012000, 129.320800), id: "BIKE048", bikeName: "BIKE048", isHiBike: true, batteryLevel: 76, homeHubName: "환경공학동"),
+        //        Bike(coordinate: (36.011900, 129.321700), id: "BIKE049", bikeName: "BIKE049", isHiBike: true, batteryLevel: 81, homeHubName: "무은재기념관"),
+        //        Bike(coordinate: (36.012400, 129.321100), id: "BIKE050", bikeName: "BIKE050", isHiBike: true, batteryLevel: 89, homeHubName: "학생회관"),
+        
+        // 생활관 지역 (5대)
+        Bike(coordinate: (36.016500, 129.321000), id: "BIKE051", bikeName: "BIKE051", isHiBike: true, batteryLevel: 86, homeHubName: "생활관21동"),
+        //        Bike(coordinate: (36.016300, 129.321200), id: "BIKE052", bikeName: "BIKE052", isHiBike: true, batteryLevel: 83, homeHubName: "생활관3동"),
+        //        Bike(coordinate: (36.016700, 129.321500), id: "BIKE053", bikeName: "BIKE053", isHiBike: true, batteryLevel: 85, homeHubName: "생활관12동"),
+        //        Bike(coordinate: (36.016900, 129.321800), id: "BIKE054", bikeName: "BIKE054", isHiBike: true, batteryLevel: 80, homeHubName: "생활관15동"),
+        //        Bike(coordinate: (36.016200, 129.320900), id: "BIKE055", bikeName: "BIKE055", isHiBike: true, batteryLevel: 75, homeHubName: "생활관21동"),
+        
+        // 인화지역 (5대)
+        Bike(coordinate: (36.011800, 129.326500), id: "BIKE056", bikeName: "BIKE056", isHiBike: true, batteryLevel: 82, homeHubName: "박태준학술정보관"),
+                Bike(coordinate: (36.011500, 129.326800), id: "BIKE057", bikeName: "BIKE057", isHiBike: true, batteryLevel: 88, homeHubName: "박태준학술정보관"),
+        //        Bike(coordinate: (36.011200, 129.327000), id: "BIKE058", bikeName: "BIKE058", isHiBike: true, batteryLevel: 79, homeHubName: "친환경소재대학원"),
+        //        Bike(coordinate: (36.011600, 129.326700), id: "BIKE059", bikeName: "BIKE059", isHiBike: true, batteryLevel: 92, homeHubName: "박태준학술정보관"),
+        //        Bike(coordinate: (36.011000, 129.327200), id: "BIKE060", bikeName: "BIKE060", isHiBike: true, batteryLevel: 87, homeHubName: "친환경소재대학원")
+    ]
+    
+    
     var body: some View {
         Map(position: $camera) {
-            // ForEach로 허브마다 Annotation 생성
+            // Hubs 표시
             ForEach(hubs) { hub in
                 if let coordinate = hub.coordinate {
                     Annotation(
                         hub.hubName,
                         coordinate: CLLocationCoordinate2D(
-                            latitude: coordinate.latitude,
-                            longitude: coordinate.longitude
+                            latitude: coordinate.0,
+                            longitude: coordinate.1
                         ),
                         anchor: .bottom
                     ) {
-                        VStack(spacing: 0) {
-                            ZStack {
-                                Image("hubpin", bundle: .module)
-
-                                // MarkerType에 따른 표시
-                                if case let .hub(availableBikes) = hub.markerType {
-                                    Text("\(availableBikes)")
-                                        .customFont(.button_md_semibold)
-                                        .foregroundColor(Color.grayScaleDarker)
-                                        .offset(y: -6)
-                                }
-                            }
+                        ZStack {
+                            Image("hubpin", bundle: .module)
+                            
+                            Text("\(hub.availableBikes)")
+                                .customFont(.button_md_semibold)
+                                .foregroundColor(Color.grayScaleDarker)
+                                .offset(y: -6)
                         }
                     }
-                    .annotationTitles(.hidden)
+                }
+            }
+            
+            // HiBikes 표시
+            ForEach(hiBikes) { bike in
+                if let coordinate = bike.coordinate {
+                    Annotation(
+                        bike.bikeName,
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: coordinate.0,
+                            longitude: coordinate.1
+                        ),
+                        anchor: .bottom
+                    ) {
+                        ZStack {
+                            Image("hiBikepin", bundle: .module)
+                            
+                            Text(bike.homeHubName.hasPrefix("생활관")
+                                ? "생\(bike.homeHubName.filter { $0.isNumber })"
+                                : "\(bike.homeHubName.prefix(2))")
+                                .customFont(.button_md_semibold)
+                                .foregroundColor(Color.grayScaleDarker)
+                                .offset(x: 6)
+                        }
+                    }
                 }
             }
         }
