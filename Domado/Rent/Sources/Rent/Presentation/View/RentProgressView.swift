@@ -18,7 +18,7 @@ public struct RentProgressView: View {
     }
     
     public var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: 0) {
             // 상단
             HStack {
                 Text("바이크를 대여할까요?")
@@ -32,9 +32,11 @@ public struct RentProgressView: View {
                         .fontWeight(.bold)
                 }
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top)
+            .padding(.bottom, 10)
             
-            VStack(alignment: .center, spacing: 25) {
+            VStack(alignment: .center, spacing: 20) {
                 HStack {
                     Image(systemName: "house.fill")
                         .foregroundStyle(Color.interactivePrimary)
@@ -42,14 +44,19 @@ public struct RentProgressView: View {
                         .customFont(.station_lg_bold)
                 }
                 
-                // 돌아갈 스테이션 표시 
-                Map()
-                    .frame(width: 276, height: 186)
-                    .cornerRadius(20)
-                    .foregroundStyle(Color.gray.opacity(0.2))
+                // 돌아갈 스테이션 표시
+                Map(position: $viewModel.cameraPosition) {
+                    Marker(viewModel.stationName, coordinate: viewModel.coordinate)
+                        .tint(Color.MylocationMarker)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 186)
+                .cornerRadius(20)
+                .foregroundStyle(Color.gray.opacity(0.2))
+                .padding(.horizontal)
                 
                 // 정보 섹션
-                VStack {
+                VStack(spacing: 8) {
                     Text("바이크 \(viewModel.bikeId)은")
                         .customFont(.body_md_regular)
                         .opacity(0.5)
@@ -67,24 +74,72 @@ public struct RentProgressView: View {
                         .customFont(.body_sm_regular)
                         .foregroundColor(.gray)
                     
+                    Spacer()
+                    
                     Toggle("", isOn: $viewModel.isApplyCoupon)
                         .tint(.interactivePrimary)
                 }
                 .padding()
+                .background(Color.gray.opacity(0.05))
+                .cornerRadius(12)
+                .padding(.horizontal)
                 
                 // 하단 버튼
-                HStack(spacing: 0) {
-                    SlideButton(
-                        title: "바이크 대여하기 →",
-                        slideIcon: "bicycle",
-                        lockIcon: "lock.open"
-                    ) {
-                        viewModel.startRental()
-                    }
+                SlideButton(
+                    title: "바이크 대여하기 →",
+                    slideIcon: "bicycle",
+                    lockIcon: "lock.open"
+                ) {
+                    viewModel.startRental()
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal)
+                .padding(.bottom, 20)
             }
         }
     }
 }
 
+
+// MARK: - Preview
+struct RentProgressView_Previews: PreviewProvider {
+    static var previews: some View {
+        Color.gray.opacity(0.1) // 배경색
+            .sheet(isPresented: .constant(true)) {
+                RentProgressView(viewModel: RentProgressViewModel(router: MockRouting()))
+                .presentationDetents([.height(580)]) // Sheet 높이 고정
+                .presentationDragIndicator(.visible) // 드래그 인디케이터 표시
+            }
+    }
+}
+
+class MockRouting: Routing {
+    func navigateTo(_ destination: Core.NavigationDestination) {
+        
+    }
+    
+    func navigateBack() {
+        
+    }
+    
+    func popToRoot() {
+        
+    }
+    
+    func present(sheet: Core.SheetDestination) {
+        
+    }
+    
+    func dismissSheet() {
+        
+    }
+    
+    func present(fullScreen: Core.FullScreenDestination) {
+         
+    }
+    
+    func dismissFullScreen() {
+        
+    }
+    
+
+}
