@@ -175,4 +175,12 @@ final class AppContainer {
     func makeUnparkingConfirmView() -> UnparkingConfirmView {
         UnparkingConfirmView(vm: self.makeUnparkingConfirmViewModel())
     }
+    
+    private func makeReturnBikeView() -> ReturnBikeViewModel {
+        return ReturnBikeViewModel(router: router)
+    }
+    
+    func makeReturnBikeView() -> ReturnBikeView {
+        ReturnBikeView(vm: self.makeReturnBikeView())
+    }
 }

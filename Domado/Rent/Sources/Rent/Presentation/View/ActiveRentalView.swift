@@ -23,6 +23,16 @@ public struct ActiveRentalView: View {
                 UserAnnotation()
             }
             .mapStyle(.standard)
+            // MARK: 추후 삭제
+            .overlay(alignment: .topLeading){
+                Button {
+                    vm.showPaymentGuide()
+                } label: {
+                    Rectangle()
+                        .frame(width: 50, height: 50)
+                        .opacity(0)
+                }
+            }
             .overlay(alignment: .bottom) {
                 BikeInfoCard(remainingTime: vm.remainingTime, batteryLevel: vm.batteryLevel, isParked: vm.isParked) {
                     // 자전거 주차하기

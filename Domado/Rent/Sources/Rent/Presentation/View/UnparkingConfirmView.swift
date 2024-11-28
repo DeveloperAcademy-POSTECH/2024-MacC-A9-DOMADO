@@ -1,53 +1,61 @@
 //
-//  SwiftUIView.swift
+//  File.swift
 //  Rent
 //
 //  Created by 이종선 on 11/27/24.
 //
 
 import Core
+import Foundation
 import SwiftUI
 
-public struct ParkingConfirmView: View {
-   
-    @StateObject private var vm:ParkingConfirmViewModel
+public struct UnparkingConfirmView: View {
     
-    public init(vm: ParkingConfirmViewModel) {
+    @StateObject private var vm: UnparkingConfirmViewModel
+    
+    public init(vm: UnparkingConfirmViewModel){
         _vm = StateObject(wrappedValue: vm)
     }
-    
     public var body: some View {
         VStack(spacing: 24) {
             VStack(alignment: .leading) {
                 // Header with close button
                 HStack {
-                    Text("바이크를 주차할까요?")
+                    Text("바이크를 잠금해제할까요?")
                         .customFont(.headline_sm)
+                        .padding(.bottom, 4)
                     
                     Spacer()
                     
                     Button(action: {
-                        vm.cancelParking()
+                        vm.dismissUnparkConfirmView() 
                     }) {
                         Image(systemName: "xmark")
                             .foregroundColor(.blue)
                             .font(.system(size: 20))
                     }
                 }
-                .padding(.bottom, 8)
                 
                 // Description section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("바이크를 주차하시면 잠금장치가 걸려 안전하게\n보관됩니다. 하지만 주차 상태에서도 요금이 계속\n부과됩니다.")
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("잠금해제하면 다시 바이크를 탈 수 있어요.")
                         .customFont(.body_sm_regular)
                         .lineSpacing(4)
-                        .padding(.bottom)
                     
-                    Text("안전 주차 안내")
+                    Text("반납 안내")
                         .customFont(.headline_md)
                         .fontWeight(.bold)
+                        .padding(.top)
                     
-                    Text("장애인 주차 구역 및 점자블록은 주차하지 말아 주세요.\n이 구역에 주차 시, 바이크가 견인될 수 있습니다.")
+                    HStack {
+                        Image(systemName: "house.fill")
+                            .foregroundStyle(Color.interactivePrimary)
+                            .frame(width: 26, height: 22)
+                        Text("무은재 기념관")
+                            .customFont(.headline_md)
+                    }
+                    
+                    Text("바이크를 반납하려면 스테이션에 다시 꽂아 주세요.\n스테이션 외에 주차 시 반납이 인정되지 않습니다.")
                         .customFont(.body_md_regular)
                         .lineSpacing(4)
                 }
@@ -55,11 +63,11 @@ public struct ParkingConfirmView: View {
             
             // Bottom slide button
             SlideButton(
-                title: "바이크 주차하기 →",
+                title: "바이크 잠금해제 →",
                 slideIcon: "bicycle",
-                lockIcon: "lock.fill"
+                lockIcon: "lock.open"
             ) {
-                vm.parkBike()
+                vm.unparkBike()  // Added method call
             }
         }
         .padding(.horizontal, 24)
