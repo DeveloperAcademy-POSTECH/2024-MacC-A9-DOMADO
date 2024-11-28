@@ -14,9 +14,11 @@ public struct MyAccountCard: View {
     var userName: String = "김경림"
     var userId: String = "thou8and"
     
-    @State private var showMyAccountView = false  // 상태 변수 추가
+    var showMyAccountView: () -> Void
     
-    public init(){}
+    public init(showMYAccountView: @escaping () -> Void){
+        self.showMyAccountView = showMYAccountView
+    }
     
     public var body: some View {
         Rectangle()
@@ -35,7 +37,7 @@ public struct MyAccountCard: View {
                         }
                         Spacer()
                         Button(action: {
-                            showMyAccountView = true
+                            showMyAccountView()
                         }, label: {
                             RoundedRectangle(cornerRadius: 25)
                                 .fill(Color.grayScaleLightHover)
@@ -62,13 +64,12 @@ public struct MyAccountCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .frame(width: width, height: height)
             .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 0)
-            .fullScreenCover(isPresented: $showMyAccountView) {
-                            MyAccountView()  // MyAccountView 모달로 표시
-                        }
         
     }
 }
 
 #Preview {
-    MyAccountCard()
+    MyAccountCard {
+        print("showMYAccountCard")
+    }
 }
