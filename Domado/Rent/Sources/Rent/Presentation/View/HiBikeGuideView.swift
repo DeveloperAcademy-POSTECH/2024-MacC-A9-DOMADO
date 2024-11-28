@@ -37,7 +37,7 @@ public struct HiBikeGuideView: View {
                 
                 // Description section
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("하이바이크 기능으로 자전거를 넘기면 반납 의무가 \n다음 이용자에게 넘어가서 반납할 필요가 없어져요.")
+                    Text("하이바이크 기능으로 바이크를 넘기면 반납 의무가 \n다음 이용자에게 넘어가서 반납할 필요가 없어져요.")
                         .customFont(.body_md_regular)
                         .lineSpacing(4)
                     
@@ -52,7 +52,7 @@ public struct HiBikeGuideView: View {
                         .customFont(.headline_md)
                         .padding(.top)
                     
-                    Text("전환하기 기능은 언제든지 켜고 끌 수 있으며,\n자전거를 다시 잠금 해제하면 하이바이크 전환하기\n기능이 자동으로 종료돼요.")
+                    Text("전환하기 기능은 언제든지 켜고 끌 수 있으며,\n바이크를 다시 잠금 해제하면 하이바이크 전환하기\n기능이 자동으로 종료돼요.")
                         .customFont(.body_md_regular)
                         .lineSpacing(4)
                 }
