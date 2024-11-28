@@ -14,7 +14,6 @@
 		AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB02CD611C7004B32EB /* AppRouter.swift */; };
 		AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB42CD6481B004B32EB /* LoadingView.swift */; };
 		AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFB62CD64825004B32EB /* HomeView.swift */; };
-		AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */; };
 		AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */; };
 		AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */; };
 		AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */; };
@@ -80,7 +79,6 @@
 		AF12AFB02CD611C7004B32EB /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		AF12AFB42CD6481B004B32EB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AF12AFB62CD64825004B32EB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnBikeView.swift; sourceTree = "<group>"; };
 		AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		AF12AFC92CD71A65004B32EB /* GlobalErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalErrorState.swift; sourceTree = "<group>"; };
 		AF12AFCB2CD71B85004B32EB /* AppGlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobalErrorHandler.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			children = (
 				AF12AFB42CD6481B004B32EB /* LoadingView.swift */,
 				AF12AFB62CD64825004B32EB /* HomeView.swift */,
-				AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */,
 				AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */,
 			);
 			path = TempView;
@@ -396,7 +393,6 @@
 				AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */,
 				AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */,
 				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
-				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
 				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,

@@ -72,7 +72,8 @@ struct RootView: View {
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .returnComplete:
-            ReturnBikeView()
+            container.makeTempLockView()
+                .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
         case .singUp:
             container.makeSignupView()
@@ -89,13 +90,15 @@ struct RootView: View {
         case .confirmParking:
             container.makeParkingConfirmView()
                 .presentationDetents([.height(350)])
-                
         case .showHiBikeGuide:
             container.makeHiBikeGuideView()
                 .presentationDetents([.height(350)])
         case .confirmUnParking:
             container.makeUnparkingConfirmView()
                 .presentationDetents([.height(350)])
+        case .showPaymentGuide: 
+            container.makeReturnBikeView()
+                .presentationDetents([.height(270)])
         }
     }
     
