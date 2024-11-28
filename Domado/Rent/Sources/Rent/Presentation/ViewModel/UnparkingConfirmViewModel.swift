@@ -1,17 +1,18 @@
 //
-//  UnparkingConfirmViewModel.swift
-//  Domado
+//  File.swift
+//  Rent
 //
-//  Created by 이종선 on 11/22/24.
+//  Created by 이종선 on 11/27/24.
 //
 
-import SwiftUI
+import Core
+import Foundation
 
-class UnparkingConfirmViewModel: ObservableObject {
+public class UnparkingConfirmViewModel: ObservableObject {
     
-    private let router: AppRouter
+    private let router: Routing
     
-    init(router: AppRouter) {
+    public init(router: Routing) {
         self.router = router
     }
     

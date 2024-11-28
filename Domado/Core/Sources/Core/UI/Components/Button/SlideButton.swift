@@ -111,7 +111,7 @@ public struct SlideButton: View {
                 .font(.system(size: 16, weight: .bold))
                 .opacity(isDragging ? 0.1 : 1)
                 .animation(.easeInOut(duration: 0.2), value: unlocked)
-                .padding(.leading, 90)
+                .padding(.leading, 110)
             
             Spacer()
             
@@ -182,7 +182,7 @@ public struct SlideButton: View {
         ) {
             print("바이크가 대여되었습니다!")
         }
-        .frame(width: 300)
+      
         
         // 자전거 반납 버튼
         SlideButton(
@@ -192,7 +192,7 @@ public struct SlideButton: View {
         ) {
             print("바이크가 반납되었습니다!")
         }
-        .frame(width: 300)
+        
         
         // 결제 버튼
         SlideButton(
@@ -202,7 +202,7 @@ public struct SlideButton: View {
         ) {
             print("결제가 완료되었습니다!")
         }
-        .frame(width: 300)
+       
     }
     .padding()
 }

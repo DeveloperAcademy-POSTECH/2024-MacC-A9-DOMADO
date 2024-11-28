@@ -8,6 +8,8 @@
 import Auth
 import Core
 import Foundation
+import Rent
+import Location
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
@@ -43,6 +45,8 @@ final class AppContainer {
             logger: logService as! CoreLogger,
             networkManager: networkManager as! CoreNetworkManager
         )
+        
+        self.locationManager = LocationManager()
     }
     
     
@@ -54,6 +58,7 @@ final class AppContainer {
     private let networkManager: NetworkManager
     private let webSocketManager: WebSocketManager
     private let pushNotificationManager: PushNotificationManager
+    private let locationManager: LocationManager
     
     private lazy var appState: AppState = { AppState(storage: stateStorage) }()
     private lazy var router: AppRouter = { AppRouter() }()
@@ -63,6 +68,7 @@ final class AppContainer {
     func makeGlobalErrorState() -> GlobalErrorState { gloablErrorState }
     func makeAppRouter() -> AppRouter { router }
     func makePushNotificationManager() -> PushNotificationManager { pushNotificationManager }
+    func makeLocationManager() -> LocationManager { locationManager }
     
     
     // MARK: - View 반환 메서드
@@ -114,28 +120,28 @@ final class AppContainer {
     
     
     // MARK: - Rent 의존성 관리
-    private func makeQRScannerViewModel() -> QRScannerViewModel {
-        return QRScannerViewModel(router: router)
+    private func makeRentViewModel() -> RentViewModel {
+        return RentViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
-    func makeQRScannerView() -> QRScannerView {
-        QRScannerView(vm: self.makeQRScannerViewModel())
+    func makeRentView() -> RentView {
+        RentView(viewModel: makeRentViewModel())
     }
     
-    private func makeRentConfirmViewModel() -> RentConfirmViewModel {
-        return RentConfirmViewModel(router: router)
+    private func makeRentProgressViewModel() -> RentProgressViewModel {
+        return RentProgressViewModel(router: makeAppRouter())
     }
     
-    func makeRentConfirmView() -> RentConfirmView {
-        RentConfirmView(vm: self.makeRentConfirmViewModel())
+    func makeRentProgressView() -> RentProgressView {
+        RentProgressView(viewModel: makeRentProgressViewModel())
     }
     
-    private func makeInUserBikeViewModel() -> InUseBikeViewModel {
-        return InUseBikeViewModel(router: router)
+    private func makeActiveRentalViewModel() -> ActiveRentViewModel {
+        return ActiveRentViewModel(router: router)
     }
     
-    func makeInUserBikeView() -> InUseBikeView {
-        InUseBikeView(vm: self.makeInUserBikeViewModel())
+    func makeActiveRentalView() -> ActiveRentalView {
+        ActiveRentalView(vm: self.makeActiveRentalViewModel())
     }
     
     private func makeParkingConfirmViewModel() -> ParkingConfirmViewModel {
@@ -168,5 +174,13 @@ final class AppContainer {
     
     func makeUnparkingConfirmView() -> UnparkingConfirmView {
         UnparkingConfirmView(vm: self.makeUnparkingConfirmViewModel())
+    }
+    
+    private func makeReturnBikeView() -> ReturnBikeViewModel {
+        return ReturnBikeViewModel(router: router)
+    }
+    
+    func makeReturnBikeView() -> ReturnBikeView {
+        ReturnBikeView(vm: self.makeReturnBikeView())
     }
 }
