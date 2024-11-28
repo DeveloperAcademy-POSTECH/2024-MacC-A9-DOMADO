@@ -14,5 +14,5 @@ public protocol MapDisplayable {
 
 public enum MarkerType {
     case hub(availableBikes: Int)
-    case hiBike(hubName: String)
+    case hiBike(homeHubName: String)
 }

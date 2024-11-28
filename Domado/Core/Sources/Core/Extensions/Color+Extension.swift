@@ -16,6 +16,9 @@ public extension Color {
        // Interactive & Station
        static let interactivePrimary = Color("interactivePrimary", bundle: .module)
        static let stationDefault = Color("stationDefault", bundle: .module)
+       static let stationBatteryBack = Color("stationBatteryBack", bundle: .module)
+       static let stationBatteryGreen = Color("stationBatteryGreen", bundle: .module)
+    
        
        // Hibike Colors
        static let hibikeOrange = Color("hibikeOrange", bundle: .module)

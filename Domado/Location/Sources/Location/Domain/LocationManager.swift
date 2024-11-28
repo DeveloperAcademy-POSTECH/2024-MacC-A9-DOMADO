@@ -10,11 +10,13 @@ import CoreLocation
 public final class LocationManager: NSObject, ObservableObject {
     private let manager = CLLocationManager()
     @Published var authorizationStatus: CLAuthorizationStatus?
-    
+    @Published var userLocation: CLLocationCoordinate2D?
     
     public override init() {
         super.init()
         manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.startUpdatingLocation()
     }
     
     public func requestAuthorization() {
@@ -26,5 +28,10 @@ public final class LocationManager: NSObject, ObservableObject {
 extension LocationManager: CLLocationManagerDelegate {
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
+    }
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last?.coordinate {
+            userLocation = location
+        }
     }
 }

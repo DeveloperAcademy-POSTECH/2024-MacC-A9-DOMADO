@@ -17,11 +17,10 @@ public struct Station: Identifiable {
     }
     
     public init(id: String,
-                   stationName: String,
-                   coordinate: (latitude: Double, longitude: Double),
-                   bikes: [Bike]) {
-            self.id = id
-            self.stationName = stationName
-            self.bikes = bikes
-        }
+                stationName: String,
+                bikes: [Bike]) {
+        self.id = id
+        self.stationName = stationName
+        self.bikes = bikes
+    }
 }

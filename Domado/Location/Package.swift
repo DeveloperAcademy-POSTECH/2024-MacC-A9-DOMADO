@@ -24,7 +24,11 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "Location",
-            dependencies: ["Core"] // 나중에는 의존이 생긴 모듈을 추가로 표시
+            dependencies: ["Core"], // 나중에는 의존이 생긴 모듈을 추가로 표시
+            resources: [
+                    .process("Resources") // 에셋을 사용하기 위한 리소스 선언 추가
+                ]
+            
         ),
         .testTarget(
             name: "LocationTests",
