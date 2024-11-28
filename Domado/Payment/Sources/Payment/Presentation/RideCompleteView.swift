@@ -136,7 +136,7 @@ struct RideCompleteView: View {
                                     HStack(spacing: 0){
                                         Image(systemName: "location.circle.fill")
                                             .foregroundStyle(Color.grayScaleLightActive)
-                                            .font(.system(size: 15))
+                                            .font(.system(size: 16))
                                             .padding(.trailing, 4)
                                         //                                            .background(Color.red)
                                         
