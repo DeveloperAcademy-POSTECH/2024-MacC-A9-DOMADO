@@ -43,6 +43,10 @@ class HomeViewModel: ObservableObject {
         router.present(fullScreen: .qrScanner)
     }
     
+    func showInfoCard() {
+        router.present(fullScreen: .myInfo)
+    }
+    
     private func setupWebSocket() {
         // WebSocket 연결 시작
         Task {

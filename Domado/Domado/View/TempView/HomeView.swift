@@ -28,7 +28,7 @@ struct HomeView: View {
             }
             .overlay(alignment: .top) {
                 if vm.showMyAccountCard {
-                    MyAccountCard()
+                    MyAccountCard(showMYAccountView: vm.showInfoCard)
                         .transition(.move(edge: .top))
                         .animation(.spring(), value: vm.showMyAccountCard)
                 }

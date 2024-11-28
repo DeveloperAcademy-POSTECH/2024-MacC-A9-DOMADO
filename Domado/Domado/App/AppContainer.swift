@@ -123,6 +123,13 @@ final class AppContainer {
         HomeView(vm: self.makeHomeViewModel(), locationViewModel: self.makeLocationViewModel())
     }
     
+    private func makeMyAccountViewModel() -> MyAccountViewModel {
+        return MyAccountViewModel(router: router)
+    }
+    
+    func makeMyAccountView() -> MyAccountView {
+        MyAccountView(vm: makeMyAccountViewModel())
+    }
     
     // MARK: - Rent 의존성 관리
     private func makeRentViewModel() -> RentViewModel {
