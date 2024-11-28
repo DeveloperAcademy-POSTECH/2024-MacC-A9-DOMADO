@@ -94,6 +94,15 @@ struct LocationView: View {
                             Button {
                                 selectedHub = hub
                                 selectedBike = nil
+                                
+                                // Update camera to focus on selected bike
+                                camera = .region(MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(
+                                        latitude: coordinate.0,
+                                        longitude: coordinate.1
+                                    ),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                ))
                             } label: {
                                 ZStack {
                                     Image("hubpin", bundle: .module)
@@ -124,6 +133,15 @@ struct LocationView: View {
                             Button {
                                 selectedBike = bike
                                 selectedHub = nil
+                                
+                                // Update camera to focus on selected bike
+                                camera = .region(MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(
+                                        latitude: coordinate.0,
+                                        longitude: coordinate.1
+                                    ),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                ))
                             } label: {
                                 ZStack {
                                     Image("hiBikepin", bundle: .module)
