@@ -23,8 +23,6 @@
 		AF2961402CDA557400DAF5BB /* Payment in Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; };
 		AF2961412CDA557400DAF5BB /* Payment in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */; };
-		AF3BCC432CF01E40003DC745 /* UnparkingConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */; };
-		AF3BCC452CF01EC3003DC745 /* UnparkingConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */; };
 		AF3BCC472CF01FCC003DC745 /* HiBikeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */; };
 		AF3BCC492CF020A1003DC745 /* HiBikeGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */; };
 		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
@@ -92,8 +90,6 @@
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		AF3BCB3F2CEC2A55003DC745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnparkingConfirmView.swift; sourceTree = "<group>"; };
-		AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnparkingConfirmViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideView.swift; sourceTree = "<group>"; };
 		AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC7C2CF301D8003DC745 /* Domado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Domado.entitlements; sourceTree = "<group>"; };
@@ -164,7 +160,6 @@
 				AF12AFB62CD64825004B32EB /* HomeView.swift */,
 				AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */,
 				AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */,
-				AF3BCC422CF01E40003DC745 /* UnparkingConfirmView.swift */,
 				AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */,
 			);
 			path = TempView;
@@ -261,7 +256,6 @@
 			children = (
 				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
 				AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */,
-				AF3BCC442CF01EC3003DC745 /* UnparkingConfirmViewModel.swift */,
 				AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */,
 			);
 			path = TempViewModel;
@@ -405,9 +399,7 @@
 			files = (
 				AF12AFB72CD64825004B32EB /* HomeView.swift in Sources */,
 				AF8F62262C90939C00D6E8E2 /* RootView.swift in Sources */,
-				AF3BCC452CF01EC3003DC745 /* UnparkingConfirmViewModel.swift in Sources */,
 				AFB744B52CE0800500B2EE9D /* OnboardingViewModel.swift in Sources */,
-				AF3BCC432CF01E40003DC745 /* UnparkingConfirmView.swift in Sources */,
 				AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */,
 				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
