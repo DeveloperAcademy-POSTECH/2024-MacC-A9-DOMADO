@@ -21,6 +21,7 @@ class HomeViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @Published var showMyAccountCard = false 
        
     private var messageTask: Task<Void, Never>?
     
