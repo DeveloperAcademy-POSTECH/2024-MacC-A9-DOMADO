@@ -88,14 +88,14 @@ struct RootView: View {
                 .presentationDragIndicator(.visible)
         case .confirmParking:
             container.makeParkingConfirmView()
-                .presentationDetents([.medium])
+                .presentationDetents([.height(410)])
+                
         case .showHiBikeGuide:
             container.makeHiBikeGuideView()
                 .presentationDetents([.medium])
         case .confirmUnParking:
             container.makeUnparkingConfirmView()
-                .presentationDetents([.medium])
-            
+                .presentationDetents([.height(410)])
         }
     }
     

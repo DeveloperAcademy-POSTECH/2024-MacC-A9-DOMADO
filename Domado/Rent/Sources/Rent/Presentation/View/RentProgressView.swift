@@ -29,12 +29,12 @@ public struct RentProgressView: View {
                 Button(action: { viewModel.dismiss() }) {
                     Image(systemName: "xmark")
                         .foregroundColor(.interactivePrimary)
-                        .fontWeight(.bold)
+                        
                 }
             }
             .padding(.horizontal)
             .padding(.top)
-            .padding(.bottom, 10)
+            .padding(.bottom, 8)
             
             VStack(alignment: .center, spacing: 20) {
                 HStack {
@@ -43,14 +43,14 @@ public struct RentProgressView: View {
                     Text(viewModel.stationName)
                         .customFont(.station_lg_bold)
                 }
+                .padding(.top)
                 
                 // 돌아갈 스테이션 표시
                 Map(position: $viewModel.cameraPosition) {
                     Marker(viewModel.stationName, coordinate: viewModel.coordinate)
                         .tint(Color.MylocationMarker)
                 }
-                .frame(maxWidth: .infinity)
-                .frame(height: 186)
+                .frame(width: 280,height: 186)
                 .cornerRadius(20)
                 .foregroundStyle(Color.gray.opacity(0.2))
                 .padding(.horizontal)
@@ -65,34 +65,34 @@ public struct RentProgressView: View {
                         .customFont(.body_md_bold)
                 }
                 
-                // 쿠폰 토글
-                HStack(alignment: .center, spacing: 15) {
-                    Text("쿠폰")
-                        .customFont(.body_md_regular)
+                VStack{
+                    // 쿠폰 토글
+                    HStack(alignment: .center, spacing: 15) {
+                        Text("쿠폰")
+                            .customFont(.body_md_regular)
+                        
+                        Text("30분 무료 이용권")
+                            .customFont(.body_sm_regular)
+                            .foregroundColor(.gray)
+                        
+                        Spacer()
+                        
+                        Toggle("", isOn: $viewModel.isApplyCoupon)
+                            .tint(.interactivePrimary)
+                    }
+                    .padding()
+            
                     
-                    Text("30분 무료 이용권")
-                        .customFont(.body_sm_regular)
-                        .foregroundColor(.gray)
-                    
-                    Spacer()
-                    
-                    Toggle("", isOn: $viewModel.isApplyCoupon)
-                        .tint(.interactivePrimary)
+                    // 하단 버튼
+                    SlideButton(
+                        title: "바이크 대여하기 →",
+                        slideIcon: "bicycle",
+                        lockIcon: "lock.open"
+                    ) {
+                        viewModel.startRental()
+                    }
                 }
-                .padding()
-                .background(Color.gray.opacity(0.05))
-                .cornerRadius(12)
-                .padding(.horizontal)
-                
-                // 하단 버튼
-                SlideButton(
-                    title: "바이크 대여하기 →",
-                    slideIcon: "bicycle",
-                    lockIcon: "lock.open"
-                ) {
-                    viewModel.startRental()
-                }
-                .padding(.horizontal)
+                .padding(.horizontal, 28)
                 .padding(.bottom, 20)
             }
         }
