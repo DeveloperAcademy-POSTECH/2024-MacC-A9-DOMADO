@@ -108,7 +108,7 @@ struct RideCompleteView: View {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color.grayScaleWhite)
                         .frame(height: 91)
-                        .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
+                        .shadow(color: .black.opacity(0.25), radius: 1, x: 0, y: 0)
                         .overlay(
                             HStack {
                                 VStack(alignment: .leading, spacing: 0){
