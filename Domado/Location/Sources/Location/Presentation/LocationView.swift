@@ -8,18 +8,130 @@
 import SwiftUI
 import MapKit
 
-struct LocationView: View {
-    @StateObject private var locationManager = LocationManager()
-    
-    /// 지도의 초기 카메라 위치 설정
-    @State private var camera = MapCameraPosition.region(MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 36.015, longitude: 129.321),
-        span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-    ))
+public struct LocationView: View {
     
     @State private var selectedHub: Hub?
     @State private var selectedBike: Bike?
     
+    @ObservedObject private var vm: LocationViewModel
+    
+    public init(vm: LocationViewModel){
+        self.vm = vm
+    }
+    
+    public var body: some View {
+        ZStack(alignment: .top) {
+            Map(position: $vm.position) {
+                // 사용자 위치 표시
+                UserAnnotation()
+                    .tint(Color.MylocationMarker)
+                // Hubs 표시
+                ForEach(hubs) { hub in
+                    if let coordinate = hub.coordinate {
+                        Annotation(
+                            hub.hubName,
+                            coordinate: CLLocationCoordinate2D(
+                                latitude: coordinate.0,
+                                longitude: coordinate.1
+                            ),
+                            anchor: .bottom
+                        ) {
+                            Button {
+                                selectedHub = hub
+                                selectedBike = nil
+                                
+                                // Update camera to focus on selected bike
+                                vm.position = .region(MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(
+                                        latitude: coordinate.0,
+                                        longitude: coordinate.1
+                                    ),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                ))
+                            } label: {
+                                ZStack {
+                                    Image("hubpin", bundle: .module)
+                                    
+                                    Text("\(hub.availableBikes)")
+                                        .customFont(.button_md_semibold)
+                                        .foregroundColor(Color.grayScaleDarker)
+                                        .offset(y: -6)
+                                }
+                            }
+                            .scaleEffect(selectedHub?.id == hub.id ? 1.2 : 1.0)
+                            .animation(.spring(response: 0.3), value: selectedHub?.id)
+                        }
+                    }
+                }
+                
+                // HiBikes 표시
+                ForEach(hiBikes) { bike in
+                    if let coordinate = bike.coordinate {
+                        Annotation(
+                            bike.bikeName,
+                            coordinate: CLLocationCoordinate2D(
+                                latitude: coordinate.0,
+                                longitude: coordinate.1
+                            ),
+                            anchor: .bottom
+                        ) {
+                            Button {
+                                selectedBike = bike
+                                selectedHub = nil
+                                
+                                // Update camera to focus on selected bike
+                                vm.position = .region(MKCoordinateRegion(
+                                    center: CLLocationCoordinate2D(
+                                        latitude: coordinate.0,
+                                        longitude: coordinate.1
+                                    ),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                ))
+                            } label: {
+                                ZStack {
+                                    Image("hiBikepin", bundle: .module)
+                                    
+                                    Text(bike.homeHubName.hasPrefix("생활관")
+                                         ? "생\(bike.homeHubName.filter { $0.isNumber })"
+                                         : "\(bike.homeHubName.prefix(2))")
+                                    .customFont(.button_md_semibold)
+                                    .foregroundColor(Color.grayScaleDarker)
+                                    .offset(x: 6)
+                                }
+                            }
+                            .scaleEffect(selectedBike?.id == bike.id ? 1.2 : 1.0)
+                            .animation(.spring(response: 0.3), value: selectedBike?.id)
+                        }
+                    }
+                }
+            }
+            .mapStyle(.standard)
+            .edgesIgnoringSafeArea(.all)
+            .onTapGesture {
+                // 지도를 탭하면 선택 해제
+                selectedHub = nil
+                selectedBike = nil
+            }
+            
+            // 선택된 항목에 따라 카드 표시
+            if let hub = selectedHub {
+                HubCard(hub: hub)
+                //                    .padding(.top, 0)
+                    .transition(.move(edge: .top))
+            }
+            
+            if let bike = selectedBike {
+                HiBikeCard(
+                    bikeName: bike.bikeName,
+                    homeHubName: bike.homeHubName
+                )
+                //                .padding(.top, 0)
+                .transition(.move(edge: .top))
+            }
+            
+        }
+        
+    }
     /// 지도에 표시될 허브 목록
     let hubs: [Hub] = [
         Hub(id: "101", hubName: "무은재기념관", coordinate: (36.011883, 129.322422), availableBikes: 6, stations: []),
@@ -59,149 +171,9 @@ struct LocationView: View {
         //        Bike(coordinate: (36.011600, 129.326700), id: "BIKE059", bikeName: "BIKE059", isHiBike: true, batteryLevel: 92, homeHubName: "박태준학술정보관"),
         //        Bike(coordinate: (36.011000, 129.327200), id: "BIKE060", bikeName: "BIKE060", isHiBike: true, batteryLevel: 87, homeHubName: "친환경소재대학원")
     ]
-    
-    
-    var body: some View {
-        ZStack(alignment: .top) {
-            Map(position: $camera) {
-                // 사용자 위치 표시
-                if let userLocation = locationManager.userLocation {
-                    Annotation("현재 위치", coordinate: userLocation) {
-                        ZStack {
-                            Circle()
-                                .fill(Color.MylocationMarker)
-                                .frame(width: 19, height: 19)
-                            Circle()
-                                .fill(Color.grayScaleWhite)
-                                .frame(width: 27, height: 27)
-                                .shadow(color: Color.MylocationMarker, radius: 15.7, x: 0, y: 0)
-                        }
-                    }
-                }
-                
-                
-                // Hubs 표시
-                ForEach(hubs) { hub in
-                    if let coordinate = hub.coordinate {
-                        Annotation(
-                            hub.hubName,
-                            coordinate: CLLocationCoordinate2D(
-                                latitude: coordinate.0,
-                                longitude: coordinate.1
-                            ),
-                            anchor: .bottom
-                        ) {
-                            Button {
-                                selectedHub = hub
-                                selectedBike = nil
-                                
-                                // Update camera to focus on selected bike
-                                camera = .region(MKCoordinateRegion(
-                                    center: CLLocationCoordinate2D(
-                                        latitude: coordinate.0,
-                                        longitude: coordinate.1
-                                    ),
-                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-                                ))
-                            } label: {
-                                ZStack {
-                                    Image("hubpin", bundle: .module)
-                                    
-                                    Text("\(hub.availableBikes)")
-                                        .customFont(.button_md_semibold)
-                                        .foregroundColor(Color.grayScaleDarker)
-                                        .offset(y: -6)
-                                }
-                            }
-                            .scaleEffect(selectedHub?.id == hub.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: selectedHub?.id)
-                        }
-                    }
-                }
-                
-                // HiBikes 표시
-                ForEach(hiBikes) { bike in
-                    if let coordinate = bike.coordinate {
-                        Annotation(
-                            bike.bikeName,
-                            coordinate: CLLocationCoordinate2D(
-                                latitude: coordinate.0,
-                                longitude: coordinate.1
-                            ),
-                            anchor: .bottom
-                        ) {
-                            Button {
-                                selectedBike = bike
-                                selectedHub = nil
-                                
-                                // Update camera to focus on selected bike
-                                camera = .region(MKCoordinateRegion(
-                                    center: CLLocationCoordinate2D(
-                                        latitude: coordinate.0,
-                                        longitude: coordinate.1
-                                    ),
-                                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-                                ))
-                            } label: {
-                                ZStack {
-                                    Image("hiBikepin", bundle: .module)
-                                    
-                                    Text(bike.homeHubName.hasPrefix("생활관")
-                                         ? "생\(bike.homeHubName.filter { $0.isNumber })"
-                                         : "\(bike.homeHubName.prefix(2))")
-                                    .customFont(.button_md_semibold)
-                                    .foregroundColor(Color.grayScaleDarker)
-                                    .offset(x: 6)
-                                }
-                            }
-                            .scaleEffect(selectedBike?.id == bike.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: selectedBike?.id)
-                        }
-                    }
-                }
-            }
-            .mapStyle(.standard)
-            .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                // 지도를 탭하면 선택 해제
-                selectedHub = nil
-                selectedBike = nil
-            }
-            // 사용자 위치가 업데이트될 때마다 카메라 위치 업데이트
-            // locationManager가 publish하는 값이 바뀔 때마다 실행
-            .onReceive(locationManager.$userLocation) { newLocation in
-                if let location = newLocation {
-                    camera = .region(MKCoordinateRegion(
-                        center: location,
-                        span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
-                    ))
-                }
-            }
-            
-            
-            // 선택된 항목에 따라 카드 표시
-            if let hub = selectedHub {
-                HubCard(hub: hub)
-                //                    .padding(.top, 0)
-                    .transition(.move(edge: .top))
-            }
-            
-            if let bike = selectedBike {
-                HiBikeCard(
-                    bikeName: bike.bikeName,
-                    homeHubName: bike.homeHubName
-                )
-                //                .padding(.top, 0)
-                .transition(.move(edge: .top))
-            }
-            
-        }
-        
-    }
-    
 }
 
 
 #Preview {
-    LocationView()
+    LocationView(vm: LocationViewModel())
 }
