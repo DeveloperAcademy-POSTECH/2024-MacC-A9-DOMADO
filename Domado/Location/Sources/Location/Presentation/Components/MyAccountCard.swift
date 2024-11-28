@@ -8,7 +8,7 @@
 import SwiftUI
 import Core
 
-struct MyAccountCard: View {
+public struct MyAccountCard: View {
     var width: CGFloat = 358
     var height: CGFloat = 330
     var userName: String = "김경림"
@@ -16,8 +16,9 @@ struct MyAccountCard: View {
     
     @State private var showMyAccountView = false  // 상태 변수 추가
     
+    public init(){}
     
-    var body: some View {
+    public var body: some View {
         Rectangle()
             .fill(Color.grayScaleWhite)
             .overlay(
