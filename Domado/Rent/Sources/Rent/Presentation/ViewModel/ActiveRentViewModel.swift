@@ -25,4 +25,13 @@ public class ActiveRentViewModel: ObservableObject {
         router.present(sheet: .confirmParking)
     }
     
+    func showPaymentGuide(){
+        router.present(sheet: .showPaymentGuide)
+    }
+    
+    //TODO: 이후 삭제 
+    func dismissSheet(){
+        router.dismissSheet()
+    }
+    
 }
