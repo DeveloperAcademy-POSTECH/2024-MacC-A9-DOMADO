@@ -60,7 +60,7 @@ struct MyAccountCard: View {
             )
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .frame(width: width, height: height)
-            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 0)
+            .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 0)
             .fullScreenCover(isPresented: $showMyAccountView) {
                             MyAccountView()  // MyAccountView 모달로 표시
                         }

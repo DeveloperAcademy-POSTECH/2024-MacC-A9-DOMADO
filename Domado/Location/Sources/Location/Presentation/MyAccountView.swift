@@ -51,7 +51,7 @@ struct MyAccountView: View {
                                     RoundedRectangle(cornerRadius: 25)
                                         .frame(width: 159, height: 212) // 나중에 패딩으로 바꿔야할지도..
                                         .foregroundStyle(Color.grayScaleWhite)
-                                        .shadow(color: .black.opacity(0.20), radius: 4, x: 0, y: 0)
+                                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 0)
                                         .overlay (
                                             VStack(alignment: .leading, spacing: 0){
                                                 Text("내 쿠폰")
@@ -75,7 +75,7 @@ struct MyAccountView: View {
                                     RoundedRectangle(cornerRadius: 25)
                                         .frame(width: 159, height: 212)
                                         .foregroundStyle(Color.grayScaleWhite)
-                                        .shadow(color: .black.opacity(0.20), radius: 4, x: 0, y: 0)
+                                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 0)
                                         .overlay (
                                             VStack(alignment: .leading, spacing: 0){
                                                 Text("결제 관리")
@@ -109,7 +109,7 @@ struct MyAccountView: View {
                                     )
                                     .frame(width: 334, height: 83)
                                     .foregroundStyle(Color.grayScaleWhite)
-                                    .shadow(color: .black.opacity(0.20), radius: 4, x: 0, y: 0)
+                                    .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 0)
                                     .padding(.bottom, 20)
                             }
                             
@@ -122,7 +122,7 @@ struct MyAccountView: View {
                             
                                 .frame(width: 366)
                                 .frame(maxWidth: .infinity)
-                                .shadow(color: .black.opacity(0.20), radius: 4, x: 0, y: 0)
+                                .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 0)
                                 .padding(.horizontal, 12)
                             
                             VStack(alignment:.leading, spacing: 0) {
