@@ -21,7 +21,10 @@ let package = Package(
     targets: [
         .target(
             name: "Payment",
-            dependencies: ["Core"]
+            dependencies: ["Core"],
+            resources: [
+                .process("Resources")
+            ]
         ),
         .testTarget(
             name: "PaymentTests",

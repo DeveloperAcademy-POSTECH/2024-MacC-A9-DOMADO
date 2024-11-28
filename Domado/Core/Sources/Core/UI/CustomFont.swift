@@ -20,7 +20,7 @@ public struct CustomFont: ViewModifier {
         switch textStyle {
         case .headline_lg, .headline_md, .headline_sm, .batterynumber, .headline_xsm:
             return "NEXONLv1GothicOTFBold"
-        case .station_lg_bold, .button_lg_bold, .body_md_bold:
+        case .station_lg_bold, .button_lg_bold, .body_md_bold, .amount_lg_bold:
             return "Pretendard-Bold"
         case .button_md_semibold:
             return "Pretendard-SemiBold"
@@ -44,6 +44,8 @@ public struct CustomFont: ViewModifier {
             return 16
         case .headline_xsm:
             return 15
+        case .amount_lg_bold:
+            return 32
         case .station_lg_bold:
             return 20
         case .button_lg_bold:
@@ -81,6 +83,7 @@ public enum TextStyle {
     case headline_sm
     case batterynumber
     case headline_xsm
+    case amount_lg_bold
     case station_lg_bold
     case button_lg_bold
     case body_md_bold
