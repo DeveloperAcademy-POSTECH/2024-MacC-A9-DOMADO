@@ -30,10 +30,10 @@ public struct TempLockView: View {
             // 중앙 상태 표시
             VStack(spacing: 16) {
                 // 장갑 아이콘과 메시지
-                Image(systemName: "hand.raised.fill") // 실제 장갑 아이콘으로 교체 필요
+                Image("pause") // 실제 장갑 아이콘으로 교체 필요
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 95, height: 75)
                     .foregroundColor(.white)
                 
                 VStack(spacing: 4) { // 텍스트 사이 간격을 4로 줄임
