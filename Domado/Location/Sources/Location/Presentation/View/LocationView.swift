@@ -24,7 +24,7 @@ public struct LocationView: View {
             Map(position: $vm.position) {
                 // 사용자 위치 표시
                 UserAnnotation()
-                    .tint(Color.MylocationMarker)
+                
                 // Hubs 표시
                 ForEach(hubs) { hub in
                     if let coordinate = hub.coordinate {
@@ -106,6 +106,7 @@ public struct LocationView: View {
                 }
             }
             .mapStyle(.standard)
+            .tint(Color.MylocationMarker)
             .edgesIgnoringSafeArea(.all)
             .onTapGesture {
                 // 지도를 탭하면 선택 해제
