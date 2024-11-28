@@ -23,8 +23,6 @@
 		AF2961402CDA557400DAF5BB /* Payment in Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; };
 		AF2961412CDA557400DAF5BB /* Payment in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF29613F2CDA557400DAF5BB /* Payment */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */; };
-		AF3BCC472CF01FCC003DC745 /* HiBikeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */; };
-		AF3BCC492CF020A1003DC745 /* HiBikeGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */; };
 		AF5DE75B2CD3D37E00708825 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; };
 		AF5DE75C2CD3D37E00708825 /* Auth in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AF5DE75A2CD3D37E00708825 /* Auth */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AF5E248C2C9FB44B00FA2DA5 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = AF5E248B2C9FB44B00FA2DA5 /* Core */; };
@@ -90,8 +88,6 @@
 		AF12AFD02CD74CD5004B32EB /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		AF3BCB3F2CEC2A55003DC745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideView.swift; sourceTree = "<group>"; };
-		AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiBikeGuideViewModel.swift; sourceTree = "<group>"; };
 		AF3BCC7C2CF301D8003DC745 /* Domado.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Domado.entitlements; sourceTree = "<group>"; };
 		AF5DE7592CD3D0C400708825 /* Auth */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Auth; sourceTree = "<group>"; };
 		AF5E24892C9F1C5700FA2DA5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
@@ -160,7 +156,6 @@
 				AF12AFB62CD64825004B32EB /* HomeView.swift */,
 				AF12AFC22CD64B0A004B32EB /* ReturnBikeView.swift */,
 				AF12AFC62CD64BF6004B32EB /* OnboardingView.swift */,
-				AF3BCC462CF01FCC003DC745 /* HiBikeGuideView.swift */,
 			);
 			path = TempView;
 			sourceTree = "<group>";
@@ -256,7 +251,6 @@
 			children = (
 				AFB744B42CE0800500B2EE9D /* OnboardingViewModel.swift */,
 				AF3BCC342CEF94AF003DC745 /* HomeViewModel.swift */,
-				AF3BCC482CF020A1003DC745 /* HiBikeGuideViewModel.swift */,
 			);
 			path = TempViewModel;
 			sourceTree = "<group>";
@@ -403,13 +397,11 @@
 				AF3BCC352CEF94AF003DC745 /* HomeViewModel.swift in Sources */,
 				AF12AFCE2CD72800004B32EB /* ErrorAlertModifier.swift in Sources */,
 				AF12AFC32CD64B0A004B32EB /* ReturnBikeView.swift in Sources */,
-				AF3BCC492CF020A1003DC745 /* HiBikeGuideViewModel.swift in Sources */,
 				AF12AFB12CD611C7004B32EB /* AppRouter.swift in Sources */,
 				AF12AFCA2CD71A65004B32EB /* GlobalErrorState.swift in Sources */,
 				AF12AFB52CD6481B004B32EB /* LoadingView.swift in Sources */,
 				AFF572E52CDA652000FA5B40 /* AppDelegateAdapter.swift in Sources */,
 				AFBCA4772CDF75D70030C7C6 /* AppErrorHandler.swift in Sources */,
-				AF3BCC472CF01FCC003DC745 /* HiBikeGuideView.swift in Sources */,
 				AF12AFC72CD64BF6004B32EB /* OnboardingView.swift in Sources */,
 				AF12AFD12CD74CD5004B32EB /* AppContainer.swift in Sources */,
 				AF12AFCC2CD71B85004B32EB /* AppGlobalErrorHandler.swift in Sources */,

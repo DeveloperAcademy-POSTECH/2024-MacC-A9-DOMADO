@@ -92,7 +92,7 @@ struct RootView: View {
                 
         case .showHiBikeGuide:
             container.makeHiBikeGuideView()
-                .presentationDetents([.medium])
+                .presentationDetents([.height(350)])
         case .confirmUnParking:
             container.makeUnparkingConfirmView()
                 .presentationDetents([.height(350)])
