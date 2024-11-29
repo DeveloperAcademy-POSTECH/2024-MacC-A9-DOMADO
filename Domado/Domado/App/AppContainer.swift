@@ -110,9 +110,16 @@ final class AppContainer {
     }
     
     // MARK: - MAP 의존성 관리
+    private func makeBikesRepository() -> BikeRepository {
+        return DefaultBikeRepository(networkManager: networkManager)
+    }
     
-    private func makeLocationViewModel() -> LocationViewModel {
-        return LocationViewModel()
+    private func makeBikesUseCase() -> BikesUseCase {
+        return DefaultBikesUseCase(repository: makeBikesRepository())
+    }
+    
+    private func makeBikesViewModel() -> LocationViewModel {
+        return LocationViewModel(useCase: makeBikesUseCase(), locationManager: makeLocationManager())
     }
     
     private func makeHomeViewModel() -> HomeViewModel {
@@ -120,7 +127,7 @@ final class AppContainer {
     }
     
     func makeHomeView() -> HomeView {
-        HomeView(vm: self.makeHomeViewModel(), locationViewModel: self.makeLocationViewModel())
+        HomeView(vm: self.makeHomeViewModel(), locationViewModel: self.makeBikesViewModel())
     }
     
     private func makeMyAccountViewModel() -> MyAccountViewModel {
