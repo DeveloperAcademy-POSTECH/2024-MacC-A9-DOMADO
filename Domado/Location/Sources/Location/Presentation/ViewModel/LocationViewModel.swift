@@ -5,15 +5,115 @@
 //  Created by yoomin on 11/5/24.
 //
 
+import Combine
 import Core
 import SwiftUI
 import _MapKit_SwiftUI
 
+@MainActor
 public class LocationViewModel: ObservableObject {
-    
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @Published var bikeList: BikeList?
+    @Published var selectedHub: Hub?
+    @Published var selectedHiBike: HiBike?
+    @Published var isLoading = false
+    @Published var error: Error?
     
-    public init() {
+    private let useCase: BikesUseCase
+    private var locationManager: LocationManager
+    private var cancellables = Set<AnyCancellable>()
+    
+    public init(useCase: BikesUseCase, locationManager: LocationManager) {
+        self.useCase = useCase
+        self.locationManager = locationManager
         
+        // 위치가 업데이트될 때마다 자전거 정보 갱신
+        subscribeUserCurrentLocation()
+        
+    }
+    
+    private func subscribeUserCurrentLocation() {
+        locationManager.$userLocation
+            .sink { [weak self] newLocation in
+                
+                if let newLatitude = newLocation?.latitude, let newLongitude = newLocation?.longitude {
+            
+                        self?.fetchBikes(latitude: newLatitude, longitude: newLongitude)
+                    
+                }
+                
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchBikes(latitude: Double, longitude: Double) {
+        
+        guard !isLoading else { return }
+        
+        Task { [weak self, useCase] in
+            
+            guard let self else { return }
+            self.handleLoading(true)
+            
+            do {
+                let result = try await useCase.fetchAllBikes(
+                    latitude: latitude,
+                    longitude: longitude,
+                    radius: 2.0  // 2km 반경으로 기본 설정
+                )
+                
+                await MainActor.run {
+                    self.bikeList = result
+                    self.error = nil
+                    
+                    // 첫 로딩 시 지도 위치 업데이트
+                    if self.bikeList == nil {
+                        self.position = .region(MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                        ))
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = error
+                }
+            }
+           self.handleLoading(false)
+        }
+    }
+    
+    func selectHub(_ hub: Hub) {
+        selectedHub = hub
+        selectedHiBike = nil
+        updateMapPosition(latitude: hub.latitude, longitude: hub.longitude)
+    }
+    
+    func selectHiBike(_ hiBike: HiBike) {
+        selectedHiBike = hiBike
+        selectedHub = nil
+        updateMapPosition(latitude: hiBike.latitude, longitude: hiBike.longitude)
+    }
+    
+    func clearSelection() {
+        selectedHub = nil
+        selectedHiBike = nil
+    }
+    
+    private func updateMapPosition(latitude: Double, longitude: Double) {
+        position = .region(MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: latitude,
+                longitude: longitude
+            ),
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.0010,
+                longitudeDelta: 0.0010
+            )
+        ))
+    }
+    
+    private func handleLoading(_ loading: Bool) {
+        isLoading = loading
     }
 }

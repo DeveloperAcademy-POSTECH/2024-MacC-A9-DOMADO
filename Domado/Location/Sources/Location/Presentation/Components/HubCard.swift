@@ -18,7 +18,7 @@ struct HubCard: View {
             .fill(Color.grayScaleWhite)
             .overlay(
                 VStack(spacing: 0) {
-                    HStack(spacing: 8){
+                    HStack(spacing: 8) {
                         Image("mappin", bundle: .module)
                         Text(hub.hubName)
                             .customFont(.station_lg_bold)
@@ -31,9 +31,9 @@ struct HubCard: View {
                         .foregroundStyle(Color.grayScaleLightActive)
                         .padding(.bottom, 5)
                     
-                    HStack(spacing: 6){
+                    HStack(spacing: 6) {
                         Image("bike", bundle: .module)
-                        Text("\(hub.availableBikes)대")
+                        Text("\(hub.totalAvailableBikes)대")
                             .customFont(.station_lg_bold)
                             .foregroundStyle(Color.grayScaleDarker)
                     }
@@ -41,17 +41,12 @@ struct HubCard: View {
                     
                     Spacer()
                     
-                    StationView()
+                    StationView(stations: hub.stations)
                 }
-                    .padding(18)
+                .padding(18)
             )
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .frame(width: width, height: height)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 0)
-        
     }
-}
-
-#Preview {
-    HubCard(hub: Hub(id: "301", hubName: "박태준학술정보관", coordinate: (36.012516, 129.326191), availableBikes: 6, stations: []))
 }
