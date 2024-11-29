@@ -110,14 +110,26 @@ final class AppContainer {
     }
     
     // MARK: - MAP 의존성 관리
+    
+    private func makeLocationViewModel() -> LocationViewModel {
+        return LocationViewModel()
+    }
+    
     private func makeHomeViewModel() -> HomeViewModel {
         return HomeViewModel(router: router, appState: makeAppState(), webSocketManager: webSocketManager, pushNotificationManager: makePushNotificationManager())
     }
     
     func makeHomeView() -> HomeView {
-        HomeView(vm: self.makeHomeViewModel())
+        HomeView(vm: self.makeHomeViewModel(), locationViewModel: self.makeLocationViewModel())
     }
     
+    private func makeMyAccountViewModel() -> MyAccountViewModel {
+        return MyAccountViewModel(router: router)
+    }
+    
+    func makeMyAccountView() -> MyAccountView {
+        MyAccountView(vm: makeMyAccountViewModel())
+    }
     
     // MARK: - Rent 의존성 관리
     private func makeRentViewModel() -> RentViewModel {

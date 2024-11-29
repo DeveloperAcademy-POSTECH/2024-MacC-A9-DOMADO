@@ -21,6 +21,7 @@ class HomeViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @Published var showMyAccountCard = false 
        
     private var messageTask: Task<Void, Never>?
     
@@ -40,6 +41,10 @@ class HomeViewModel: ObservableObject {
     
     func rentBikeWithQR() {
         router.present(fullScreen: .qrScanner)
+    }
+    
+    func showInfoCard() {
+        router.present(fullScreen: .myInfo)
     }
     
     private func setupWebSocket() {

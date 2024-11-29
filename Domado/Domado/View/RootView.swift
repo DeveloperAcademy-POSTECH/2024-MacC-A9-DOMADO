@@ -111,6 +111,8 @@ struct RootView: View {
             container.makeOnboardingView()
         case .qrScanner:
             container.makeRentView()
+        case .myInfo:
+            container.makeMyAccountView()
         }
     }
 }

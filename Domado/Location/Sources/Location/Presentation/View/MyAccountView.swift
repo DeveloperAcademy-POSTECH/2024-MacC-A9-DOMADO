@@ -8,10 +8,15 @@
 import SwiftUI
 import Core
 
-struct MyAccountView: View {
-//    @Environment(\.dismiss) private var dismiss
+public struct MyAccountView: View {
     
-    var body: some View {
+    @StateObject private var vm: MyAccountViewModel
+    
+    public init(vm: MyAccountViewModel){
+        _vm = StateObject(wrappedValue: vm)
+    }
+    
+    public var body: some View {
         ZStack{
             Color.grayScaleLight.ignoresSafeArea()
             
@@ -29,7 +34,7 @@ struct MyAccountView: View {
                     Spacer()
                     
                     Button {
-//                        dismiss()
+                        vm.dismiss()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(Color.interactivePrimary)
@@ -174,8 +179,4 @@ struct BouncingAnimation: ViewModifier {
                 isAnimating = true
             }
     }
-}
-
-#Preview {
-    MyAccountView()
 }
