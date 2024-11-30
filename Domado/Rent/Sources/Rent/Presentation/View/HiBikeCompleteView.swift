@@ -10,8 +10,10 @@ import SwiftUI
 
 public struct HiBikeCompleteView: View {
     
-    public init(){
-        
+    @StateObject private var vm: HiBikeCompleteViewModel
+    
+    public init(vm: HiBikeCompleteViewModel){
+        _vm = StateObject(wrappedValue: vm)
     }
     
     public var body: some View {
@@ -50,6 +52,3 @@ public struct HiBikeCompleteView: View {
     }
 }
 
-#Preview {
-    HiBikeCompleteView()
-}
