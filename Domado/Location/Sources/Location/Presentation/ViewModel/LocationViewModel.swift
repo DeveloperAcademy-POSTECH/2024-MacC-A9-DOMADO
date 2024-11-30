@@ -85,8 +85,8 @@ public class LocationViewModel: ObservableObject {
                 longitude: longitude
             ),
             span: MKCoordinateSpan(
-                latitudeDelta: 0.0010,
-                longitudeDelta: 0.0010
+                latitudeDelta: 0.0015,
+                longitudeDelta: 0.0015
             )
         ))
     }
