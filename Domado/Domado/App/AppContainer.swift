@@ -46,7 +46,6 @@ final class AppContainer {
             networkManager: networkManager as! CoreNetworkManager
         )
         
-        self.locationManager = LocationManager()
     }
     
     
@@ -58,10 +57,11 @@ final class AppContainer {
     private let networkManager: NetworkManager
     private let webSocketManager: WebSocketManager
     private let pushNotificationManager: PushNotificationManager
-    private let locationManager: LocationManager
+
     
     private lazy var appState: AppState = { AppState(storage: stateStorage) }()
     private lazy var router: AppRouter = { AppRouter() }()
+    private lazy var locationManager: LocationManager = { LocationManager()}()
     
     // MARK: - 의존성 주입을 위한 팩토리 메서드
     func makeAppState() -> AppState { appState }
@@ -119,7 +119,7 @@ final class AppContainer {
     }
     
     private func makeBikesViewModel() -> LocationViewModel {
-        return LocationViewModel(useCase: makeBikesUseCase(), locationManager: makeLocationManager())
+        return LocationViewModel(useCase: makeBikesUseCase())
     }
     
     private func makeHomeViewModel() -> HomeViewModel {

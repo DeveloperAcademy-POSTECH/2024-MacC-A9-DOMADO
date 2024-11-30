@@ -78,6 +78,11 @@ public struct LocationView: View {
                     }
                 }
             }
+            .onMapCameraChange { context in
+                let newLocation = context.region.center
+                
+                vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
+            }
             .mapStyle(.standard)
             .tint(Color.MylocationMarker)
             .edgesIgnoringSafeArea(.all)
