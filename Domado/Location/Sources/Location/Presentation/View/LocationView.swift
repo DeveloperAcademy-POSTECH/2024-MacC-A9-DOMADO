@@ -7,9 +7,9 @@
 
 import SwiftUI
 import MapKit
-
 public struct LocationView: View {
     @ObservedObject private var vm: LocationViewModel
+    @State private var showZoomWarning = false
     
     public init(vm: LocationViewModel) {
         self.vm = vm
@@ -17,7 +17,7 @@ public struct LocationView: View {
     
     public var body: some View {
         ZStack(alignment: .top) {
-            Map(position: $vm.position) {
+            Map(position: $vm.position, interactionModes: [.pan, .zoom]) {
                 UserAnnotation()
                 
                 if let bikeListEntity = vm.bikeList {
@@ -32,19 +32,29 @@ public struct LocationView: View {
                             anchor: .bottom
                         ) {
                             Button {
-                                vm.selectHub(hub)
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHub(hub)
+                                }
                             } label: {
                                 ZStack {
                                     Image("hubpin", bundle: .module)
+                                        .frame(width: 44, height: 44) // 터치 영역 확보
                                     
                                     Text("\(hub.totalAvailableBikes)")
                                         .customFont(.button_md_semibold)
                                         .foregroundColor(Color.grayScaleDarker)
                                         .offset(y: -6)
                                 }
+                                .contentShape(Rectangle()) // 전체 영역을 터치 가능하게
                             }
+                            .buttonStyle(PlainButtonStyle()) // 기본 버튼 스타일 제거
                             .scaleEffect(vm.selectedHub?.id == hub.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: vm.selectedHub?.id)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: vm.selectedHub?.id)
+                            .highPriorityGesture(TapGesture().onEnded {
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHub(hub)
+                                }
+                            })
                         }
                     }
                     
@@ -59,10 +69,13 @@ public struct LocationView: View {
                             anchor: .bottom
                         ) {
                             Button {
-                                vm.selectHiBike(hiBike)
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHiBike(hiBike)
+                                }
                             } label: {
                                 ZStack {
                                     Image("hiBikepin", bundle: .module)
+                                        .frame(width: 44, height: 44) // 터치 영역 확보
                                     
                                     Text(hiBike.homeHubName.hasPrefix("생활관")
                                          ? "생\(hiBike.homeHubName.filter { $0.isNumber })"
@@ -71,23 +84,65 @@ public struct LocationView: View {
                                     .foregroundColor(Color.grayScaleDarker)
                                     .offset(x: 6)
                                 }
+                                .contentShape(Rectangle()) // 전체 영역을 터치 가능하게
                             }
+                            .buttonStyle(PlainButtonStyle()) // 기본 버튼 스타일 제거
                             .scaleEffect(vm.selectedHiBike?.id == hiBike.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: vm.selectedHiBike?.id)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: vm.selectedHiBike?.id)
+                            .highPriorityGesture(TapGesture().onEnded {
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHiBike(hiBike)
+                                }
+                            })
                         }
                     }
                 }
             }
             .onMapCameraChange { context in
-                let newLocation = context.region.center
+                let isZoomedOutTooMuch = context.region.span.latitudeDelta > 0.1
                 
-                vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
+                if isZoomedOutTooMuch {
+                    withAnimation {
+                        showZoomWarning = true
+                        // 줌 레벨 제한
+                        vm.resetToDefaultZoom(center: context.region.center)
+                    }
+                } else {
+                    showZoomWarning = false
+                    let newLocation = context.region.center
+                    vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
+                }
             }
             .mapStyle(.standard)
             .tint(Color.MylocationMarker)
             .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                vm.clearSelection()
+            .simultaneousGesture(
+                SpatialTapGesture()
+                    .onEnded { value in
+                        withAnimation(.spring(response: 0.3)) {
+                            vm.clearSelection()
+                        }
+                    }
+            )
+            .overlay(alignment: .trailing) {
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            vm.moveToUserLocation()
+                        }
+                    }) {
+                        Image(systemName: "location.fill")
+                            .font(.title2)
+                            .foregroundColor(Color.MylocationMarker)
+                            .frame(width: 44, height: 44)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                    }
+                    .padding(.trailing, 24)
+                    .padding(.bottom, 120)
+                }
             }
             
             if let hub = vm.selectedHub {
@@ -98,6 +153,29 @@ public struct LocationView: View {
             if let hiBike = vm.selectedHiBike {
                 HiBikeCard(hiBike: hiBike)
                     .transition(.move(edge: .top))
+            }
+            
+            if showZoomWarning {
+                // 줌아웃 경고 오버레이
+                VStack {
+                    
+                    Image("posik")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:300, height: 300)
+                    
+                    HStack {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundColor(.yellow)
+                        Text("너무 멀리 가지 말라구!")
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                }
+                .padding(.top, 50)
+                .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
     }

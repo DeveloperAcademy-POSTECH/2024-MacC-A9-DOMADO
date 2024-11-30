@@ -11,7 +11,16 @@ import _MapKit_SwiftUI
 
 @MainActor
 public class LocationViewModel: ObservableObject {
-    @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @Published var position: MapCameraPosition = .userLocation(fallback: .region(MKCoordinateRegion(
+        center: CLLocationCoordinate2D(
+            latitude: 36.014109,
+            longitude: 129.325666
+        ),
+        span: MKCoordinateSpan(
+            latitudeDelta: 0.02,
+            longitudeDelta: 0.02
+        )
+    )))
     @Published var bikeList: BikeList?
     @Published var selectedHub: Hub?
     @Published var selectedHiBike: HiBike?
@@ -78,6 +87,20 @@ public class LocationViewModel: ObservableObject {
         selectedHiBike = nil
     }
     
+    func resetToDefaultZoom(center: CLLocationCoordinate2D) {
+        position = .region(MKCoordinateRegion(
+            center: center,
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.1,  // 최대 줌아웃 레벨
+                longitudeDelta: 0.1
+            )
+        ))
+    }
+    
+    func moveToUserLocation() {
+        position = .userLocation(fallback: .automatic)
+    }
+    
     private func updateMapPosition(latitude: Double, longitude: Double) {
         position = .region(MKCoordinateRegion(
             center: CLLocationCoordinate2D(
@@ -85,8 +108,8 @@ public class LocationViewModel: ObservableObject {
                 longitude: longitude
             ),
             span: MKCoordinateSpan(
-                latitudeDelta: 0.0010,
-                longitudeDelta: 0.0010
+                latitudeDelta: 0.0015,
+                longitudeDelta: 0.0015
             )
         ))
     }
