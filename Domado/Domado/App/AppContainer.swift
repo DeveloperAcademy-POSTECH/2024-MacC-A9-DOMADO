@@ -202,4 +202,12 @@ final class AppContainer {
     func makeReturnBikeView() -> ReturnBikeView {
         ReturnBikeView(vm: self.makeReturnBikeView())
     }
+    
+    private func makeReturnbyHiBikeViewModel() -> HiBikeCompleteViewModel {
+        HiBikeCompleteViewModel(router: router)
+    }
+    
+    func makeReturnbyHiBikeView() -> HiBikeCompleteView {
+        HiBikeCompleteView(vm: self.makeReturnbyHiBikeViewModel())
+    }
 }
