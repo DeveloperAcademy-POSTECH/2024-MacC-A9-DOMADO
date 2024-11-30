@@ -100,6 +100,10 @@ struct RootView: View {
             container.makeReturnBikeView()
                 .presentationDetents([.height(270)])
                 .interactiveDismissDisabled()
+        case .showHiBikeComplete:
+            container.makeReturnbyHiBikeView()
+                .presentationDetents([.height(270)])
+                .interactiveDismissDisabled()
         }
     }
     
