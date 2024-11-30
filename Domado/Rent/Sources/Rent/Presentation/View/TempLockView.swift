@@ -27,27 +27,51 @@ public struct TempLockView: View {
             
             Color.gray.opacity(0.5).ignoresSafeArea()
             
-            // 중앙 상태 표시
-            VStack(spacing: 16) {
-                // 장갑 아이콘과 메시지
-                Image("pause")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 95, height: 75)
-                    .foregroundColor(.white)
-                
-                VStack(spacing: 4) {
-                    Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": (vm.isPassed ? "바이크가 새로운 주인을 찾았어요" :"바이크가 안전하게 잠겨있어요"))
-                        .customFont(.headline_md)
+            if vm.isPaymentProcessing{
+                VStack(spacing: 16) {
+                    // 장갑 아이콘과 메시지
+                    Image("pause")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 95, height: 75)
                         .foregroundColor(.white)
                     
-                    Text(vm.isHiBike ? "보통 새로운 주인은 30분 이내로 나타나요": "")
-                        .customFont(.body_sm_regular)
-                        .foregroundColor(.white)
+                    VStack(spacing: 4) {
+                        Text("요금 정산중입니다...")
+                            .customFont(.headline_md)
+                            .foregroundColor(.white)
+                        
+                        Text("바이크 요금은 새로운 주인이 하이파이브로\n이어받은 순간까지만 계산되요")
+                            .customFont(.body_sm_regular)
+                            .foregroundColor(.white)
+                    }
+                    
                 }
-
+                .padding(.bottom, 150)
+                
+            } else {
+                // 중앙 상태 표시
+                VStack(spacing: 16) {
+                    // 장갑 아이콘과 메시지
+                    Image("pause")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 95, height: 75)
+                        .foregroundColor(.white)
+                    
+                    VStack(spacing: 4) {
+                        Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": (vm.isPassed ? "바이크가 새로운 주인을 찾았어요" :"바이크가 안전하게 잠겨있어요"))
+                            .customFont(.headline_md)
+                            .foregroundColor(.white)
+                        
+                        Text(vm.isHiBike ? "보통 새로운 주인은 30분 이내로 나타나요": "")
+                            .customFont(.body_sm_regular)
+                            .foregroundColor(.white)
+                    }
+                    
+                }
+                .padding(.bottom, 150)
             }
-            .padding(.bottom, 150)
             
             // 하단 카드 영역
             VStack {
