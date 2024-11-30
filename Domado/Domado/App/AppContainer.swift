@@ -10,6 +10,7 @@ import Core
 import Foundation
 import Rent
 import Location
+import Payment
 
 /// 앱 전체 의존성을 관리하고 팩토리 메서드를 통해 의존성을 주입합니다.
 
@@ -202,4 +203,24 @@ final class AppContainer {
     func makeReturnBikeView() -> ReturnBikeView {
         ReturnBikeView(vm: self.makeReturnBikeView())
     }
+    
+    private func makeReturnbyHiBikeViewModel() -> HiBikeCompleteViewModel {
+        HiBikeCompleteViewModel(router: router)
+    }
+    
+    func makeReturnbyHiBikeView() -> HiBikeCompleteView {
+        HiBikeCompleteView(vm: self.makeReturnbyHiBikeViewModel())
+    }
+    
+    // MARK: - Payment 의존성 관리
+    private func makeRideCompelteViewModel() -> RideCompleteViewModel {
+        RideCompleteViewModel(router: router)
+    }
+    
+    func makeRideCompelteView() -> RideCompleteView {
+        RideCompleteView(vm: self.makeRideCompelteViewModel())
+    }
 }
+
+
+

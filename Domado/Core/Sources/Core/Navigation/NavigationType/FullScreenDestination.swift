@@ -13,6 +13,7 @@ public enum FullScreenDestination: Identifiable, Hashable{
     case onboarding
     case qrScanner
     case myInfo
+    case rideComplete
     
     public var id: String {
         switch self {
@@ -20,6 +21,7 @@ public enum FullScreenDestination: Identifiable, Hashable{
         case .onboarding: return "onboarding"
         case .qrScanner: return "qrScanner"
         case .myInfo: return "myInfo"
+        case .rideComplete: return "rideComplete"
         }
     }
 }

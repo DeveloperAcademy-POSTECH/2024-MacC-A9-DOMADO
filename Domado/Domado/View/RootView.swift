@@ -99,6 +99,11 @@ struct RootView: View {
         case .showPaymentGuide: 
             container.makeReturnBikeView()
                 .presentationDetents([.height(270)])
+                .interactiveDismissDisabled()
+        case .showHiBikeComplete:
+            container.makeReturnbyHiBikeView()
+                .presentationDetents([.height(270)])
+                .interactiveDismissDisabled()
         }
     }
     
@@ -113,6 +118,8 @@ struct RootView: View {
             container.makeRentView()
         case .myInfo:
             container.makeMyAccountView()
+        case .rideComplete:
+            container.makeRideCompelteView()
         }
     }
 }

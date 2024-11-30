@@ -30,18 +30,18 @@ public struct TempLockView: View {
             // 중앙 상태 표시
             VStack(spacing: 16) {
                 // 장갑 아이콘과 메시지
-                Image("pause") // 실제 장갑 아이콘으로 교체 필요
+                Image("pause")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 95, height: 75)
                     .foregroundColor(.white)
                 
-                VStack(spacing: 4) { // 텍스트 사이 간격을 4로 줄임
-                    Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": "바이크가 안전하게 잠겨있어요")
+                VStack(spacing: 4) {
+                    Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": (vm.isPassed ? "바이크가 새로운 주인을 찾았어요" :"바이크가 안전하게 잠겨있어요"))
                         .customFont(.headline_md)
                         .foregroundColor(.white)
                     
-                    Text(vm.isHiBike ? "보통 새로운 주인은 30이내로 나타나요": "")
+                    Text(vm.isHiBike ? "보통 새로운 주인은 30분 이내로 나타나요": "")
                         .customFont(.body_sm_regular)
                         .foregroundColor(.white)
                 }
@@ -64,7 +64,7 @@ public struct TempLockView: View {
                     // 이용 정보 카드
                     VStack(spacing: 20) {
                         BikeInfoCard(
-                            remainingTime: "52:21",
+                            remainingTime: "30:21",
                             batteryLevel: "21km",
                             isParked: true
                         ) {
@@ -74,6 +74,16 @@ public struct TempLockView: View {
                     }
                     .padding()
                 }
+            }
+        }
+        // MARK: 추후 삭제
+        .overlay(alignment: .topLeading){
+            Button {
+                vm.showCompleteHiBike()
+            } label: {
+                Rectangle()
+                    .frame(width: 50, height: 50)
+                    .opacity(0)
             }
         }
     }

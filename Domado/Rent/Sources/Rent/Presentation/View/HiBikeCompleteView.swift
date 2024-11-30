@@ -2,17 +2,17 @@
 //  SwiftUIView.swift
 //  Rent
 //
-//  Created by 이종선 on 11/28/24.
+//  Created by 이종선 on 11/30/24.
 //
 
 import Core
 import SwiftUI
 
-public struct ReturnBikeView: View {
+public struct HiBikeCompleteView: View {
     
-    @StateObject private var vm: ReturnBikeViewModel
+    @StateObject private var vm: HiBikeCompleteViewModel
     
-    public init(vm: ReturnBikeViewModel){
+    public init(vm: HiBikeCompleteViewModel){
         _vm = StateObject(wrappedValue: vm)
     }
     
@@ -21,7 +21,7 @@ public struct ReturnBikeView: View {
             VStack(alignment: .leading) {
                 // Header with close button
                 HStack {
-                    Text("바이크 반납하기")
+                    Text("바이크 넘겨주기")
                         .customFont(.headline_sm)
                     
                     Spacer()
@@ -31,7 +31,7 @@ public struct ReturnBikeView: View {
                 
                 // Description section
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("바이크가 스테이션에 안전하게 꽂힌 걸 확인했어요\n덕분에 바이크가 잘 돌아왔어요! ")
+                    Text("다음 사용자가 바이크를 가져갔어요.\n이제부터 정산을 시작할게요.")
                         .customFont(.body_sm_regular)
                         .lineSpacing(4)
                         .padding(.bottom)
@@ -51,3 +51,4 @@ public struct ReturnBikeView: View {
         .padding(.horizontal, 24)
     }
 }
+

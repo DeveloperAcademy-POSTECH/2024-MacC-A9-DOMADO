@@ -2,13 +2,13 @@
 //  File.swift
 //  Rent
 //
-//  Created by 이종선 on 11/28/24.
+//  Created by 이종선 on 11/30/24.
 //
 
 import Core
 import Foundation
 
-public class ReturnBikeViewModel: ObservableObject {
+public class HiBikeCompleteViewModel: ObservableObject {
     
     private let router: Routing
     
@@ -16,7 +16,7 @@ public class ReturnBikeViewModel: ObservableObject {
         self.router = router
     }
     
-    public func rideComplete(){
+    func rideComplete(){
         router.dismissSheet()
         router.present(fullScreen: .rideComplete)
     }
