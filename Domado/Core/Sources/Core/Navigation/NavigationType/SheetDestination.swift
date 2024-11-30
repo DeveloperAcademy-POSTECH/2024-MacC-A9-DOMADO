@@ -14,6 +14,7 @@ public enum SheetDestination: Identifiable, Hashable {
     case showHiBikeGuide
     case confirmUnParking
     case showPaymentGuide
+    case showHiBikeComplete
     
     public var id:String {
         switch self {
@@ -22,6 +23,7 @@ public enum SheetDestination: Identifiable, Hashable {
         case .showHiBikeGuide: return "showHiBikeGuide"
         case .confirmUnParking: return "confirmUnParking"
         case .showPaymentGuide: return "showPaymentGuide"
+        case .showHiBikeComplete: return "showHiBikeComplete"
             
         }
     }
