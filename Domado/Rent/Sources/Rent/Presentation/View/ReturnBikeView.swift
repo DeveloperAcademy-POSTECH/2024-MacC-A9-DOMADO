@@ -31,7 +31,7 @@ public struct ReturnBikeView: View {
                 
                 // Description section
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("자전가 스테이션에 안전하게 꽂힌 걸 확인했어요\n 덕분에 바이크가 잘 돌아왔어요! ")
+                    Text("바이크가 스테이션에 안전하게 꽂힌 걸 확인했어요\n덕분에 바이크가 잘 돌아왔어요! ")
                         .customFont(.body_sm_regular)
                         .lineSpacing(4)
                         .padding(.bottom)
