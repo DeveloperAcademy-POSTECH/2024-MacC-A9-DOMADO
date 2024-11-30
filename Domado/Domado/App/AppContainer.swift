@@ -173,7 +173,7 @@ final class AppContainer {
     }
     
     private func makeTempLockViewModel() -> TempLockViewModel {
-        return TempLockViewModel(router: router)
+        return TempLockViewModel(router: router, appState: makeAppState())
     }
     
     func makeTempLockView() -> TempLockView {
@@ -205,7 +205,7 @@ final class AppContainer {
     }
     
     private func makeReturnbyHiBikeViewModel() -> HiBikeCompleteViewModel {
-        HiBikeCompleteViewModel(router: router)
+        HiBikeCompleteViewModel(router: router, appState: makeAppState())
     }
     
     func makeReturnbyHiBikeView() -> HiBikeCompleteView {
