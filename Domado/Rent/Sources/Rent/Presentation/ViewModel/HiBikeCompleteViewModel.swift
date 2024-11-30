@@ -15,4 +15,9 @@ public class HiBikeCompleteViewModel: ObservableObject {
     public init(router: Routing){
         self.router = router
     }
+    
+    func rideComplete(){
+        router.dismissSheet()
+        router.present(fullScreen: .rideComplete)
+    }
 }
