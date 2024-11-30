@@ -8,10 +8,10 @@
 import SwiftUI
 import Core
 
-struct RideCompleteView: View {
-    //        @Environment(\.dismiss) private var dismiss
+public struct RideCompleteView: View {
+
+    @StateObject private var vm: RideCompleteViewModel
     
-    //    var rideDate: String = "24. 10. 19"
     var homeHubName: String = "생활관 18동"
     var rideTime: String = "09:27 - 09:41"
     var appliedCoupon: String = "내역없음"
@@ -20,8 +20,11 @@ struct RideCompleteView: View {
     var rideDuration: String = "30 : 21"
     var rideDistance: String = "13"
     
+    public init(vm: RideCompleteViewModel){
+        _vm = StateObject(wrappedValue: vm)
+    }
     
-    var body: some View {
+    public var body: some View {
         ZStack{
             Color.grayScaleWhite.ignoresSafeArea()
             
@@ -38,7 +41,7 @@ struct RideCompleteView: View {
                     Spacer()
                     
                     Button {
-                        //                        dismiss()
+                        vm.goHomeView()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundStyle(Color.interactivePrimary)
@@ -160,8 +163,4 @@ struct RideCompleteView: View {
             
         }
     }
-}
-
-#Preview {
-    RideCompleteView()
 }
