@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 public struct LocationView: View {
     @ObservedObject private var vm: LocationViewModel
+    @State private var showZoomWarning = false
     
     public init(vm: LocationViewModel) {
         self.vm = vm
@@ -16,7 +17,7 @@ public struct LocationView: View {
     
     public var body: some View {
         ZStack(alignment: .top) {
-            Map(position: $vm.position) {
+            Map(position: $vm.position, interactionModes: [.pan, .zoom]) {
                 UserAnnotation()
                 
                 if let bikeListEntity = vm.bikeList {
@@ -98,8 +99,19 @@ public struct LocationView: View {
                 }
             }
             .onMapCameraChange { context in
-                let newLocation = context.region.center
-                vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
+                let isZoomedOutTooMuch = context.region.span.latitudeDelta > 0.1
+                
+                if isZoomedOutTooMuch {
+                    withAnimation {
+                        showZoomWarning = true
+                        // 줌 레벨 제한
+                        vm.resetToDefaultZoom(center: context.region.center)
+                    }
+                } else {
+                    showZoomWarning = false
+                    let newLocation = context.region.center
+                    vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
+                }
             }
             .mapStyle(.standard)
             .tint(Color.MylocationMarker)
@@ -121,6 +133,29 @@ public struct LocationView: View {
             if let hiBike = vm.selectedHiBike {
                 HiBikeCard(hiBike: hiBike)
                     .transition(.move(edge: .top))
+            }
+            
+            if showZoomWarning {
+                // 줌아웃 경고 오버레이
+                VStack {
+                    
+                    Image("posik")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width:300, height: 300)
+                    
+                    HStack {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundColor(.yellow)
+                        Text("너무 멀리 가지 말라구!")
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                }
+                .padding(.top, 50)
+                .transition(.move(edge: .top).combined(with: .opacity))
             }
         }
     }
