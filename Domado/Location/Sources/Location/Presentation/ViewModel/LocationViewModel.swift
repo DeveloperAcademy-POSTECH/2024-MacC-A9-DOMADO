@@ -5,7 +5,6 @@
 //  Created by yoomin on 11/5/24.
 //
 
-import Combine
 import Core
 import SwiftUI
 import _MapKit_SwiftUI
@@ -20,33 +19,12 @@ public class LocationViewModel: ObservableObject {
     @Published var error: Error?
     
     private let useCase: BikesUseCase
-    private var locationManager: LocationManager
-    private var cancellables = Set<AnyCancellable>()
     
-    public init(useCase: BikesUseCase, locationManager: LocationManager) {
+    public init(useCase: BikesUseCase) {
         self.useCase = useCase
-        self.locationManager = locationManager
-        
-        // 위치가 업데이트될 때마다 자전거 정보 갱신
-        subscribeUserCurrentLocation()
-        
     }
     
-    private func subscribeUserCurrentLocation() {
-        locationManager.$userLocation
-            .sink { [weak self] newLocation in
-                
-                if let newLatitude = newLocation?.latitude, let newLongitude = newLocation?.longitude {
-            
-                        self?.fetchBikes(latitude: newLatitude, longitude: newLongitude)
-                    
-                }
-                
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func fetchBikes(latitude: Double, longitude: Double) {
+    func fetchBikes(latitude: Double, longitude: Double) {
         
         guard !isLoading else { return }
         
