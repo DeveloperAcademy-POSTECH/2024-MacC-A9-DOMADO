@@ -16,7 +16,8 @@ public class ReturnBikeViewModel: ObservableObject {
         self.router = router
     }
     
-    public func dismissSheet(){
+    public func rideComplete(){
         router.dismissSheet()
+        router.present(fullScreen: .rideComplete)
     }
 }

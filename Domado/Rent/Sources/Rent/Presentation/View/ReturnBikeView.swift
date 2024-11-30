@@ -45,7 +45,7 @@ public struct ReturnBikeView: View {
                 slideIcon: "creditcard",
                 lockIcon: "faxmachine"
             ) {
-                print("결제가 완료되었습니다!")
+                vm.rideComplete()
             }
         }
         .padding(.horizontal, 24)
