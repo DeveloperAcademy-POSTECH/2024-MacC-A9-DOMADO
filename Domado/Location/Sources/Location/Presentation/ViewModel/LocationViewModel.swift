@@ -97,6 +97,10 @@ public class LocationViewModel: ObservableObject {
         ))
     }
     
+    func moveToUserLocation() {
+        position = .userLocation(fallback: .automatic)
+    }
+    
     private func updateMapPosition(latitude: Double, longitude: Double) {
         position = .region(MKCoordinateRegion(
             center: CLLocationCoordinate2D(

@@ -124,6 +124,26 @@ public struct LocationView: View {
                         }
                     }
             )
+            .overlay(alignment: .trailing) {
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            vm.moveToUserLocation()
+                        }
+                    }) {
+                        Image(systemName: "location.fill")
+                            .font(.title2)
+                            .foregroundColor(Color.MylocationMarker)
+                            .frame(width: 44, height: 44)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 2)
+                    }
+                    .padding(.trailing, 24)
+                    .padding(.bottom, 120)
+                }
+            }
             
             if let hub = vm.selectedHub {
                 HubCard(hub: hub)
