@@ -37,7 +37,7 @@ public struct TempLockView: View {
                     .foregroundColor(.white)
                 
                 VStack(spacing: 4) {
-                    Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": "바이크가 안전하게 잠겨있어요")
+                    Text(vm.isHiBike ? "새로운 바이크 주인을 찾고 있어요..": (vm.isPassed ? "바이크가 새로운 주인을 찾았어요" :"바이크가 안전하게 잠겨있어요"))
                         .customFont(.headline_md)
                         .foregroundColor(.white)
                     
@@ -74,6 +74,16 @@ public struct TempLockView: View {
                     }
                     .padding()
                 }
+            }
+        }
+        // MARK: 추후 삭제
+        .overlay(alignment: .topLeading){
+            Button {
+                vm.showCompleteHiBike()
+            } label: {
+                Rectangle()
+                    .frame(width: 50, height: 50)
+                    .opacity(0)
             }
         }
     }
