@@ -7,7 +7,6 @@
 
 import SwiftUI
 import MapKit
-
 public struct LocationView: View {
     @ObservedObject private var vm: LocationViewModel
     
@@ -32,19 +31,29 @@ public struct LocationView: View {
                             anchor: .bottom
                         ) {
                             Button {
-                                vm.selectHub(hub)
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHub(hub)
+                                }
                             } label: {
                                 ZStack {
                                     Image("hubpin", bundle: .module)
+                                        .frame(width: 44, height: 44) // 터치 영역 확보
                                     
                                     Text("\(hub.totalAvailableBikes)")
                                         .customFont(.button_md_semibold)
                                         .foregroundColor(Color.grayScaleDarker)
                                         .offset(y: -6)
                                 }
+                                .contentShape(Rectangle()) // 전체 영역을 터치 가능하게
                             }
+                            .buttonStyle(PlainButtonStyle()) // 기본 버튼 스타일 제거
                             .scaleEffect(vm.selectedHub?.id == hub.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: vm.selectedHub?.id)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: vm.selectedHub?.id)
+                            .highPriorityGesture(TapGesture().onEnded {
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHub(hub)
+                                }
+                            })
                         }
                     }
                     
@@ -59,10 +68,13 @@ public struct LocationView: View {
                             anchor: .bottom
                         ) {
                             Button {
-                                vm.selectHiBike(hiBike)
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHiBike(hiBike)
+                                }
                             } label: {
                                 ZStack {
                                     Image("hiBikepin", bundle: .module)
+                                        .frame(width: 44, height: 44) // 터치 영역 확보
                                     
                                     Text(hiBike.homeHubName.hasPrefix("생활관")
                                          ? "생\(hiBike.homeHubName.filter { $0.isNumber })"
@@ -71,24 +83,35 @@ public struct LocationView: View {
                                     .foregroundColor(Color.grayScaleDarker)
                                     .offset(x: 6)
                                 }
+                                .contentShape(Rectangle()) // 전체 영역을 터치 가능하게
                             }
+                            .buttonStyle(PlainButtonStyle()) // 기본 버튼 스타일 제거
                             .scaleEffect(vm.selectedHiBike?.id == hiBike.id ? 1.2 : 1.0)
-                            .animation(.spring(response: 0.3), value: vm.selectedHiBike?.id)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: vm.selectedHiBike?.id)
+                            .highPriorityGesture(TapGesture().onEnded {
+                                withAnimation(.spring(response: 0.3)) {
+                                    vm.selectHiBike(hiBike)
+                                }
+                            })
                         }
                     }
                 }
             }
             .onMapCameraChange { context in
                 let newLocation = context.region.center
-                
                 vm.fetchBikes(latitude: newLocation.latitude, longitude: newLocation.longitude)
             }
             .mapStyle(.standard)
             .tint(Color.MylocationMarker)
             .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                vm.clearSelection()
-            }
+            .simultaneousGesture(
+                SpatialTapGesture()
+                    .onEnded { value in
+                        withAnimation(.spring(response: 0.3)) {
+                            vm.clearSelection()
+                        }
+                    }
+            )
             
             if let hub = vm.selectedHub {
                 HubCard(hub: hub)
