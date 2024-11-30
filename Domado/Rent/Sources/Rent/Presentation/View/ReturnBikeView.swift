@@ -26,13 +26,6 @@ public struct ReturnBikeView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        vm.dismissSheet()
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.blue)
-                            .font(.system(size: 20))
-                    }
                 }
                 .padding(.bottom, 8)
                 

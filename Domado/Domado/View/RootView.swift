@@ -99,6 +99,7 @@ struct RootView: View {
         case .showPaymentGuide: 
             container.makeReturnBikeView()
                 .presentationDetents([.height(270)])
+                .interactiveDismissDisabled()
         }
     }
     
