@@ -118,6 +118,8 @@ struct RootView: View {
             container.makeRentView()
         case .myInfo:
             container.makeMyAccountView()
+        case .rideComplete:
+            container.makeRideCompelteView()
         }
     }
 }
