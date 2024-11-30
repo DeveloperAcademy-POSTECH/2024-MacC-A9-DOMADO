@@ -157,7 +157,7 @@ final class AppContainer {
     }
     
     private func makeActiveRentalViewModel() -> ActiveRentViewModel {
-        return ActiveRentViewModel(router: router)
+        return ActiveRentViewModel(router: router, appState: makeAppState())
     }
     
     func makeActiveRentalView() -> ActiveRentalView {
@@ -173,7 +173,7 @@ final class AppContainer {
     }
     
     private func makeTempLockViewModel() -> TempLockViewModel {
-        return TempLockViewModel(router: router)
+        return TempLockViewModel(router: router, appState: makeAppState())
     }
     
     func makeTempLockView() -> TempLockView {
@@ -197,7 +197,7 @@ final class AppContainer {
     }
     
     private func makeReturnBikeView() -> ReturnBikeViewModel {
-        return ReturnBikeViewModel(router: router)
+        return ReturnBikeViewModel(router: router, appState: makeAppState())
     }
     
     func makeReturnBikeView() -> ReturnBikeView {
@@ -205,7 +205,7 @@ final class AppContainer {
     }
     
     private func makeReturnbyHiBikeViewModel() -> HiBikeCompleteViewModel {
-        HiBikeCompleteViewModel(router: router)
+        HiBikeCompleteViewModel(router: router, appState: makeAppState())
     }
     
     func makeReturnbyHiBikeView() -> HiBikeCompleteView {

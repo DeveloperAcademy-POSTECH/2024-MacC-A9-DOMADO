@@ -5,6 +5,7 @@
 //  Created by 이종선 on 11/27/24.
 //
 
+import Combine
 import Core
 import Foundation
 import _MapKit_SwiftUI
@@ -13,11 +14,21 @@ import _MapKit_SwiftUI
 public class TempLockViewModel: ObservableObject {
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @Published var isHiBike: Bool = false
-    @Published var isPassed: Bool = false 
+    @Published var isPassed: Bool = false
+    @Published var isPaymentProcessing: Bool = false
     private let router: Routing
+    private let appState: AppState
+    private var cancellables = Set<AnyCancellable>()
     
-    public init(router: Routing){
+    public init(router: Routing, appState: AppState){
         self.router = router
+        self.appState = appState
+        
+        appState.$isProcessingPayment
+            .sink { [weak self] isProcessing in
+                self?.isPaymentProcessing = isProcessing
+            }
+            .store(in: &cancellables)
     }
     
     public func showUnparkConfirmView(){

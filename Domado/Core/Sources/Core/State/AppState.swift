@@ -35,6 +35,9 @@ public final class AppState: ObservableObject {
     private(set) public var hasSeenOnboarding: Bool = false
     private(set) public var currentUser: AppUser? = nil
     
+    //MARK: 화면 제어를 위한 프로퍼티들
+    @Published private(set) public var isProcessingPayment = false
+
     private let storage: StateStorage
     
     // MARK: - Initialization
@@ -149,4 +152,12 @@ public final class AppState: ObservableObject {
              print("Failed to reset app state: \(error)")
          }
      }
+    
+    public func startPaymentProcessing(){
+        self.isProcessingPayment = true
+    }
+    
+    public func donePaymentProcessing(){
+        self.isProcessingPayment = false
+    }
 }
