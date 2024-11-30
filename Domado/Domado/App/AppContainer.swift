@@ -157,7 +157,7 @@ final class AppContainer {
     }
     
     private func makeActiveRentalViewModel() -> ActiveRentViewModel {
-        return ActiveRentViewModel(router: router)
+        return ActiveRentViewModel(router: router, appState: makeAppState())
     }
     
     func makeActiveRentalView() -> ActiveRentalView {
@@ -197,7 +197,7 @@ final class AppContainer {
     }
     
     private func makeReturnBikeView() -> ReturnBikeViewModel {
-        return ReturnBikeViewModel(router: router)
+        return ReturnBikeViewModel(router: router, appState: makeAppState())
     }
     
     func makeReturnBikeView() -> ReturnBikeView {
