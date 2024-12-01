@@ -100,15 +100,7 @@ final class AppContainer {
     
     func makeLoginView() -> LoginView {
         LoginView(vm: makeLoginViewModel())
-    }
-    
-    private func makeSignupViewModel() -> SignUpViewModel{
-        return SignUpViewModel(authUseCase: makeAuthUseCase(), router: makeAppRouter())
-    }
-    
-    func makeSignupView() -> SignUpView {
-        SignUpView(vm: makeSignupViewModel())
-    }
+    } 
     
     // MARK: - MAP 의존성 관리
     private func makeBikesRepository() -> BikeRepository {
