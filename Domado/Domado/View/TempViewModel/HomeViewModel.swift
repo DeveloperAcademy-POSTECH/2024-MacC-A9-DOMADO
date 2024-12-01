@@ -40,19 +40,19 @@ class HomeViewModel: ObservableObject {
     }
     
     func rentBikeWithQR() {
-        guard checkAuthStatus() else { return }
+//        guard checkAuthStatus() else { return }
         router.present(fullScreen: .qrScanner)
     }
     
-    private func checkAuthStatus() -> Bool {
-        switch appState.authState {
-        case .authenticated:
-            return true
-        case .unknown, .unauthenticated:
-            router.present(fullScreen: .login)
-            return false
-        }
-    }
+//    private func checkAuthStatus() -> Bool {
+//        switch appState.authState {
+//        case .authenticated:
+//            return true
+//        case .unknown, .unauthenticated:
+//            router.present(fullScreen: .login)
+//            return false
+//        }
+//    }
     
     func showInfoCard() {
         router.present(fullScreen: .myInfo)
