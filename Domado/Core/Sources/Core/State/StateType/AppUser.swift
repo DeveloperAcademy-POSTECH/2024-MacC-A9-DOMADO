@@ -5,7 +5,7 @@
 //  Created by 이종선 on 11/21/24.
 //
 
-public struct AppUser {
+public struct AppUser: Codable {
     let id: Int
     let name: String
     let hasRegisteredPayments: Bool
