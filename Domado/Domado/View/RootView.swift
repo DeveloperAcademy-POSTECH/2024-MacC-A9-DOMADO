@@ -75,8 +75,6 @@ struct RootView: View {
             container.makeTempLockView()
                 .navigationBarHidden(true)
                 .navigationBarBackButtonHidden()
-        case .singUp:
-            container.makeSignupView()
         }
     }
     
