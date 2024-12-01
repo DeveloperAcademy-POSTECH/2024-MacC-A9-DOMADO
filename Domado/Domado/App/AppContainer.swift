@@ -80,7 +80,7 @@ final class AppContainer {
     
     // MARK: - ViewModel 반환 메서드
     private func makeOnboardingViewModel() -> OnboardingViewModel {
-        OnboardingViewModel(router: router)
+        OnboardingViewModel(router: makeAppRouter())
     }
     
     
@@ -95,7 +95,7 @@ final class AppContainer {
     }
     
     private func makeLoginViewModel() -> LoginViewModel{
-        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState, router: router)
+        return LoginViewModel(authUseCase: makeAuthUseCase(), appState: appState, router: makeAppRouter())
     }
     
     func makeLoginView() -> LoginView {
@@ -103,7 +103,7 @@ final class AppContainer {
     }
     
     private func makeSignupViewModel() -> SignUpViewModel{
-        return SignUpViewModel(authUseCase: makeAuthUseCase(), router: router)
+        return SignUpViewModel(authUseCase: makeAuthUseCase(), router: makeAppRouter())
     }
     
     func makeSignupView() -> SignUpView {
@@ -124,7 +124,7 @@ final class AppContainer {
     }
     
     private func makeHomeViewModel() -> HomeViewModel {
-        return HomeViewModel(router: router, appState: makeAppState(), webSocketManager: webSocketManager, pushNotificationManager: makePushNotificationManager())
+        return HomeViewModel(router: makeAppRouter(), appState: makeAppState(), webSocketManager: webSocketManager, pushNotificationManager: makePushNotificationManager())
     }
     
     func makeHomeView() -> HomeView {
@@ -132,7 +132,7 @@ final class AppContainer {
     }
     
     private func makeMyAccountViewModel() -> MyAccountViewModel {
-        return MyAccountViewModel(router: router)
+        return MyAccountViewModel(router: makeAppRouter())
     }
     
     func makeMyAccountView() -> MyAccountView {
@@ -149,7 +149,7 @@ final class AppContainer {
     }
     
     private func makeRentProgressViewModel() -> RentProgressViewModel {
-        return RentProgressViewModel(router: makeAppRouter())
+        return RentProgressViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeRentProgressView() -> RentProgressView {
@@ -157,7 +157,7 @@ final class AppContainer {
     }
     
     private func makeActiveRentalViewModel() -> ActiveRentViewModel {
-        return ActiveRentViewModel(router: router, appState: makeAppState())
+        return ActiveRentViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeActiveRentalView() -> ActiveRentalView {
@@ -165,7 +165,7 @@ final class AppContainer {
     }
     
     private func makeParkingConfirmViewModel() -> ParkingConfirmViewModel {
-        return ParkingConfirmViewModel(router: router)
+        return ParkingConfirmViewModel(router: makeAppRouter())
     }
     
     func makeParkingConfirmView() -> ParkingConfirmView {
@@ -173,7 +173,7 @@ final class AppContainer {
     }
     
     private func makeTempLockViewModel() -> TempLockViewModel {
-        return TempLockViewModel(router: router, appState: makeAppState())
+        return TempLockViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeTempLockView() -> TempLockView {
@@ -181,7 +181,7 @@ final class AppContainer {
     }
     
     private func makeHiBikeGuideViewModel() -> HiBikeGuideViewModel {
-        return HiBikeGuideViewModel(router: router)
+        return HiBikeGuideViewModel(router: makeAppRouter())
     }
     
     func makeHiBikeGuideView() -> HiBikeGuideView {
@@ -189,7 +189,7 @@ final class AppContainer {
     }
     
     private func makeUnparkingConfirmViewModel() -> UnparkingConfirmViewModel {
-        return UnparkingConfirmViewModel(router: router)
+        return UnparkingConfirmViewModel(router: makeAppRouter())
     }
     
     func makeUnparkingConfirmView() -> UnparkingConfirmView {
@@ -197,7 +197,7 @@ final class AppContainer {
     }
     
     private func makeReturnBikeView() -> ReturnBikeViewModel {
-        return ReturnBikeViewModel(router: router, appState: makeAppState())
+        return ReturnBikeViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeReturnBikeView() -> ReturnBikeView {
@@ -205,7 +205,7 @@ final class AppContainer {
     }
     
     private func makeReturnbyHiBikeViewModel() -> HiBikeCompleteViewModel {
-        HiBikeCompleteViewModel(router: router, appState: makeAppState())
+        HiBikeCompleteViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeReturnbyHiBikeView() -> HiBikeCompleteView {
@@ -214,7 +214,7 @@ final class AppContainer {
     
     // MARK: - Payment 의존성 관리
     private func makeRideCompelteViewModel() -> RideCompleteViewModel {
-        RideCompleteViewModel(router: router)
+        RideCompleteViewModel(router: makeAppRouter())
     }
     
     func makeRideCompelteView() -> RideCompleteView {
