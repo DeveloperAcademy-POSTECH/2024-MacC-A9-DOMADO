@@ -15,7 +15,7 @@ struct LocationMarker: Identifiable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
 }
-
+@MainActor
 public class RentProgressViewModel: ObservableObject {
     @Published var isApplyCoupon: Bool = false
     /// AppState를 통해 주입
@@ -29,9 +29,11 @@ public class RentProgressViewModel: ObservableObject {
     }
     
     private let router: Routing
+    private let appState: AppState
     
-    public init(router: Routing) {
+    public init(router: Routing, appState: AppState) {
         self.router = router
+        self.appState = appState
         self.cameraPosition = .region(MKCoordinateRegion(
             center: coordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
@@ -46,11 +48,19 @@ public class RentProgressViewModel: ObservableObject {
         router.dismissSheet()
         router.dismissFullScreen()
         router.navigateTo(.inUse)
-       
+        resetScanningState()
     }
     
     func dismiss() {
         router.dismissSheet()
+        resetScanningState()
+    }
+    
+    func resetScanningState() {
+        // 스캐닝 상태만 리셋
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.appState.doneScanning()
+        }
     }
 }
 

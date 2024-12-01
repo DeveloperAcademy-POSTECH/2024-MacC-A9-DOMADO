@@ -96,50 +96,8 @@ public struct RentProgressView: View {
                 .padding(.bottom, 20)
             }
         }
+        .onDisappear{
+            viewModel.resetScanningState()
+        }
     }
-}
-
-
-// MARK: - Preview
-struct RentProgressView_Previews: PreviewProvider {
-    static var previews: some View {
-        Color.gray.opacity(0.1) // 배경색
-            .sheet(isPresented: .constant(true)) {
-                RentProgressView(viewModel: RentProgressViewModel(router: MockRouting()))
-                .presentationDetents([.height(580)]) // Sheet 높이 고정
-                .presentationDragIndicator(.visible) // 드래그 인디케이터 표시
-            }
-    }
-}
-
-class MockRouting: Routing {
-    func navigateTo(_ destination: Core.NavigationDestination) {
-        
-    }
-    
-    func navigateBack() {
-        
-    }
-    
-    func popToRoot() {
-        
-    }
-    
-    func present(sheet: Core.SheetDestination) {
-        
-    }
-    
-    func dismissSheet() {
-        
-    }
-    
-    func present(fullScreen: Core.FullScreenDestination) {
-         
-    }
-    
-    func dismissFullScreen() {
-        
-    }
-    
-
 }
