@@ -53,7 +53,7 @@ public final class LoginViewModel: ObservableObject {
                 
                 self.appState.updateUserState(to: currentUser)
                 
-            } catch let error as AuthError {
+            } catch let _ as AuthError {
                 //TODO: UseCase에서 로그인 정보 검증 로직 추가 + 검증에 따른 error 처리
                 // TODO: 사용자에게 보여줘야하는 에러 처리
             } catch {
@@ -62,10 +62,6 @@ public final class LoginViewModel: ObservableObject {
             
             handleLoading(false)
         }
-    }
-    
-    func navigateToSignUp() {
-        router.navigateTo(.singUp)
     }
     
     func dismiss(){
