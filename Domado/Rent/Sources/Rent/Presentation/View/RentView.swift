@@ -21,11 +21,12 @@ public struct RentView: View {
            // 카메라 뷰
            CodeScannerView(
                codeTypes: [.qr],
+               scanMode: .continuous,
                simulatedData: "BIKE-123",
+               shouldVibrateOnSuccess: !viewModel.isProcessingScanning,
                isTorchOn: viewModel.isTorchOn,
                completion: viewModel.handleScan
            )
-           
            // 반투명한 오버레이와 구멍
            GeometryReader { geometry in
                let boxWidth: CGFloat = 280
