@@ -68,6 +68,10 @@ public final class LoginViewModel: ObservableObject {
         router.navigateTo(.singUp)
     }
     
+    func dismiss(){
+        router.dismissFullScreen()
+    }
+    
     private func handleLoading(_ loading: Bool) {
         isLoading = loading
     }
