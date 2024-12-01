@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public final class AppState: ObservableObject {
     
     // MARK: State Enum
@@ -36,6 +37,7 @@ public final class AppState: ObservableObject {
     private(set) public var currentUser: AppUser? = nil
     
     //MARK: 화면 제어를 위한 프로퍼티들
+    private(set) public var isProcessingScanning = false
     @Published private(set) public var isProcessingPayment = false
 
     private let storage: StateStorage
@@ -153,6 +155,16 @@ public final class AppState: ObservableObject {
          }
      }
     
+    // MARK: - QR코드 Scanning 상태 관리
+    public func startScanning(){
+        self.isProcessingScanning = true
+    }
+    
+    public func doneScanning(){
+        self.isProcessingScanning = false
+    }
+    
+    // MARK: - 결제 진행 상태 관리
     public func startPaymentProcessing(){
         self.isProcessingPayment = true
     }
