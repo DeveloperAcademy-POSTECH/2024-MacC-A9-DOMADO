@@ -16,9 +16,9 @@ public final class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     
     
-    private let authUseCase: AuthUseCase
+    let authUseCase: AuthUseCase
     private let appState: AppState
-    private let router: Routing
+    let router: Routing
     
     // MARK: - Init
     
