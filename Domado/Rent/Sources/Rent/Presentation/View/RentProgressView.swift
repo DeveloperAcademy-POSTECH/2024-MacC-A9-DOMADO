@@ -62,8 +62,12 @@ public struct RentProgressView: View {
                         .customFont(.body_md_regular)
                         .opacity(0.5)
                     
-                    Text("반납 구역으로 돌아가야 반납이 가능해요")
-                        .customFont(.body_md_bold)
+                    HStack(spacing: 0) {
+                        Text("\(viewModel.stationName)")
+                            .customFont(.body_md_bold)
+                        Text("으로 돌아가야 반납이 가능해요")
+                            .customFont(.body_md_regular)
+                    }
                 }
                 
                 VStack{

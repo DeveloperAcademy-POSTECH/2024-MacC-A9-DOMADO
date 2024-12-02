@@ -10,23 +10,14 @@ import Foundation
 import MapKit
 import _MapKit_SwiftUI
 
-// MARK: - Location Marker
-struct LocationMarker: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
-}
 @MainActor
 public class RentProgressViewModel: ObservableObject {
     @Published var isApplyCoupon: Bool = false
     /// AppState를 통해 주입
-    var bikeId: String = "BIKE001"
-    var stationName: String = "무은재 기념관"
-    let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 36.012061, longitude: 129.322220)
+    var bikeId: String = "301100"
+    var stationName: String = "박태준학술정보관"
+    let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 36.012516, longitude: 129.326191)
     @Published var cameraPosition: MapCameraPosition
-    
-    var marker: LocationMarker {
-        LocationMarker(coordinate: coordinate)
-    }
     
     private let router: Routing
     private let appState: AppState
@@ -58,7 +49,7 @@ public class RentProgressViewModel: ObservableObject {
     
     func resetScanningState() {
         // 스캐닝 상태만 리셋
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.appState.doneScanning()
         }
     }

@@ -45,7 +45,9 @@ public class RentViewModel: ObservableObject {
         // QR 코드 검증 로직
         guard !appState.isProcessingScanning else { return }
         appState.startScanning()
-        guard code.hasPrefix("BIKE") else {
+        // 6자리 숫자인지 검증
+        guard code.count == 6,
+              let _ = Int(code) else {
             alertMessage = "유효하지 않은 QR 코드입니다"
             showAlert = true
             return
@@ -74,7 +76,7 @@ public class RentViewModel: ObservableObject {
     
     func resetScanningState() {
         // 스캐닝 상태만 리셋
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.appState.doneScanning()
         }
     }
