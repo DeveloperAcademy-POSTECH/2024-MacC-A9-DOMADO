@@ -47,7 +47,8 @@ public struct CouponBook: View {
                                     Image("hiBike")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 56, height: 56)
+                                        .frame(width: 64, height: 52)
+                                        .offset(y: -2)
                                 }
                             }
                             .offset(x: CGFloat(index * 60), y: index % 2 == 0 ? 36 : 0)
