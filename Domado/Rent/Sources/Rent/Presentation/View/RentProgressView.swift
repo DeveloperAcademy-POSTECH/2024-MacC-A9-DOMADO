@@ -18,91 +18,113 @@ public struct RentProgressView: View {
     }
     
     public var body: some View {
-        VStack(spacing: 0) {
-            // 상단
-            HStack {
-                Text("바이크를 대여할까요?")
-                    .customFont(.headline_sm)
+        ZStack{
+            
+            if viewModel.isLoading{
                 
-                Spacer()
-                
-                Button(action: { viewModel.dismiss() }) {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.interactivePrimary)
-                        
+                VStack(spacing: 16) {
+                    // 장갑 아이콘과 메시지
+                    Image("pause")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 95, height: 75)
+                        .foregroundColor(.white)
+                    
+                    VStack(spacing: 4) {
+                        Text("자전거 대여 요청중입니다...")
+                            .customFont(.headline_md)
+                            .foregroundColor(.white)
+                    }
                 }
             }
-            .padding(.horizontal)
-            .padding(.top)
-            .padding(.bottom, 8)
             
-            VStack(alignment: .center, spacing: 20) {
+            VStack(spacing: 0) {
+                // 상단
                 HStack {
-                    Image(systemName: "house.fill")
-                        .foregroundStyle(Color.interactivePrimary)
-                    Text(viewModel.stationName)
-                        .customFont(.station_lg_bold)
-                }
-                .padding(.top)
-                
-                // 돌아갈 스테이션 표시
-                Map(position: $viewModel.cameraPosition) {
-                    Annotation("", coordinate: viewModel.coordinate) {
-                        HomeMarkerView(stationName: viewModel.stationName)
+                    Text("바이크를 대여할까요?")
+                        .customFont(.headline_sm)
+                    
+                    Spacer()
+                    
+                    Button(action: { viewModel.dismiss() }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.interactivePrimary)
+                        
                     }
                 }
-                .frame(width: 280,height: 186)
-                .cornerRadius(20)
-                .foregroundStyle(Color.gray.opacity(0.2))
                 .padding(.horizontal)
+                .padding(.top)
+                .padding(.bottom, 8)
                 
-                // 정보 섹션
-                VStack(spacing: 8) {
-                    Text("바이크 \(viewModel.bikeId)은")
-                        .customFont(.body_md_regular)
-                        .opacity(0.5)
+                VStack(alignment: .center, spacing: 20) {
+                    HStack {
+                        Image(systemName: "house.fill")
+                            .foregroundStyle(Color.interactivePrimary)
+                        Text(viewModel.stationName)
+                            .customFont(.station_lg_bold)
+                    }
+                    .padding(.top)
                     
-                    Text("반납 구역으로 돌아가야 반납이 가능해요")
-                        .customFont(.body_md_bold)
-                }
-                
-                VStack{
-                    // 쿠폰 토글
-                    HStack(alignment: .center, spacing: 15) {
-                        Text("쿠폰")
+                    // 돌아갈 스테이션 표시
+                    Map(position: $viewModel.cameraPosition) {
+                        Annotation("", coordinate: viewModel.coordinate) {
+                            HomeMarkerView(stationName: viewModel.stationName)
+                        }
+                    }
+                    .frame(width: 280,height: 186)
+                    .cornerRadius(20)
+                    .foregroundStyle(Color.gray.opacity(0.2))
+                    .padding(.horizontal)
+                    
+                    // 정보 섹션
+                    VStack(spacing: 8) {
+                        Text("바이크 \(viewModel.bikeId)은")
                             .customFont(.body_md_regular)
+                            .opacity(0.5)
                         
-                        Text("30분 무료 이용권")
-                            .customFont(.body_sm_regular)
-                            .foregroundColor(.gray)
-                        
-                        Spacer()
-                        
-                        Toggle("", isOn: $viewModel.isApplyCoupon)
-                            .tint(.interactivePrimary)
+                        Text("반납 구역으로 돌아가야 반납이 가능해요")
+                            .customFont(.body_md_bold)
                     }
-                    .padding()
-            
                     
-                    // 하단 버튼
-                    SlideButton(
-                        title: "바이크 대여하기 →",
-                        slideIcon: "bicycle",
-                        lockIcon: "lock.open"
-                    ) {
-                        viewModel.startRental()
+                    VStack{
+                        // 쿠폰 토글
+                        HStack(alignment: .center, spacing: 15) {
+                            Text("쿠폰")
+                                .customFont(.body_md_regular)
+                            
+                            Text("30분 무료 이용권")
+                                .customFont(.body_sm_regular)
+                                .foregroundColor(.gray)
+                            
+                            Spacer()
+                            
+                            Toggle("", isOn: $viewModel.isApplyCoupon)
+                                .tint(.interactivePrimary)
+                        }
+                        .padding()
+                        
+                        
+                        // 하단 버튼
+                        SlideButton(
+                            title: "바이크 대여하기 →",
+                            slideIcon: "bicycle",
+                            lockIcon: "lock.open"
+                        ) {
+                            viewModel.startRental()
+                        }
+                        .disabled(viewModel.isLoading)
                     }
+                    .padding(.horizontal, 28)
+                    .padding(.bottom, 20)
                 }
-                .padding(.horizontal, 28)
-                .padding(.bottom, 20)
             }
-        }
-        .onDisappear{
-            viewModel.resetScanningState()
+            .onDisappear{
+                viewModel.resetScanningState()
+            }
         }
     }
 }
-
+    
 struct HomeMarkerView: View {
     let stationName: String
     
@@ -114,3 +136,4 @@ struct HomeMarkerView: View {
         }
     }
 }
+
