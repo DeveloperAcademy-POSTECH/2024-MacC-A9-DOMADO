@@ -8,16 +8,16 @@
 import Foundation
 
 public struct BikeQRData: Codable {
-    let bikeCode: String
-    let homeHub: HomeHub
+    public let bikeCode: String
+    public let homeHub: HomeHub
     
-    struct HomeHub: Codable {
-        let name: String
-        let location: Location
+    public struct HomeHub: Codable {
+        public let name: String
+        public let location: Location
         
-        struct Location: Codable {
-            let latitude: Double
-            let longitude: Double
+        public struct Location: Codable {
+            public let latitude: Double
+            public let longitude: Double
         }
     }
 }

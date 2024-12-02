@@ -168,7 +168,8 @@ public final class AppState: ObservableObject {
             authState = .unauthenticated
             rideState = .none
             hasSeenOnboarding = false
-            currentUser = nil 
+            currentUser = nil
+            currentScanningBike = nil
         } catch {
             print("Failed to reset app state: \(error)")
         }
