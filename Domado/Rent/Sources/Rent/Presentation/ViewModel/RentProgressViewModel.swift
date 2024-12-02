@@ -40,6 +40,7 @@ public class RentProgressViewModel: ObservableObject {
         router.dismissFullScreen()
         router.navigateTo(.inUse)
         resetScanningState()
+        appState.resetTimer()
     }
     
     func dismiss() {
