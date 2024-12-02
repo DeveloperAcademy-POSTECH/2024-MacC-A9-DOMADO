@@ -34,7 +34,7 @@ public struct ActiveRentalView: View {
                 }
             }
             .overlay(alignment: .bottom) {
-                BikeInfoCard(remainingTime: vm.remainingTime, batteryLevel: vm.batteryLevel, isParked: vm.isParked) {
+                BikeInfoCard(remainingTime: vm.remainingTime, batteryLevel: vm.batteryLevel, isParked: false) {
                     // 자전거 주차하기
                     vm.parkBike()
                 }
