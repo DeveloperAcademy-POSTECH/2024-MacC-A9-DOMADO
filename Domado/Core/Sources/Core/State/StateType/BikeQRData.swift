@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BikeQRData: Codable {
+public struct BikeQRData: Codable {
     let bikeCode: String
     let homeHub: HomeHub
     

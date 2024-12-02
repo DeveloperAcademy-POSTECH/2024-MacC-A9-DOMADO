@@ -35,6 +35,8 @@ public final class AppState: ObservableObject {
     @Published private(set) public var rideState: RideState = .none
     private(set) public var hasSeenOnboarding: Bool = false
     private(set) public var currentUser: AppUser? = nil
+    private(set) public var currentScanningBike: BikeQRData? = nil
+    
     
     //MARK: 화면 제어를 위한 프로퍼티들
     private(set) public var isProcessingScanning = false
@@ -179,6 +181,15 @@ public final class AppState: ObservableObject {
     
     public func doneScanning(){
         self.isProcessingScanning = false
+    }
+    
+    // MARK: - 자전거 대여 상태 관리
+    public func setCurrentScanningBike(_ bikeData: BikeQRData) {
+        self.currentScanningBike = bikeData
+    }
+    
+    public func clearCurrentScanningBike() {
+        self.currentScanningBike = nil
     }
     
     // MARK: - 결제 진행 상태 관리
