@@ -22,6 +22,7 @@ public class TempLockViewModel: ObservableObject {
     private let router: Routing
     private let appState: AppState
     private var cancellables = Set<AnyCancellable>()
+    private var hiBikeTimer: Timer?
     
     public init(router: Routing, appState: AppState){
         self.router = router
@@ -40,6 +41,12 @@ public class TempLockViewModel: ObservableObject {
                 self?.isPaymentProcessing = isProcessing
             }
             .store(in: &cancellables)
+        
+        $isHiBike
+            .sink { [weak self] isHiBike in
+                self?.handleIsHiBikeChange(isHiBike)
+            }
+            .store(in: &cancellables)
     }
     
     public func showUnparkConfirmView(){
@@ -56,5 +63,17 @@ public class TempLockViewModel: ObservableObject {
             self?.router.present(sheet: .showHiBikeComplete)
         }
     }
-
+    
+    private func handleIsHiBikeChange(_ isHiBike: Bool) {
+        hiBikeTimer?.invalidate()
+        hiBikeTimer = nil
+        
+        if isHiBike {
+            hiBikeTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { [weak self] _ in
+                Task { @MainActor [weak self] in
+                    self?.showCompleteHiBike()
+                }
+            }
+        }
+    }
 }

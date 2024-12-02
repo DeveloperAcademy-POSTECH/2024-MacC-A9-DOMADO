@@ -105,15 +105,5 @@ public struct TempLockView: View {
                 }
             }
         }
-        // MARK: 추후 삭제
-        .overlay(alignment: .topLeading){
-            Button {
-                vm.showCompleteHiBike()
-            } label: {
-                Rectangle()
-                    .frame(width: 50, height: 50)
-                    .opacity(0)
-            }
-        }
     }
 }

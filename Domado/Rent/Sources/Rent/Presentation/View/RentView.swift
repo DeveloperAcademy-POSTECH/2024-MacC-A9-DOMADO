@@ -21,7 +21,7 @@ public struct RentView: View {
            // 카메라 뷰
            CodeScannerView(
                codeTypes: [.qr],
-               scanMode: .continuous,
+               scanMode: .once,
                simulatedData: "BIKE-123",
                shouldVibrateOnSuccess: !viewModel.isProcessingScanning,
                isTorchOn: viewModel.isTorchOn,
