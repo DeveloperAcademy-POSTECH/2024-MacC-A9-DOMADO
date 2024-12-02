@@ -132,6 +132,15 @@ final class AppContainer {
     }
     
     // MARK: - Rent 의존성 관리
+    
+    private func makeRentRepository() -> RentBikeRepository {
+        return DefaultRentBikeRepository(networkManager: networkManager)
+    }
+    
+    private func makeRentUsecCase() -> RentBikeUseCase {
+        return DefaultRentBikeUseCase(repository: makeRentRepository(), appState: makeAppState())
+    }
+    
     private func makeRentViewModel() -> RentViewModel {
         return RentViewModel(router: makeAppRouter(), appState: makeAppState())
     }
@@ -141,7 +150,7 @@ final class AppContainer {
     }
     
     private func makeRentProgressViewModel() -> RentProgressViewModel {
-        return RentProgressViewModel(router: makeAppRouter(), appState: makeAppState())
+        return RentProgressViewModel(router: makeAppRouter(), appState: makeAppState(), rentBikeUseCase: makeRentUsecCase())
     }
     
     func makeRentProgressView() -> RentProgressView {
