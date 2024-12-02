@@ -41,20 +41,34 @@ public class RentViewModel: ObservableObject {
         }
     }
     
-    private func requestBikeRent(_ code: String) {
-        // QR 코드 검증 로직
+    private func requestBikeRent(_ qrContent: String) {
         guard !appState.isProcessingScanning else { return }
         appState.startScanning()
-        guard code.hasPrefix("BIKE") else {
-            alertMessage = "유효하지 않은 QR 코드입니다"
-            showAlert = true
-            return
-        }
-        // TODO: 자전거 대여 진행 로직 수행
         
-        // 자전거 대여 진행 확인 시트 보여주기
-        router.present(sheet: .confirmRent)
-        resetScanningState()
+        do {
+            guard let jsonData = qrContent.data(using: .utf8) else {
+                throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "QR 코드 데이터 변환 실패"])
+            }
+            
+            let bikeData = try JSONDecoder().decode(BikeQRData.self, from: jsonData)
+            
+            guard bikeData.bikeCode.hasPrefix("BIKE") else {
+                alertMessage = "유효하지 않은 자전거 코드입니다"
+                showAlert = true
+                return
+            }
+            
+            // 파싱된 데이터를 AppState에 저장
+            appState.setCurrentScanningBike(bikeData)
+            
+            // 자전거 대여 진행 확인 시트 보여주기
+            router.present(sheet: .confirmRent)
+            resetScanningState()
+            
+        } catch {
+            alertMessage = "잘못된 QR 코드 형식입니다: \(error.localizedDescription)"
+            showAlert = true
+        }
     }
     
     private func handleError(_ error: ScanError) {

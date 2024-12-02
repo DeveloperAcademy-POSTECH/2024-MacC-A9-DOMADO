@@ -35,6 +35,8 @@ public final class AppState: ObservableObject {
     @Published private(set) public var rideState: RideState = .none
     private(set) public var hasSeenOnboarding: Bool = false
     private(set) public var currentUser: AppUser? = nil
+    private(set) public var currentScanningBike: BikeQRData? = nil
+    
     
     //MARK: 화면 제어를 위한 프로퍼티들
     private(set) public var isProcessingScanning = false
@@ -166,7 +168,8 @@ public final class AppState: ObservableObject {
             authState = .unauthenticated
             rideState = .none
             hasSeenOnboarding = false
-            currentUser = nil 
+            currentUser = nil
+            currentScanningBike = nil
         } catch {
             print("Failed to reset app state: \(error)")
         }
@@ -179,6 +182,34 @@ public final class AppState: ObservableObject {
     
     public func doneScanning(){
         self.isProcessingScanning = false
+    }
+    
+    // MARK: - 자전거 대여 완료시 자전거 대여 상태 관리 
+    public func startRental(_ rental: ActiveRental) {
+        do {
+            // ActiveRental 저장
+            try storage.setValue(rental, for: .activeRide)
+            
+            // 주행 상태 업데이트
+            updateRideState(.active)
+            
+            // 스캔 중인 자전거 정보 초기화
+            clearCurrentScanningBike()
+            
+            // 스캐닝 상태 초기화
+            doneScanning()
+        } catch {
+            print("Failed to save rental data: \(error)")
+        }
+    }
+    
+    // MARK: - 자전거 대여 상태 관리
+    public func setCurrentScanningBike(_ bikeData: BikeQRData) {
+        self.currentScanningBike = bikeData
+    }
+    
+    public func clearCurrentScanningBike() {
+        self.currentScanningBike = nil
     }
     
     // MARK: - 결제 진행 상태 관리
