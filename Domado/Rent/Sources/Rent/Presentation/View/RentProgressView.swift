@@ -47,8 +47,9 @@ public struct RentProgressView: View {
                 
                 // 돌아갈 스테이션 표시
                 Map(position: $viewModel.cameraPosition) {
-                    Marker(viewModel.stationName, coordinate: viewModel.coordinate)
-                        .tint(Color.MylocationMarker)
+                    Annotation("", coordinate: viewModel.coordinate) {
+                        HomeMarkerView(stationName: viewModel.stationName)
+                    }
                 }
                 .frame(width: 280,height: 186)
                 .cornerRadius(20)
@@ -98,6 +99,18 @@ public struct RentProgressView: View {
         }
         .onDisappear{
             viewModel.resetScanningState()
+        }
+    }
+}
+
+struct HomeMarkerView: View {
+    let stationName: String
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Image(systemName: "house.fill")
+                .font(.system(size: 24))
+                .foregroundColor(.interactivePrimary)
         }
     }
 }
