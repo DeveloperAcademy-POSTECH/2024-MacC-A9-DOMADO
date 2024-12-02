@@ -88,7 +88,7 @@ public struct TempLockView: View {
                     // 이용 정보 카드
                     VStack(spacing: 20) {
                         BikeInfoCard(
-                            remainingTime: "30:21",
+                            remainingTime: vm.elapsedTime,
                             batteryLevel: "21km",
                             isParked: true
                         ) {

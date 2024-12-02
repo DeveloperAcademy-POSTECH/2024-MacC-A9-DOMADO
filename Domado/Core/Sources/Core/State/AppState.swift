@@ -8,7 +8,7 @@
 import Foundation
 
 
-public final class AppState: ObservableObject {
+public final class AppState: ObservableObject, @unchecked Sendable {
     
     // MARK: State Enum
     /// 인증상태
@@ -39,6 +39,25 @@ public final class AppState: ObservableObject {
     //MARK: 화면 제어를 위한 프로퍼티들
     private(set) public var isProcessingScanning = false
     @Published private(set) public var isProcessingPayment = false
+    @Published private(set) public var elapsedSeconds: Int = 0
+    private var timer: Timer?
+    
+    public func startTimer() {
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.elapsedSeconds += 1
+        }
+    }
+    
+    public func pauseTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    public func resetTimer() {
+        pauseTimer()
+        elapsedSeconds = 0
+    }
     
     private let storage: StateStorage
     

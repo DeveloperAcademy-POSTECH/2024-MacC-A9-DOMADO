@@ -16,6 +16,8 @@ public class TempLockViewModel: ObservableObject {
     @Published var isHiBike: Bool = false
     @Published var isPassed: Bool = false
     @Published var isPaymentProcessing: Bool = false
+    @Published var elapsedTime: String = "00:00"
+    
     private let router: Routing
     private let appState: AppState
     private var cancellables = Set<AnyCancellable>()
@@ -23,6 +25,14 @@ public class TempLockViewModel: ObservableObject {
     public init(router: Routing, appState: AppState){
         self.router = router
         self.appState = appState
+        
+        appState.$elapsedSeconds
+            .map { seconds in
+                let minutes = seconds / 60
+                let remainingSeconds = seconds % 60
+                return String(format: "%02d:%02d", minutes, remainingSeconds)
+            }
+            .assign(to: &$elapsedTime)
         
         appState.$isProcessingPayment
             .sink { [weak self] isProcessing in

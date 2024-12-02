@@ -12,7 +12,7 @@ import _MapKit_SwiftUI
 
 public class ActiveRentViewModel: ObservableObject {
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    @Published var remainingTime = "00:00"
+    @Published var elapsedTime = "00:00"
     @Published var batteryLevel = "34km"
     @Published var isParked = false
     @Published var isPaymentProcessing = false
@@ -26,11 +26,21 @@ public class ActiveRentViewModel: ObservableObject {
         self.router = router
         self.appState = appState
         
+        appState.$elapsedSeconds
+            .map { seconds in
+                let minutes = seconds / 60
+                let remainingSeconds = seconds % 60
+                return String(format: "%02d:%02d", minutes, remainingSeconds)
+            }
+            .assign(to: &$elapsedTime)
+        
         appState.$isProcessingPayment
             .sink { [weak self] isProcessing in
                 self?.isPaymentProcessing = isProcessing
             }
             .store(in: &cancellables)
+        
+        appState.startTimer()
     }
     
     func parkBike() {
