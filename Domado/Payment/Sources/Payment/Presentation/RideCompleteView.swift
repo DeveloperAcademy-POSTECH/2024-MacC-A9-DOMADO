@@ -9,7 +9,6 @@ import SwiftUI
 import Core
 
 public struct RideCompleteView: View {
-
     @StateObject private var vm: RideCompleteViewModel
     
     var homeHubName: String = "생활관 18동"
@@ -122,7 +121,6 @@ public struct RideCompleteView: View {
                                     HStack(spacing: 0){
                                         Image("time", bundle: .module)
                                             .padding(.trailing, 7)
-                                        //                                            .background(Color.red)
                                         
                                         Text(rideDuration)
                                             .customFont(.station_lg_bold)
@@ -141,26 +139,24 @@ public struct RideCompleteView: View {
                                             .foregroundStyle(Color.grayScaleLightActive)
                                             .font(.system(size: 16))
                                             .padding(.trailing, 4)
-                                        //                                            .background(Color.red)
                                         
                                         Text("\(rideDistance)km")
                                             .customFont(.station_lg_bold)
                                             .foregroundStyle(Color.grayScaleDarker)
                                     }
                                 }
-                                
                             }
                                 .padding(.horizontal, 32)
                         )
                         .padding(.bottom, 25)
                     
-                    //                    CouponBook()
+                    CouponBook(title: "다음엔 하이바이크를 이용해서\n새로운 스탬프를 받아보세요!")
+                        .frame(maxWidth: .infinity, alignment: .center) // 중앙 정렬을 위해 추가
+                    
                     Spacer()
                 }
                 .padding(.horizontal, 37)
-                
             }
-            
         }
     }
 }

@@ -54,7 +54,7 @@ public struct MyAccountCard: View {
                         })
                     }
                     .padding(.bottom, 16)
-                    CouponBook()
+                    CouponBook(title: "하이바이크를 대여해서\n새로운 스탬프를 받아보세요!")
                 }
                 
                     .padding(.horizontal, 15)

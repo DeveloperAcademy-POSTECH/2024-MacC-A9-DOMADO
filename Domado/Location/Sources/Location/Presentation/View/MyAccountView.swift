@@ -139,9 +139,46 @@ public struct MyAccountView: View {
                                 }
                                 
                                 // 이용기록
-                                RideHistoryCell()
-                                RideHistoryCell()
-                                RideHistoryCell()
+                                RideHistoryCell(
+                                        rideDate: "24. 10. 19",
+                                        homeHubName: "생활관 18동",
+                                        rideTime: "09:27 - 10:55",
+                                        appliedCoupon: "30분 무료 이용권",
+                                        paymentMethod: "기업은행 **79",
+                                        fareAmount: "3,400"
+                                    )
+                                    RideHistoryCell(
+                                        rideDate: "24. 10. 18",
+                                        homeHubName: "박태준학술정보관",
+                                        rideTime: "14:15 - 14:32",
+                                        appliedCoupon: "내역 없음",
+                                        paymentMethod: "기업은행 **79",
+                                        fareAmount: "2,800"
+                                    )
+                                    RideHistoryCell(
+                                        rideDate: "24. 10. 17",
+                                        homeHubName: "중앙도서관",
+                                        rideTime: "11:05 - 11:28",
+                                        appliedCoupon: "내역 없음",
+                                        paymentMethod: "카카오페이",
+                                        fareAmount: "2,400"
+                                    )
+                                    RideHistoryCell(
+                                        rideDate: "24. 10. 15",
+                                        homeHubName: "학생회관",
+                                        rideTime: "16:30 - 17:05",
+                                        appliedCoupon: "내역 없음",
+                                        paymentMethod: "카카오페이",
+                                        fareAmount: "1,900"
+                                    )
+                                    RideHistoryCell(
+                                        rideDate: "24. 10. 14",
+                                        homeHubName: "정문",
+                                        rideTime: "08:45 - 09:10",
+                                        appliedCoupon: "내역 없음",
+                                        paymentMethod: "카카오페이",
+                                        fareAmount: "2,900"
+                                    )
                             }
                             .padding(.horizontal, 42)
                         }
