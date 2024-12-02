@@ -184,6 +184,25 @@ public final class AppState: ObservableObject {
         self.isProcessingScanning = false
     }
     
+    // MARK: - 자전거 대여 완료시 자전거 대여 상태 관리 
+    public func startRental(_ rental: ActiveRental) {
+        do {
+            // ActiveRental 저장
+            try storage.setValue(rental, for: .activeRide)
+            
+            // 주행 상태 업데이트
+            updateRideState(.active)
+            
+            // 스캔 중인 자전거 정보 초기화
+            clearCurrentScanningBike()
+            
+            // 스캐닝 상태 초기화
+            doneScanning()
+        } catch {
+            print("Failed to save rental data: \(error)")
+        }
+    }
+    
     // MARK: - 자전거 대여 상태 관리
     public func setCurrentScanningBike(_ bikeData: BikeQRData) {
         self.currentScanningBike = bikeData
