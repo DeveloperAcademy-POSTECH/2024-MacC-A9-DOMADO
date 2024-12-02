@@ -16,6 +16,7 @@ public class ActiveRentViewModel: ObservableObject {
     @Published var batteryLevel = "34km"
     @Published var isParked = false
     @Published var isPaymentProcessing = false
+    @Published var homeHub: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 36.012516, longitude: 129.326191)
     
     private let router: Routing
     private let appState: AppState

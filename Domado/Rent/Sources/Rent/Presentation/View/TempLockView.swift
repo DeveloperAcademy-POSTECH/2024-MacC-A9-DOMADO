@@ -22,6 +22,11 @@ public struct TempLockView: View {
             // 배경 지도
             Map(position: $vm.position) {
                 UserAnnotation()
+                Annotation("", coordinate: vm.homeHub) {
+                    Image(systemName: "house.fill")
+                        .font(.system(size: 18))
+                        .foregroundColor(.interactivePrimary)
+                 }
             }
             .mapStyle(.standard)
             

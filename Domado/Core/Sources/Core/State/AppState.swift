@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 
 public final class AppState: ObservableObject, @unchecked Sendable {

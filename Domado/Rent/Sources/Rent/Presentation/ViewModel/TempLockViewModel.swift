@@ -17,6 +17,7 @@ public class TempLockViewModel: ObservableObject {
     @Published var isPassed: Bool = false
     @Published var isPaymentProcessing: Bool = false
     @Published var elapsedTime: String = "00:00"
+    @Published var homeHub: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 36.012516, longitude: 129.326191)
     
     private let router: Routing
     private let appState: AppState

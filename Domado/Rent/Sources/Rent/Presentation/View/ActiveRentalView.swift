@@ -21,6 +21,11 @@ public struct ActiveRentalView: View {
         ZStack{
             Map(position: $vm.position) {
                 UserAnnotation()
+                Annotation("", coordinate: vm.homeHub) {
+                    Image(systemName: "house.fill")
+                        .font(.system(size: 18))
+                        .foregroundColor(.interactivePrimary)
+                 }
             }
             .mapStyle(.standard)
             // MARK: 추후 삭제
