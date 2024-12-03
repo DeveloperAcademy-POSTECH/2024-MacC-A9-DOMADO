@@ -42,6 +42,11 @@ public final class AppState: ObservableObject, @unchecked Sendable {
     @Published private(set) public var isProcessingPayment = false
     @Published private(set) public var elapsedSeconds: Int = 0
     private var timer: Timer?
+    @Published private(set) public var isApplyCoupon: Bool = false
+    
+    public func updateCouponState(_ isApplied: Bool) {
+        self.isApplyCoupon = isApplied
+    }
     
     public func startTimer() {
         guard timer == nil else { return }

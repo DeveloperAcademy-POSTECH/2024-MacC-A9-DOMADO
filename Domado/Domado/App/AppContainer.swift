@@ -206,7 +206,7 @@ final class AppContainer {
     
     // MARK: - Payment 의존성 관리
     private func makeRideCompelteViewModel() -> RideCompleteViewModel {
-        RideCompleteViewModel(router: makeAppRouter())
+        RideCompleteViewModel(router: makeAppRouter(), appState: makeAppState())
     }
     
     func makeRideCompelteView() -> RideCompleteView {

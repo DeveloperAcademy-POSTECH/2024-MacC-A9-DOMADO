@@ -12,7 +12,10 @@ import _MapKit_SwiftUI
 
 @MainActor
 public class RentProgressViewModel: ObservableObject {
-    @Published var isApplyCoupon: Bool = false
+    var isApplyCoupon: Bool {
+        get { appState.isApplyCoupon }
+        set { appState.updateCouponState(newValue) }
+    }
     /// AppState를 통해 주입
     var bikeId: String = "301100"
     var stationName: String = "박태준학술정보관"
