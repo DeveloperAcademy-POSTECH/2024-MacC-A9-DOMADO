@@ -38,7 +38,7 @@ public struct BikeInfoCard: View {
                                 .foregroundColor(isParked ? .black.opacity(0.6) : .white.opacity(0.6))
                             
                             Text(remainingTime)
-                                .font(.system(size: 20, weight: .bold))
+                                .font(.system(size: 15, weight: .bold))
                                 .foregroundColor(isParked ? .black : .white)
                         }
                     }
@@ -59,7 +59,7 @@ public struct BikeInfoCard: View {
                                 .foregroundColor(isParked ? .black : .white)
                             
                             Text("주행할 수 있어요")
-                                .font(.system(size: 17))
+                                .font(.system(size: 15))
                                 .foregroundColor(isParked ? .black : .white)
                                 .opacity(0.6)
                         }
