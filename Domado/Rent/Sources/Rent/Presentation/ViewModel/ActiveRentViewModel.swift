@@ -14,7 +14,6 @@ public class ActiveRentViewModel: ObservableObject {
     @Published var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @Published var remainingTime = "00:00"
     @Published var batteryLevel = "34km"
-    @Published var isParked = false
     @Published var isPaymentProcessing = false
     
     private let router: Routing
