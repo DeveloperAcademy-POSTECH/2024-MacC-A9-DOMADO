@@ -41,7 +41,7 @@ public class RentViewModel: ObservableObject {
         }
     }
     
-    private func requestBikeRent(_ code: String) {
+    func requestBikeRent(_ code: String) {
         // QR 코드 검증 로직
         guard !appState.isProcessingScanning else { return }
         appState.startScanning()

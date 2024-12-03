@@ -11,6 +11,7 @@ import AVFoundation
 
 public struct RentView: View {
     @StateObject private var viewModel: RentViewModel
+    @State private var showDirectCodeInput = false
    
    public init(viewModel: RentViewModel) {
        _viewModel = StateObject(wrappedValue: viewModel)
@@ -19,14 +20,17 @@ public struct RentView: View {
    public var body: some View {
        ZStack {
            // 카메라 뷰
-           CodeScannerView(
-               codeTypes: [.qr],
-               scanMode: .once,
-               simulatedData: "BIKE-123",
-               shouldVibrateOnSuccess: !viewModel.isProcessingScanning,
-               isTorchOn: viewModel.isTorchOn,
-               completion: viewModel.handleScan
-           )
+           if !showDirectCodeInput {  // 직접 입력 화면이 아닐 때만 카메라 뷰 보여주기
+               // 카메라 뷰
+               CodeScannerView(
+                   codeTypes: [.qr],
+                   scanMode: .once,
+                   simulatedData: "BIKE-123",
+                   shouldVibrateOnSuccess: !viewModel.isProcessingScanning,
+                   isTorchOn: viewModel.isTorchOn,
+                   completion: viewModel.handleScan
+               )
+           }
            // 반투명한 오버레이와 구멍
            GeometryReader { geometry in
                let boxWidth: CGFloat = 280
@@ -152,7 +156,7 @@ public struct RentView: View {
                // 하단 버튼들
                HStack(alignment: .top ,spacing: 100) {
                    Button {
-                       // 코드 입력 동작
+                       showDirectCodeInput = true
                    } label: {
                        VStack(spacing: 10) {
                            Circle()
@@ -192,6 +196,11 @@ public struct RentView: View {
                .padding(.bottom, 50)
            }
            .padding(.top, 20)
+       }
+       .sheet(isPresented: $showDirectCodeInput) {
+           DirectCodeInputView { code in
+               viewModel.requestBikeRent(code)
+           }
        }
        .ignoresSafeArea()
        .alert("스캔 결과", isPresented: $viewModel.showAlert) {
