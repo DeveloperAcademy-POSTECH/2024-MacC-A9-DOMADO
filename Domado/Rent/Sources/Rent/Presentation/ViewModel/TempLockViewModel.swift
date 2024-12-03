@@ -18,6 +18,7 @@ public class TempLockViewModel: ObservableObject {
     @Published var isPaymentProcessing: Bool = false
     @Published var elapsedTime: String = "00:00"
     @Published var homeHub: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 36.012516, longitude: 129.326191)
+    @Published var isSheetOn = false
     
     private let router: Routing
     private let appState: AppState
@@ -58,8 +59,11 @@ public class TempLockViewModel: ObservableObject {
     }
 
     public func showCompleteHiBike(){
+        isHiBike = false 
         isPassed = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+        appState.pauseTimer()  // 타이머를 확실히 중지
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             self?.router.present(sheet: .showHiBikeComplete)
         }
     }
@@ -74,6 +78,9 @@ public class TempLockViewModel: ObservableObject {
                     self?.showCompleteHiBike()
                 }
             }
+        }else {
+            // 하이바이크 모드가 꺼질 때 상태 초기화
+            isPassed = false
         }
     }
 }

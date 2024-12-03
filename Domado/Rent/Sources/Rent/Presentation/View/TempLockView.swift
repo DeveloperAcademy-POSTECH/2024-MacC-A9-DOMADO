@@ -58,10 +58,10 @@ public struct TempLockView: View {
                 // 중앙 상태 표시
                 VStack(spacing: 16) {
                     // 장갑 아이콘과 메시지
-                    Image("pause")
+                    Image(vm.isPassed ? "hifive" : "pause")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 95, height: 75)
+                        .frame(width: vm.isPassed ?  120 : 95, height:vm.isPassed ?  100 : 75)
                         .foregroundColor(.white)
                     
                     VStack(spacing: 4) {

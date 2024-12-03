@@ -20,7 +20,6 @@ public class HiBikeCompleteViewModel: ObservableObject {
     }
     
     func rideComplete(){
-        appState.pauseTimer()  // 타이머를 확실히 중지
         // MARK: 서버에 결제 요청
         appState.startPaymentProcessing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
