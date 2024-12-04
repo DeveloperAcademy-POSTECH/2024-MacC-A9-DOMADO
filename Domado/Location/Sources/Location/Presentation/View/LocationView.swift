@@ -95,6 +95,7 @@ public struct LocationView: View {
                                 }
                             })
                         }
+                        .annotationTitles(.hidden)
                     }
                 }
             }
